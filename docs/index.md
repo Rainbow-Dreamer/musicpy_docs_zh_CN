@@ -46,42 +46,42 @@ play(piece([guitar%3, bass, string1], [28, 34, 49], 135, [0, 4-3/8, 12]))
 
 ## 数据结构
 
-* [musicpy的数据结构](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy的数据结构) 
+* [musicpy的数据结构](https://musicpy.readthedocs.io/zh_CN/latest/musicpy的数据结构) 
 
 ## 基本语法
 
-* [音符类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/音符类型的基本语法)
-* [和弦类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/和弦类型的基本语法)
-* [音阶类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/音阶类型的基本语法)
-* [乐曲类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/乐曲类型的基本语法)
-* [音轨类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/音轨类型的基本语法)
-* [速度类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/速度类型的基本语法)
-* [弯音类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/弯音类型的基本语法)
-* [声相类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/声相类型的基本语法)
-* [音量类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/音量类型的基本语法)
-* [鼓点类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/鼓点类型的基本语法)
+* [音符类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/音符类型的基本语法)
+* [和弦类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/和弦类型的基本语法)
+* [音阶类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/音阶类型的基本语法)
+* [乐曲类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/乐曲类型的基本语法)
+* [音轨类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/音轨类型的基本语法)
+* [速度类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/速度类型的基本语法)
+* [弯音类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/弯音类型的基本语法)
+* [声相类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/声相类型的基本语法)
+* [音量类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/音量类型的基本语法)
+* [鼓点类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/鼓点类型的基本语法)
 
 ## 实用的功能
 
-* [实用的功能](https://github.com/Rainbow-Dreamer/musicpy/wiki/实用的功能)
+* [实用的功能](https://musicpy.readthedocs.io/zh_CN/latest/实用的功能)
 
 ## musicpy语言作曲代码示例
 
-* [musicpy语言作曲代码示例（第一期）](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy语言作曲代码示例（第一期）)
-* [musicpy语言作曲代码示例（第二期）](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy语言作曲代码示例（第二期）)
-* [musicpy语言作曲代码示例（第三期）](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy语言作曲代码示例（第三期）)
+* [musicpy语言作曲代码示例（第一期）](https://musicpy.readthedocs.io/zh_CN/latest/musicpy语言作曲代码示例（第一期）)
+* [musicpy语言作曲代码示例（第二期）](https://musicpy.readthedocs.io/zh_CN/latest/musicpy语言作曲代码示例（第二期）)
+* [musicpy语言作曲代码示例（第三期）](https://musicpy.readthedocs.io/zh_CN/latest/musicpy语言作曲代码示例（第三期）)
 
 ## musicpy取样机模块
 
-* [musicpy取样机模块](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy取样机模块) 
-* [musicpy取样机模块作曲代码示例](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy取样机模块作曲代码示例)
+* [musicpy取样机模块](https://musicpy.readthedocs.io/zh_CN/latest/musicpy取样机模块) 
+* [musicpy取样机模块作曲代码示例](https://musicpy.readthedocs.io/zh_CN/latest/musicpy取样机模块作曲代码示例)
 
 ## 算法
 
-* [musicpy algorithms 模块介绍](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy-algorithms-模块介绍)
-* [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://github.com/Rainbow-Dreamer/musicpy/wiki/从一首完整的钢琴曲里提取主旋律以及所有和弦的算法)
-* [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://github.com/Rainbow-Dreamer/musicpy/wiki/按照乐理逻辑判断任意一组音组成的和弦类型的算法)
+* [musicpy algorithms 模块介绍](https://musicpy.readthedocs.io/zh_CN/latest/musicpy-algorithms-模块介绍)
+* [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://musicpy.readthedocs.io/zh_CN/latest/从一首完整的钢琴曲里提取主旋律以及所有和弦的算法)
+* [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://musicpy.readthedocs.io/zh_CN/latest/按照乐理逻辑判断任意一组音组成的和弦类型的算法)
 
 ## 常见的问题
 
-* [常见的问题](https://github.com/Rainbow-Dreamer/musicpy/wiki/常见的问题)
+* [常见的问题](https://musicpy.readthedocs.io/zh_CN/latest/常见的问题)
