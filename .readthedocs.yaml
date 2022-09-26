@@ -1,35 +1,35 @@
 site_name: Musicpy
 site_url: https://github.com/Rainbow-Dreamer/musicpy
 nav:
-    - Introduction:
-      - Introduction: Introduction.md
-    - Data Structures:
-      - Data structures of musicpy: Data Structures of musicpy.md
+    - 介绍:
+      - 介绍: 介绍.md
+    - 数据结构:
+      - musicpy的数据结构: musicpy的数据结构.md
     - Basic Syntax:
-      - Basic syntax of note type: Basic syntax of note type.md
-      - Basic syntax of chord type: Basic syntax of chord type.md
-      - Basic syntax of scale type: Basic syntax of scale type.md
-      - Basic syntax of piece type: Basic syntax of piece type.md
-      - Basic syntax of track type: Basic syntax of track type.md
-      - Basic syntax of tempo type: Basic syntax of tempo type.md
-      - Basic syntax of pitch_bend type: Basic syntax of pitch_bend type.md
-      - Basic syntax of pan type: Basic syntax of pan type.md
-      - Basic syntax of volume type: Basic syntax of volume type.md
-      - Basic syntax of drum type: Basic syntax of drum type.md
-    - Useful functionality:
-      - Useful functionality: Useful functionality.md
+      - 音符类型的基本语法: 音符类型的基本语法.md
+      - 和弦类型的基本语法: 和弦类型的基本语法.md
+      - 音阶类型的基本语法: 音阶类型的基本语法.md
+      - 乐曲类型的基本语法: 乐曲类型的基本语法.md
+      - 音轨类型的基本语法: 音轨类型的基本语法.md
+      - 速度类型的基本语法: 速度类型的基本语法.md
+      - 弯音类型的基本语法: 弯音类型的基本语法.md
+      - 声相类型的基本语法: 声相类型的基本语法.md
+      - 音量类型的基本语法: 音量类型的基本语法.md
+      - 鼓点类型的基本语法: 鼓点类型的基本语法.md
+    - 实用的功能:
+      - 实用的功能: 实用的功能.md
     - Composition Examples:
-      - composition code examples Part 1: musicpy composition code examples part 1.md
-      - composition code examples Part 2: musicpy composition code examples part 2.md
-      - composition code examples Part 3: musicpy composition code examples part 3.md
+      - 作曲代码示例（第一期）: musicpy语言作曲代码示例（第一期）.md
+      - 作曲代码示例（第二期）: musicpy语言作曲代码示例（第二期）.md
+      - 作曲代码示例（第三期）: musicpy语言作曲代码示例（第三期）.md
     - Sampler Module:
-      - Musicpy sampler module: musicpy sampler module.md
-      - musicpy sampler module composition code examples: musicpy sampler module composition code examples.md
+      - musicpy取样机模块: musicpy取样机模块.md
+      - musicpy取样机模块作曲代码示例: musicpy取样机模块作曲代码示例.md
     - Algorithms:
-      - Introduction of musicpy algorithms module: Introduction of musicpy algorithms module.md
-      - the algorithm to split the main melody and chords from a piece of music: the algorithm to split the main melody and chords from a piece of music.md
-      - the algorithm to determine the chord type of any group of notes according to the logic of music theory: the algorithm to determine the chord type of any group of notes according to the logic of music theory.md
-    - Frequently Asked Questions:
-      - Frequently Asked Questions: Frequently Asked Questions.md
+      - musicpy algorithms 模块介绍: musicpy algorithms 模块介绍.md
+      - 从一首完整的钢琴曲里提取主旋律以及所有和弦的算法: 从一首完整的钢琴曲里提取主旋律以及所有和弦的算法.md
+      - 按照乐理逻辑判断任意一组音组成的和弦类型的算法: 按照乐理逻辑判断任意一组音组成的和弦类型的算法.md
+    - 常见的问题:
+      - 常见的问题: 常见的问题.md
 theme:
   name: readthedocs
