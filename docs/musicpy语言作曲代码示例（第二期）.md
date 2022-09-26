@@ -1,6 +1,6 @@
-# musicpy composition code examples part 2
+# musicpy语言作曲代码示例（第二期）
 
-## 1. Non-functional harmony game bgm (normal speed, 165BPM)
+## 1. 非功能和声游戏bgm（正常速度，165BPM）
 ```python
 a = C('Cm7',4,1,1/8) @ [1,3,4,2.1,4.1] | 3/8
 piano = a % 4 | (a - 3) % 4
@@ -9,7 +9,7 @@ bass += (bass - 3)
 play(P([piano, bass], [1, 34], 165, [0, 0]) * 2)
 ```
 
-## 2. Non-functional harmonic game bgm (speedcore, 500BPM)
+## 2. 非功能和声游戏bgm（speedcore，500BPM）
 ```python
 a = C('Cm9',4,1,1/8) @ [1,3,5,2.1,4.1] | 3/8
 piano = a % 4 | (a + 3) % 4
@@ -20,7 +20,7 @@ drum = concat([chord(random.choice(['D2','E2','G2'])) for i in range(64)]) % (1/
 play(P([piano, bass, drum], [1, 34, 1], 500, [0, 0, 0], channels=[1,2,9]) * 2)
 ```
 
-## 3. Non-functional harmony game bgm (doom metal, 25BPM)
+## 3. 非功能和声游戏bgm（doom metal，25BPM）
 ```python
 a = C('Cm9',2,1/4,1/8) @ [1,3,5,2.1,4.1] | 3/8
 piano = a % 4 | (a + 3) % 4
@@ -31,7 +31,7 @@ drum = concat([chord(random.choice(['D2','E2','G2'])) for i in range(64)]) % (1/
 play(P([piano, bass, drum], [31, 34, 1], 25, [0, 0, 0], channels=[1,2,9]) * 8)
 ```
 
-## 4. Scary atmosphere soundtrack
+## 4. 恐怖氛围配乐
 ```python
 a = C('Caug9') @ [1,3,5,2.1,4.1,5.1] % (1, 1/8) | 1/4
 bass = chord('C2, A#1') % ([1, 1], [1, 1]) * 4
@@ -42,13 +42,13 @@ string.setvolume(60)
 play(P([piano, bass, string%4], [9, 34, 49], 80, [0, 0, 0]))
 ```
 
-## 5. Guitar breakup chord play (nylon string)
+## 5. 吉他分解和弦演奏 (nylon string)
 ```python
 guitar = C('CM7',4, 1)^2 | C('G7sus', 3, 1)^2 | C('A7sus', 3, 1)^2 | C('FM7', 3, 1)^2
 play((guitar%(1/4, 1/8) * 2)-octave, 100, instrument=25)
 ```
 
-## 6. Guitar breakup chords to play another chord progression (nylon string)
+## 6. 吉他分解和弦演奏另一个和弦进行 (nylon string)
 ```python
 guitar = (C('CM7',4, 1/4, 1/8)^2 | C('G7sus', 3, 1/4, 1/8)^2 
 | C('A7sus', 3, 1/4, 1/8)^2 | C('Em7', 3, 1/4, 1/8)^2 | 
@@ -57,7 +57,7 @@ C('AbM7', 3, 1/4, 1/8)^2 | C('G7sus', 3, 1/4, 1/8)^2)
 play((guitar * 2)-octave, 100, instrument=25)
 ```
 
-## 7. Electric pianos play chord progressions, playing intra-chord notes according to certain rules
+## 7. 电钢琴演奏和弦进行，按照一定的规则演奏和弦内音
 ```python
 rule = lambda x: x @ [1, 3, 4, 2.1, 3.1, 4, 1.1, 3.1] % (1/4, 1/8)
 rule2 = lambda x: x @ [1, 3, 4, 2.1, 3.1, 4, 2.1, 3.1] % (1/4, 1/8)
@@ -72,7 +72,7 @@ a = (rule(C('Cmaj7',4)) |
 play(a * 2, 150, instrument=5)
 ```
 
-## 8. Chord progressions in major keys borrowed from the lydian mode
+## 8. 大调中借用lydian调式的和弦进行
 ```python
 a = (C('Cmaj7') | C('D7') | C('Fmaj7',3) | C('Cmaj7/-3')) % (1, 1/4) * 4
 b_duration = [3/4, 1/8, 1/8, 3/4, 1/8, 1/8, 1/4, 1/4, 1/2, 1/2, 1/2]
@@ -85,7 +85,7 @@ song = build([a, 5, 0],
 play(song)
 ```
 
-## 9. Chord progressions in major keys borrowed from lydian modes (with accompanying harmonies, second melodic line)
+## 9. 大调中借用lydian调式的和弦进行（附带和声，第二段旋律线）
 ```python
 a = (C('Cmaj7') | C('D7') | C('Fmaj7',3) | C('Cmaj7/-3')) % (1, 1/4) * 4
 b_duration = [3/4, 1/8, 1/8, 3/4, 1/8, 1/8, 1/4, 1/4, 1/2, 1/2, 1/2]
@@ -106,7 +106,7 @@ song = build([a, 5, 0],
 play(song)
 ```
 
-## 10. Advanced writeup of example 8 (a more concise writeup, a new advanced syntax I recently added)
+## 10. 例子8的进阶写法（更简洁的写法，是我最近新加入的高级语法）
 ```python
 a = (C('Cmaj7') | C('D7') | C('Fmaj7',3) | C('Cmaj7/-3')) % (1, 1/4) * 4
 b = chord('G5[3/4;3/4], F5[.8;.8], E5[.8;.8], F5[3/4;3/4], E5[.8;.8], D5[.8;.8], E5[.4;.4], D5[.4;.4], C5[.2;.2], B4[.2;.2], G4[.2;.2]') * 2
@@ -116,7 +116,7 @@ song = build([a, 5, 0],
 play(song)
 ```
 
-## 11. Relaxing ambient music
+## 11. 轻松氛围音乐
 ```python
 a = C('CM9') @ [1,3,5,2.1,4.1,5.1] % (1, 1/8) | 1/4
 bass = chord('C2, A#1') % ([1, 1], [1, 1]) * 4
@@ -127,7 +127,7 @@ string.setvolume(50)
 play(P([piano, bass, string%4], [9, 34, 49], 80, [0, 0, 0]))
 ```
 
-## 12. Super nice 6451 chord configuration (advanced writing)
+## 12. 超好听的6451和弦配置（进阶写法）
 ```python
 q = S('C major', 4)
 r = q%(64516458, 1/2, 0.3/4, 5)
@@ -135,7 +135,7 @@ r = [i('omit7')^2 for i in r]
 play(r*2, bpm=80, instrument=5)
 ```
 
-## 13. Relaxed urban style ambient music (with transposition)
+## 13. 轻松的都市风格氛围音乐（有转调）
 ```python
 a = C('CM9') @ [1,3,5,2.1,4.1,5.1] % (1, 1/8) | 1/4
 bass = chord('C2, A#1') % ([1, 1], [1, 1]) * 4
@@ -144,14 +144,14 @@ string = C('CM9', 4) % (1, 0)
 string |= string - 2
 string.setvolume(50)
 string %= 4
-oboe1 = chord('B5[.16;.16], C6[.16;.16], D6[1;1], C6[.2;.2], E6[.2;.2], D6[1;1], C6[7/8; 7/8]')
+oboe1 = chord('B5[.16;.16], C6[.16;.16], D6[1;1], C6[.2;.2], E6[.2;.2], D6[1;1], C6[7/8;7/8]')
 part1 = P([piano | piano-4, bass | bass-4, string | string-4, oboe1 | oboe1-4], 
           [9, 34, 49, 'Pan Flute'], 
           90,
           [0, 0, 0, 3+7/8])
 play(part1)
 ```
-## 14. Video game 8-bit song style
+## 14. 电子游戏8-bit曲风
 ```python
 chord_part1 = (C('Cm', 5, 1/8) | 1/4 | C('Bb', 4, 1/8) | 1/4 |
                C('Ab', 4, 1/8) | 1/4 | C('Bb', 4, 1/2) | 3/8)
@@ -179,7 +179,7 @@ bass_part = bass_part1 | bass_part2 | bass_part3 | bass_part4 | bass_part5
 play(piece([bass_part, chord_part], [81, 81], 130, [0, 1/4]))
 ```
 
-## 15. J-rock intro
+## 15. 日系摇滚前奏
 ```python
 guitar = ((C('Cmaj7')@1)@[1,2,3,4,1,2,3,2] |
 (C('Fmaj7',3)^2)@[1,2,3,4,1,2,3,2] |

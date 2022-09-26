@@ -1,17 +1,17 @@
 Welcome to Musicpy's documentation!
 ===================================
 
-Musicpy is a music programming language in Python designed to write music in very handy syntax through music theory and algorithms.
+usicpy是一个可以让你用编程写音乐的python领域特定语言，可以让你用非常简洁并且可读性高的语法通过乐理知识和算法写出优美的音乐。
 
-It is easy to learn and write, easy to read, and incorporates a fully computerized music theory system.
+Musicpy容易学，容易写，可读性也比较强，并且是一个完全计算机化的乐理系统。
 
-Musicpy can do way more than just writing music. This package can also be used to analyze music through music theory logic, and you can design algorithms to explore the endless possibilities of music, all with musicpy.
+Musicpy除了用来创作音乐之外，还可以从乐理层面上来创作音乐和分析音乐，并且你可以在musicpy的基础上设计乐理算法来探索音乐的可能性。
 
-With musicpy, you can express notes, chords, melodies, rhythms, volumes and other information of a piece of music with a very concise syntax. It can generate music through music theory logic and perform advanced music theory operations.
+Musicpy可以让你用非常简洁的语法来表达一段音乐的音符，和弦，旋律，节奏，力度等信息，可以通过乐理逻辑来生成曲子，并且进行高级的乐理操作。你可以很容易地把musicpy代码输出为MIDI文件的格式，也可以很简单地加载MIDI文件并且转换为musicpy的数据结构进行高级乐理的操作。
 
-You can easily output musicpy codes into MIDI file format, and you can also easily read any MIDI files and convert to musicpy's data structures to do a lot of advanced music theory operations. The syntax of musicpy is very concise and flexible, and it makes the codes written in musicpy very human-readable.
+你可以很容易地把musicpy代码输出为MIDI文件的格式，也可以很简单地加载MIDI文件并且转换为musicpy的数据结构进行高级乐理的操作。musicpy的语法设计非常地简洁与灵活，因此musicpy的代码的可读性比较强。
 
-### a J-rock intro in musicpy
+### 用musicpy写的一段日系摇滚前奏
 
 ```python
 guitar = ((C('Cmaj7')@1)@[1,2,3,4,1,2,3,2] |
@@ -32,57 +32,56 @@ E5[.4;.],D5[.2;.],G5[.2;.],E5[1;.]')
 play(piece([guitar%3, bass, string1], [28, 34, 49], 135, [0, 4-3/8, 12]))
 ```
 
-[Click here to hear what this sounds like (Microsoft GS Wavetable Synth)](https://drive.google.com/file/d/1tMKLt3oFdmiGQPTdFVolGvBE1gVGNSwa/view?usp=sharing)
+[点击这里试听 (Microsoft GS Wavetable Synth)](https://drive.google.com/file/d/1tMKLt3oFdmiGQPTdFVolGvBE1gVGNSwa/view?usp=sharing)
 
-If you think this is too simple, musicpy could also produce music like [this](https://drive.google.com/file/d/1j66Ux0KYMiOW6yHGBidIhwF9zcbDG5W0/view?usp=sharing) within 30 lines of code (could be even shorter if you don't care about readability). Anyway, this is just an example of a very short piece of electronic dance music, and not for complexity.
+如果你认为这太过于简单，musicpy也可以在不到30行的代码内制作出[这样](https://drive.google.com/file/d/1j66Ux0KYMiOW6yHGBidIhwF9zcbDG5W0/view?usp=sharing)的音乐(如果你不关心可读性，代码还可以更短)。不过，这也只是一个非常短的电子舞曲的例子，并没有写的很复杂。
 
 
-## Contents
+## 目录
 -------------
 
-### Introduction
+## 序言
 
-* [Introduction](https://musicpy.readthedocs.io/en/latest/Introduction/)
+* [介绍](介绍)
 
-### Data structures
+## 数据结构
 
-* [Data structures of musicpy](https://musicpy.readthedocs.io/en/latest/Data%20Structures%20of%20musicpy/)
+* [musicpy的数据结构](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy的数据结构) 
 
-### Basic syntax
+## 基本语法
 
-* [Basic syntax of note type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20note%20type/)
-* [Basic syntax of chord type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20chord%20type/)
-* [Basic syntax of scale type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20scale%20type/)
-* [Basic syntax of piece type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20piece%20type/)
-* [Basic syntax of track type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20track%20type/)
-* [Basic syntax of tempo type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20tempo%20type/)
-* [Basic syntax of pitch_bend type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20pitch_bend%20type/)
-* [Basic syntax of pan type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20pan%20type/)
-* [Basic syntax of volume type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20volume%20type/)
-* [Basic syntax of drum type](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20drum%20type/)
+* [音符类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/音符类型的基本语法)
+* [和弦类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/和弦类型的基本语法)
+* [音阶类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/音阶类型的基本语法)
+* [乐曲类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/乐曲类型的基本语法)
+* [音轨类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/音轨类型的基本语法)
+* [速度类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/速度类型的基本语法)
+* [弯音类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/弯音类型的基本语法)
+* [声相类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/声相类型的基本语法)
+* [音量类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/音量类型的基本语法)
+* [鼓点类型的基本语法](https://github.com/Rainbow-Dreamer/musicpy/wiki/鼓点类型的基本语法)
 
+## 实用的功能
 
-### Useful functionality
+* [实用的功能](https://github.com/Rainbow-Dreamer/musicpy/wiki/实用的功能)
 
-* [Useful functionality](https://musicpy.readthedocs.io/en/latest/Useful%20functionality/)
+## musicpy语言作曲代码示例
 
-### Musicpy composition code examples
+* [musicpy语言作曲代码示例（第一期）](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy语言作曲代码示例（第一期）)
+* [musicpy语言作曲代码示例（第二期）](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy语言作曲代码示例（第二期）)
+* [musicpy语言作曲代码示例（第三期）](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy语言作曲代码示例（第三期）)
 
-* [musicpy composition code examples Part 1](https://musicpy.readthedocs.io/en/latest/musicpy%20composition%20code%20examples%20part%201/)
-* [musicpy composition code examples Part 2](https://musicpy.readthedocs.io/en/latest/musicpy%20composition%20code%20examples%20part%202/)
-* [musicpy composition code examples Part 3](https://musicpy.readthedocs.io/en/latest/musicpy%20composition%20code%20examples%20part%203/)
+## musicpy取样机模块
 
-### Musicpy sampler module
+* [musicpy取样机模块](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy取样机模块) 
+* [musicpy取样机模块作曲代码示例](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy取样机模块作曲代码示例)
 
-* [musicpy sampler module](https://musicpy.readthedocs.io/en/latest/musicpy%20sampler%20module/)
-* [musicpy sampler module composition code examples](https://musicpy.readthedocs.io/en/latest/musicpy%20sampler%20module%20composition%20code%20examples/)
+## 算法
 
-### Algorithms
+* [musicpy algorithms 模块介绍](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy-algorithms-模块介绍)
+* [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://github.com/Rainbow-Dreamer/musicpy/wiki/从一首完整的钢琴曲里提取主旋律以及所有和弦的算法)
+* [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://github.com/Rainbow-Dreamer/musicpy/wiki/按照乐理逻辑判断任意一组音组成的和弦类型的算法)
 
-* [Introduction of musicpy algorithms module](https://musicpy.readthedocs.io/en/latest/Introduction%20of%20musicpy%20algorithms%20module/)
-* [the algorithm to split the main melody and chords from a piece of music](https://musicpy.readthedocs.io/en/latest/the%20algorithm%20to%20split%20the%20main%20melody%20and%20chords%20from%20a%20piece%20of%20music/)
-* [the algorithm to determine the chord type of any group of notes according to the logic of music theory](https://musicpy.readthedocs.io/en/latest/the%20algorithm%20to%20determine%20the%20chord%20type%20of%20any%20group%20of%20notes%20according%20to%20the%20logic%20of%20music%20theory/)
+## 常见的问题
 
-### Frequently Asked Questions
-
-* [Frequently Asked Questions](https://musicpy.readthedocs.io/en/latest/Frequently%20Asked%20Questions/)
+* [常见的问题](https://github.com/Rainbow-Dreamer/musicpy/wiki/常见的问题)
