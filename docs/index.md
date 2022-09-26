@@ -78,7 +78,7 @@ play(piece([guitar%3, bass, string1], [28, 34, 49], 135, [0, 4-3/8, 12]))
 
 ## 算法
 
-* [musicpy algorithms 模块介绍](https://musicpy.readthedocs.io/zh_CN/latest/musicpy-algorithms-模块介绍)
+* [musicpy algorithms 模块介绍](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20algorithms%20模块介绍)
 * [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://musicpy.readthedocs.io/zh_CN/latest/从一首完整的钢琴曲里提取主旋律以及所有和弦的算法)
 * [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://musicpy.readthedocs.io/zh_CN/latest/按照乐理逻辑判断任意一组音组成的和弦类型的算法)
 
