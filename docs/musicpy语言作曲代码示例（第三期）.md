@@ -2,21 +2,21 @@
 
 ## 1. 使用musicpy还原Rolling Star - Yui
 ```python
-bass11 = translate('B1(8)[.8;.],D2(8)[.8;.],A1(8)[.8;.],G1(8)[.8;.]')
-bass12 = translate('G1(6)[.8;.], A1(2)[.8;.]')
+bass11 = translate('B1[l:.8; i:.; r:8], D2[l:.8; i:.; r:8], A1[l:.8; i:.; r:8], G1[l:.8; i:.; r:8]')
+bass12 = translate('G1[l:.8; i:.; r:6], A1[l:.8; i:.; r:2]')
 bass1 = bass11 % 2 | bass12
 
-guitar11 = translate('B3[.4;.],D4[.8;.],E4[.4.;.],D4[.8;.],E4[.8;.]')
+guitar11 = translate('B3[l:.4; i:.], D4[l:.8; i:.], E4[l:3/8; i:.], D4[l:.8; i:.], E4[l:.8; i:.]')
 guitar12 = guitar11.down(2, 0)
 guitar13 = guitar12.down(1, [1, 3])
-guitar14 = translate('G3[.4;.],B3[.8;.],A4[5/8;.]')
+guitar14 = translate('G3[l:.4; i:.], B3[l:.8; i:.], A4[l:5/8; i:.]')
 guitar1 = (guitar11|guitar12|guitar13|guitar14) % 2
 
-drum11 = drum('8;0,1,2,1,{1},0,1,2,1,{5},8;0,1;2(2),5,4,2;4(3)').notes
-drum12 = drum('8;0;1;2,1;2(2),5,4,2;4(3)').notes
+drum11 = drum('C;K, H, S, H | K, H, S, H, r:5, C;K, H;S[r:2], PH, OH, S;OH[r:3]').notes
+drum12 = drum('C;K;H;S, H;S[r:2], PH, OH, S;OH[r:3]').notes
 drum1 = drum11 % 2 | drum12
 
-synth11 = translate('D5[.8;.],B5[.8;.],{16}')
+synth11 = translate('D5[l:.8; i:.], B5[l:.8; i:.], r:16')
 synth1 = synth11
 
 result = P([bass1, guitar1, drum1, synth1],
@@ -31,7 +31,7 @@ play(result)
 ## 2. 空灵钢琴配乐
 ```python
 a = (C('G/C',3) @ [1,2,3,2,1.1,2,3,2]) % (2,1/8) | (2, 1)
-result = (a | 1 | a - 2) + octave
+result = (a | 1 | a - 2) + database.octave
 result.other_messages = [
 controller_event(controller_number=10, parameter=0, time=0),
 controller_event(controller_number=10, parameter=127, time=2),
@@ -107,8 +107,7 @@ string1 = chord('B5[1;.],C6[1;.],D6[.2;.],E6[.2;.],\
 F6[.2;.],E6[.2;.],C6[1;.],B5[.2;.],C6[.2;.],G5[1;.],\
 F5[.2;.],E5[.2;.],C5[1;.],D5[.4;.],E5[.4;.],F5[.4;.],\
 E5[.4;.],D5[.2;.],G5[.2;.],E5[1;.]')
-drum1 = chord('C2,F#2,E2,F#2,C2,F#2,E2,F#2,C2,F#2,A#2,E2,F#2,C2,F#2,E2,F#2')%(1/8,1/8)
-drum1.interval[10] = 0
+drum1 = drum('K, H, S, H, r:2, K, H, OH;S, H, K, H, S, H').notes
 drum1.setvolume(112)
 result = piece([guitar%2 | guitar2, bass, string1, rhythm_guitar,drum1%4 + 2],
                [2, 34, 49, 31, 1],
@@ -122,7 +121,7 @@ play(result-2)
 ```python
 result = P([arp('C', second_half=True, intervals=1/8).cut(0, 2)|
             arp('D/F#', second_half=True, intervals=1/8).cut(0, 2),
-            translate('A2[1](2),[1],D3[1](2)')],
+            translate('A2[l:1; i:.; r:2], D3[l:1; i:.; r:2]')],
             [6, 4],
             bpm=100)
 play(result)
@@ -130,29 +129,27 @@ play(result)
 
 ## 9. 使用musicpy还原Iron Maiden的The Trooper
 ```python
-a11 = translate('D,G,D,{!1/8;.},E[1/4;.],G[1/8;.],{},F#,G,F#,G,{!1/16;.|$1},\
-B[1/8;.],G[1/8;.],$1,G[1/8;.],E[1/8;.],E[1/4;.]') % 2
+a11 = translate('D, G, D, a:1/8;., E[l:1/4; i:.], G[l:1/8; i:.] | F#, G, F#, G, a:1/16;., n:1, B[l:1/8; i:.], G[l:1/8; i:.], u:1, G[l:1/8; i:.], E[l:1/8; i:.], E[l:1/4; i:.]') % 2
 
-a12 = translate('D,G,D,{!1/8;.},E[1/4;.]')
+a12 = translate('D, G, D, a:1/8;., E[l:1/4; i:.]')
 
 a1 = a11 * 2 + a12
 
-a20 = translate('D2,G2,D2,{!1/8;.}')
+a20 = translate('D2, G2, D2, a:1/8;.')
 
-a21 = translate('E2[.4;.],{},E2(2)[.16;.],E2[.8;.],{$1},$1(4),E2(2)[.16;.],D2(3)[.8;.]')
+a21 = translate('E2[l:.4; i:.] | E2[l:.16; i:.; r:2], E2[l:.8; i:.], n:1, u:1, r:4, E2[l:.16; i:.; r:2], D2[l:.8; i:.; r:3]')
 
-a22 = translate('C2[.4;.],{},C2(2)[.16;.],C2[.8;.],{$1},$1(4),C2(2)[.16;.],D2(3)[.8;.]')
+a22 = translate('C2[l:.4; i:.] | C2[l:.16; i:.; r:2], C2[l:.8; i:.], n:1, u:1, r:4, C2[l:.16; i:.; r:2], D2[l:.8; i:.; r:3]')
 
-a23 = translate('D2,G2,D2,{!1/8;.},E2[.4;.]')
+a23 = translate('D2, G2, D2, a:1/8;., E2[l:.4; i:.]')
 
 a2 = a20 + a21 * 2 + a22 + a21[:-3] + a23
 
-a3 = drum('8;2;0[1/4;.],1,2,1,0,1,2,1,0,1,2,1,2(3),{4},8;2;0[1/4;.]').notes
+a3 = drum('C;S;K[l:1/4; i:.], H, S, H, K, H, S, H, K, H, S, H, S[r:3], r:4, C;S;K[l:1/4; i:.]').notes
 
-a41 = translate('F#,G,F#,{!1/8;.},G[1/4;.],B4[1/8;.],{},A,B,A,B,{!1/16;.|$1},\
-D5[1/8;.],B4[1/8;.],$1,B[1/8;.],G[1/8;.],G[1/4;.]') % 2
+a41 = translate('F#, G, F#, a:1/8;., G[l:1/4; i:.], B4[l:1/8; i:.] | A, B, A, B, a:1/16;., n:1, D5[l:1/8; i:.], B4[l:1/8; i:.], u:1, B[l:1/8;i:.], G[l:1/8; i:.], G[l:1/4; i:.]') % 2
 
-a42 = translate('F#,G,F#,{!1/8;.},G[1/4;.]')
+a42 = translate('F#, G, F#, a:1/8;., G[l:1/4; i:.]')
 
 a4 = a41 * 2 + a42
 
@@ -165,6 +162,6 @@ play(result)
 
 ## 10. 带附点节奏的一套鼓点
 ```python
-result = drum('0[.8.;.], 1, 2[.8.;.], 1, 0(3)[.16.;.], 2[.8.;.], 1, {2}')
+result = drum('K[l:.8.; i:.], H, S[l:.8.; i:.], H, K[l:.16.; i:.; r:3], S[l:.8.; i:.], H, r:2')
 play(result, 165)
 ```

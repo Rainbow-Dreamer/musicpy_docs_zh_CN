@@ -183,7 +183,7 @@ rule1 = lambda x: x % (1 / 8, 1 / 8) @ [1, 2, 3, 2]
 part1 = rule1(C('D#', 5) | rule1(C('F', 5) | rule1(C('Gm', 5) ) % 2
 part1_bass = chord('D#3[.2;.], F3[.2;.], G3[.2;.], G3[.4;.], F3[.4;.')
 part1_harmony = part1_bass + perfect_fifth
-drums = drum('0,1,2,1,0,1,2,1').notes
+drums = drum('K, H, S, H, r:2').notes
 drums.setvolume(80)
 current_song = P([part1 % 2 | (part1 + octave) % 2, part1_bass % 4, part1_harmony % 2, drums % 4],
                  bpm=120,
