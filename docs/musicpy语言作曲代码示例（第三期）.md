@@ -33,9 +33,9 @@ play(result)
 a = (C('G/C',3) @ [1,2,3,2,1.1,2,3,2]) % (2,1/8) | (2, 1)
 result = (a | 1 | a - 2) + database.octave
 result.other_messages = [
-controller_event(controller_number=10, parameter=0, time=0),
-controller_event(controller_number=10, parameter=127, time=2),
-controller_event(controller_number=10, parameter=64, time=4),
+event('control_change', control=10, value=0, start_time=0),
+event('control_change', control=10, value=127, start_time=2),
+event('control_change', control=10, value=64, start_time=4)
 ]
 play(result, 165)
 ```
