@@ -2,34 +2,34 @@ site_name: Musicpy
 site_url: https://github.com/Rainbow-Dreamer/musicpy
 nav:
     - 介绍:
-      - 介绍: 介绍.md
+      - 介绍: Introduction.md
     - 数据结构:
-      - musicpy的数据结构: musicpy的数据结构.md
+      - musicpy的数据结构: Data Structures of musicpy.md
     - Basic Syntax:
-      - 音符类型的基本语法: 音符类型的基本语法.md
-      - 和弦类型的基本语法: 和弦类型的基本语法.md
-      - 音阶类型的基本语法: 音阶类型的基本语法.md
-      - 乐曲类型的基本语法: 乐曲类型的基本语法.md
-      - 音轨类型的基本语法: 音轨类型的基本语法.md
-      - 速度类型的基本语法: 速度类型的基本语法.md
-      - 弯音类型的基本语法: 弯音类型的基本语法.md
-      - 声相类型的基本语法: 声相类型的基本语法.md
-      - 音量类型的基本语法: 音量类型的基本语法.md
-      - 鼓点类型的基本语法: 鼓点类型的基本语法.md
+      - 音符类型的基本语法: Basic syntax of note type.md
+      - 和弦类型的基本语法: Basic syntax of chord type.md
+      - 音阶类型的基本语法: Basic syntax of scale type.md
+      - 乐曲类型的基本语法: Basic syntax of piece type.md
+      - 音轨类型的基本语法: Basic syntax of track type.md
+      - 速度类型的基本语法: Basic syntax of tempo type.md
+      - 弯音类型的基本语法: Basic syntax of pitch_bend type.md
+      - 声相类型的基本语法: Basic syntax of pan type.md
+      - 音量类型的基本语法: Basic syntax of volume type.md
+      - 鼓点类型的基本语法: Basic syntax of drum type.md
     - 实用的功能:
       - 实用的功能: Useful functionality.md
     - Composition Examples:
-      - 作曲代码示例（第一期）: musicpy语言作曲代码示例（第一期）.md
-      - 作曲代码示例（第二期）: musicpy语言作曲代码示例（第二期）.md
-      - 作曲代码示例（第三期）: musicpy语言作曲代码示例（第三期）.md
+      - 作曲代码示例（第一期）: musicpy composition code examples part 1.md
+      - 作曲代码示例（第二期）: musicpy composition code examples part 2.md
+      - 作曲代码示例（第三期）: musicpy composition code examples part 3.md
     - Sampler Module:
-      - musicpy取样机模块: musicpy取样机模块.md
-      - musicpy取样机模块作曲代码示例: musicpy取样机模块作曲代码示例.md
+      - musicpy取样机模块: musicpy sampler module.md
+      - musicpy取样机模块作曲代码示例: musicpy sampler module composition code examples.md
     - Algorithms:
-      - musicpy algorithms 模块介绍: musicpy algorithms 模块介绍.md
-      - 从一首完整的钢琴曲里提取主旋律以及所有和弦的算法: 从一首完整的钢琴曲里提取主旋律以及所有和弦的算法.md
-      - 按照乐理逻辑判断任意一组音组成的和弦类型的算法: 按照乐理逻辑判断任意一组音组成的和弦类型的算法.md
+      - musicpy algorithms 模块介绍: Introduction of musicpy algorithms module.md
+      - 从一首完整的钢琴曲里提取主旋律以及所有和弦的算法: the algorithm to split the main melody and chords from a piece of music.md
+      - 按照乐理逻辑判断任意一组音组成的和弦类型的算法: the algorithm to determine the chord type of any group of notes according to the logic of music theory.md
     - 常见的问题:
-      - 常见的问题: 常见的问题.md
+      - 常见的问题: Frequently Asked Questions.md
 theme:
   name: readthedocs
