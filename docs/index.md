@@ -43,46 +43,46 @@ play(piece([guitar%3, bass, string1], [28, 34, 49], 135, [0, 4-3/8, 12]))
 
 ## 序言
 
-* [介绍](https://musicpy.readthedocs.io/en/latest/Introduction/)
+* [介绍](https://musicpy.readthedocs.io/zh_CN/latest/Introduction/)
 
 ## 数据结构
 
-* [musicpy的数据结构](https://musicpy.readthedocs.io/en/latest/Data%20Structures%20of%20musicpy/) 
+* [musicpy的数据结构](https://musicpy.readthedocs.io/zh_CN/latest/Data%20Structures%20of%20musicpy/) 
 
 ## 基本语法
 
-* [音符类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20note%20type/)
-* [和弦类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20chord%20type/)
-* [音阶类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20scale%20type/)
-* [乐曲类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20piece%20type/)
-* [音轨类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20track%20type/)
-* [速度类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20tempo%20type/)
-* [弯音类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20pitch_bend%20type/)
-* [声相类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20pan%20type/)
-* [音量类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20volume%20type/)
-* [鼓点类型的基本语法](https://musicpy.readthedocs.io/en/latest/Basic%20syntax%20of%20drum%20type/)
+* [音符类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20note%20type/)
+* [和弦类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20chord%20type/)
+* [音阶类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20scale%20type/)
+* [乐曲类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20piece%20type/)
+* [音轨类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20track%20type/)
+* [速度类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20tempo%20type/)
+* [弯音类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20pitch_bend%20type/)
+* [声相类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20pan%20type/)
+* [音量类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20volume%20type/)
+* [鼓点类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20drum%20type/)
 
 ## 实用的功能
 
-* [实用的功能](https://musicpy.readthedocs.io/en/latest/Useful%20functionality/)
+* [实用的功能](https://musicpy.readthedocs.io/zh_CN/latest/Useful%20functionality/)
 
 ## musicpy语言作曲代码示例
 
-* [musicpy语言作曲代码示例（第一期）](https://musicpy.readthedocs.io/en/latest/musicpy%20composition%20code%20examples%20part%201/)
-* [musicpy语言作曲代码示例（第二期）](https://musicpy.readthedocs.io/en/latest/musicpy%20composition%20code%20examples%20part%202/)
-* [musicpy语言作曲代码示例（第三期）](https://musicpy.readthedocs.io/en/latest/musicpy%20composition%20code%20examples%20part%203/)
+* [musicpy语言作曲代码示例（第一期）](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20composition%20code%20examples%20part%201/)
+* [musicpy语言作曲代码示例（第二期）](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20composition%20code%20examples%20part%202/)
+* [musicpy语言作曲代码示例（第三期）](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20composition%20code%20examples%20part%203/)
 
 ## musicpy取样机模块
 
-* [musicpy取样机模块](https://musicpy.readthedocs.io/en/latest/musicpy%20sampler%20module/) 
-* [musicpy取样机模块作曲代码示例](https://musicpy.readthedocs.io/en/latest/musicpy%20sampler%20module%20composition%20code%20examples/)
+* [musicpy取样机模块](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20sampler%20module/) 
+* [musicpy取样机模块作曲代码示例](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20sampler%20module%20composition%20code%20examples/)
 
 ## 算法
 
-* [musicpy algorithms 模块介绍](https://musicpy.readthedocs.io/en/latest/Introduction%20of%20musicpy%20algorithms%20module/)
-* [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://musicpy.readthedocs.io/en/latest/the%20algorithm%20to%20split%20the%20main%20melody%20and%20chords%20from%20a%20piece%20of%20music/)
-* [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://musicpy.readthedocs.io/en/latest/the%20algorithm%20to%20determine%20the%20chord%20type%20of%20any%20group%20of%20notes%20according%20to%20the%20logic%20of%20music%20theory/)
+* [musicpy algorithms 模块介绍](https://musicpy.readthedocs.io/zh_CN/latest/Introduction%20of%20musicpy%20algorithms%20module/)
+* [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://musicpy.readthedocs.io/zh_CN/latest/the%20algorithm%20to%20split%20the%20main%20melody%20and%20chords%20from%20a%20piece%20of%20music/)
+* [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://musicpy.readthedocs.io/zh_CN/latest/the%20algorithm%20to%20determine%20the%20chord%20type%20of%20any%20group%20of%20notes%20according%20to%20the%20logic%20of%20music%20theory/)
 
 ## 常见的问题
 
-* [常见的问题](https://musicpy.readthedocs.io/en/latest/Frequently%20Asked%20Questions/)
+* [常见的问题](https://musicpy.readthedocs.io/zh_CN/latest/Frequently%20Asked%20Questions/)
