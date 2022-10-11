@@ -12,53 +12,6 @@
 
 解决方法：你可以在`play`函数的参数中加入`wait=True`，这将锁住这个函数直到播放结束，所以你可以听到声音。
 
-* ## 我试图用read函数读取一个MIDI文件，但它给了我索引超出范围的错误
-这是mido的一个错误，mido是musicpy使用的python MIDI库之一。当一些MIDI文件的元信息包含空数据，mido试图从中获取属性时，并不是每一种元信息的解码函数都有边界检查数据是否为空，并通过索引直接获取数据元素，因为假设数据不是空的，这就导致了索引超出范围的错误。
-
-解决方法：要解决这个问题，你需要到`Lib\site-packages\mido\midifiles\meta.py`，为元信息的每个解码函数添加数据的边界检查，看它是否为空，也就是在代码试图通过索引从数据中获取元素之前添加`if data:`。我已经做了修改，并在github上mido的issue部分创建了一个issue，请求修复这个bug。下面是一个例子：
-```python
-class MetaSpec_key_signature(MetaSpec):
-    type_byte = 0x59
-    attributes = ['key']
-    defaults = ['C']
-
-    def decode(self, message, data):
-        key = signed('byte', data[0])
-        mode = data[1]
-        try:
-            message.key = _key_signature_decode[(key, mode)]
-        except KeyError:
-            if key < 7:
-                msg = ('Could not decode key with {} '
-                       'flats and mode {}'.format(abs(key), mode))
-            else:
-                msg = ('Could not decode key with {} '
-                       'sharps and mode {}'.format(key, mode))
-            raise KeySignatureError(msg)
-```
-改为：
-```python
-class MetaSpec_key_signature(MetaSpec):
-    type_byte = 0x59
-    attributes = ['key']
-    defaults = ['C']
-
-    def decode(self, message, data):
-        if data:
-            key = signed('byte', data[0])
-            mode = data[1]
-            try:
-                message.key = _key_signature_decode[(key, mode)]
-            except KeyError:
-                if key < 7:
-                    msg = ('Could not decode key with {} '
-                           'flats and mode {}'.format(abs(key), mode))
-                else:
-                    msg = ('Could not decode key with {} '
-                           'sharps and mode {}'.format(key, mode))
-                raise KeySignatureError(msg)
-```
-
 * ## 我注意到每次我播放musicpy的音符/和弦/乐曲/音轨实例时，在当前目录下都会产生一个MIDI文件，musicpy能否只播放我写的东西而不写MIDI文件?
 是的，musicpy的`play`函数的默认机制是首先将musicpy的数据结构写入一个MIDI文件，然后使用pygame的混合器模块来播放这个MIDI文件，但是你可以通过将`play`函数的参数`save_as_file`设置为False来改变内部播放机制，而不产生任何MIDI文件。通过这样做，MIDI文件数据流被生成并保存在内部，pygame能够直接播放MIDI文件流，没有MIDI文件被生成。
 
