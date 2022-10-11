@@ -2,12 +2,6 @@
 
 以下是你在使用musicpy时你可能会遇到的一些问题以及解决方法，其中一些是musicpy的python依赖库的现有bug，或者只是在函数参数被设置为默认时没有给你想要的结果。
 
-* ## 我试图把从MIDI文件中读到的乐曲实例播放或写入一个新的MIDI文件，但当我在DAW中看到新的MIDI文件时，有些音符变得很长，与原来的MIDI文件的长度完全不同
-
-这是因为有些MIDI文件在某些轨道上有重复的音符，这里的重复音符指的是这些音符的音高完全一样，在同一时间开始，或者有某些部分重叠，在这种情况下，一些python MIDI库可能会把这些重复的音符视为一个完整的音符，从而导致问题发生。
-
-解决方法：你可以把`write`或`play`函数的参数`remove_duplicates`设置为True，使写入的MIDI文件与你在DAW中查看原始MIDI文件时一样。
-
 * ## 我在Linux上得到`pygame.error: 无法打开/etc/timidity/freepats.cfg`错误
 在Linux上，pygame库使用freepats声音库来播放MIDI文件，所以你需要安装freepats。
 
