@@ -1008,6 +1008,7 @@ negative_harmony函数的其他参数：
 
 ```python
 >>> alg.negative_harmony(scale('C', 'major'))
+[scale]
 scale name: C5 minor scale
 scale intervals: [2, 1, 2, 2, 1, 2, 2]
 scale notes: [C5, D5, D#5, F5, G5, G#5, A#5, C6]
@@ -1324,7 +1325,7 @@ a = a % (1/8,1/8,80)
 如果想要只保留一个和弦类型中的音符类型，去除所有其他的类型（比如tempo类型，pitch_bend类型等等），  那么可以使用`only_notes`这个内置函数。
 
 ```python
-bpm, a, start_time = read('example.mid').merge()
+a, bpm, start_time = read('example.mid').merge()
 a = a.only_notes()
 ```
 
@@ -1467,7 +1468,7 @@ a = read('example.mid') # a是读取example.mid这个MIDI文件之后转换为�
 a.normalize_tempo() # 参数bpm, 默认值为None, 如果bpm为None，使用乐曲类型自带的速度参数
 a.normalize_tempo(100) # 设定bpm为100，统一整首曲子的bpm为100，重新量化每一部分的音符
 
-bpm, b, start_time = read('example.mid').merge() # b是读取example.mid这个MIDI文件之后合并所有音轨之后的和弦类型
+b, bpm, start_time = read('example.mid').merge() # b是读取example.mid这个MIDI文件之后合并所有音轨之后的和弦类型
 b.normalize_tempo(bpm=100, start_time=0) # bpm参数是想要统一的速度，start_time参数是和弦类型开始演奏的时间，单位为小节，默认值为0
 # 在这里我们把b这个和弦类型的速度统一为100BPM
 ```
@@ -1505,11 +1506,11 @@ split(return_type, get_time=False, sort=False)
 # sort为True的时候，会按照起始时间的先后对实时速度变化类型或者弯音类型进行排序。
 a = chord(['A5', 'B5', 'C5', tempo(150), 'D5', pitch_bend(50), 'E5', 'F5', tempo(170)])
 >>> print(a.split(tempo))
-[tempo change to 150, tempo change to 170] with interval [0, 0]
+[tempo(bpm=150, start_time=None, channel=None, track=None), tempo(bpm=170, start_time=None, channel=None, track=None)] with interval [0, 0]
 >>> print(a.split(pitch_bend))
-[pitch bend up by 50.0 cents] with interval [0]
+[pitch_bend(value=2048, start_time=None, channel=None, track=None, cents=50)] with interval [0]
 >>> print(a.split(note))
-[A5, B5, C5, D5, E5, F5] with interval [0, 0, 0, 0, 0, 0]
+[A5, B5, C5, D5, E5, F5] with interval [0, 0, 0, 0, 0, 0, 0]
 # 返回的和弦类型是你想要提取的乐理类型的集合，可以当做列表来使用。
 ```
 

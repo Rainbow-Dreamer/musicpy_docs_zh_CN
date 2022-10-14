@@ -263,18 +263,23 @@ new_piece = build(track(A1, instrument=1, start_time=0, channel=0, track_name='p
 ```python
 a = read('example.mid') # a是读取example.mid这个MIDI文件之后转换为的乐曲类型
 
-a.merge(add_labels=True, add_pan_volume=False, get_off_drums=False)
+a.merge(add_labels=True,
+        add_pan_volume=False,
+        get_off_drums=False,
+        track_names_add_channel=False)
 
 # add_labels: 为True的时候，会往乐曲类型的每个轨道的每个音符加入值为当前通道的index的新属性track_num，
 # index是以第一个通道为0作为开始的当前的通道数，每个通道里的音符的track_num在之后可以被调用，
 # 可以记录音符在合并前来自于哪一个轨道
 
-# add_pan_volume: 为True的时候，会将pan和volume信息转换为MIDI CC信息，存入返回的和弦类型的other_messages中。
+# add_pan_volume: 为True的时候，会将pan和volume信息转换为MIDI CC信息，存入返回的和弦类型的other_messages中
 
 # get_off_drums: 为True的时候，结果会去除鼓轨
 
-bpm, b, start_time = a.merge()
-# 使用乐曲类型的内置函数merge可以得到(bpm, 合并后的和弦类型, 开始时间)的元组，开始时间的单位为小节
+# track_names_add_channel: 当设置为True时，作品类型中的音轨名称事件将存储音轨的通道
+
+b, bpm, start_time = a.merge()
+# 使用乐曲类型的内置函数merge可以得到(合并后的和弦类型, bpm, 开始时间)的元组，开始时间的单位为小节
 ```
 
 ## 乐曲类型新增乐曲名称的属性以及BPM的显示

@@ -149,6 +149,7 @@ scale('C5', interval=[2, 2, 1, 2, 2, 2, 1], name='major')
 这样就得到了以C5为根音的C大调音阶，表示出来是这样：
 
 ```python
+[scale]
 scale name: C5 major scale
 scale intervals: [2, 2, 1, 2, 2, 2, 1]
 scale notes: [C5, D5, E5, F5, G5, A5, B5, C6]
@@ -163,6 +164,7 @@ scale('C5', 'major')
 就可以得到以C5为根音的C大调音阶，
 
 ```python
+[scale]
 scale name: C5 major scale
 scale intervals: [2, 2, 1, 2, 2, 2, 1]
 scale notes: [C5, D5, E5, F5, G5, A5, B5, C6]
@@ -177,6 +179,7 @@ scale('C5', 'minor')
 得到以C5为根音的C小调音阶，
 
 ```python
+[scale]
 scale name: C5 minor scale
 scale intervals: [2, 1, 2, 2, 1, 2, 2]
 scale notes: [C5, D5, D#5, F5, G5, G#5, A#5, C6]
