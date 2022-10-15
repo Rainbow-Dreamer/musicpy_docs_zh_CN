@@ -18,12 +18,12 @@
 
 ```python
 split_melody(current_chord,
-             mode='index',
+             mode='chord',
              melody_tol=database.minor_seventh,
              chord_tol=database.major_sixth,
              get_off_overlap_notes=True,
              average_degree_length=8,
-             melody_degree_tol=toNote('B4'))
+             melody_degree_tol='B4')
 ```
 
 - current_chord: 想要进行分离主旋律与和弦音的和弦类型（一个和弦类型本身可以储存一个单乐器的完整的曲子，比如钢琴曲）

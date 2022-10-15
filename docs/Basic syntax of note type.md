@@ -36,15 +36,15 @@ a = note('C', 5, 0.5, 100)
 
 ## 直接输入音符名（音名+八度数）构建一个音符
 
-我们可以使用toNote函数
+我们可以使用to_note函数
 
 ```python
-toNote('E5')
+to_note('E5')
 ```
 
 得到的是音符E5。
 
-toNote函数的简写方法：
+to_note函数的简写方法：
 
 ```python
 N('E5')
