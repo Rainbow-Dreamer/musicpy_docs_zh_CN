@@ -185,7 +185,7 @@ part1_bass = chord('D#3[.2;.], F3[.2;.], G3[.2;.], G3[.4;.], F3[.4;.')
 part1_harmony = part1_bass + perfect_fifth
 drums = drum('K, H, S, H, r:2').notes
 drums.setvolume(80)
-current_song = P([part1 % 2 | (part1 + octave) % 2, part1_bass % 4, part1_harmony % 2, drums % 4],
+current_song = P([part1 % 2 | (part1 + database.octave) % 2, part1_bass % 4, part1_harmony % 2, drums % 4],
                  bpm=120,
                  start_times=[0, 0, 4, 4.03],
                  sampler_channels=[0, 1, 1, 2])

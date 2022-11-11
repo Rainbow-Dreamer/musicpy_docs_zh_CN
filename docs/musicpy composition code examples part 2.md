@@ -45,7 +45,7 @@ play(P([piano, bass, string%4], [9, 34, 49], 80, [0, 0, 0]))
 ## 5. 吉他分解和弦演奏 (nylon string)
 ```python
 guitar = C('CM7',4, 1)^2 | C('G7sus', 3, 1)^2 | C('A7sus', 3, 1)^2 | C('FM7', 3, 1)^2
-play((guitar%(1/4, 1/8) * 2)-octave, 100, instrument=25)
+play((guitar%(1/4, 1/8) * 2)-database.octave, 100, instrument=25)
 ```
 
 ## 6. 吉他分解和弦演奏另一个和弦进行 (nylon string)
@@ -54,7 +54,7 @@ guitar = (C('CM7',4, 1/4, 1/8)^2 | C('G7sus', 3, 1/4, 1/8)^2
 | C('A7sus', 3, 1/4, 1/8)^2 | C('Em7', 3, 1/4, 1/8)^2 | 
 C('FM7', 3, 1/4, 1/8)^2 | C('CM7', 4, 1/4, 1/8)@1 |
 C('AbM7', 3, 1/4, 1/8)^2 | C('G7sus', 3, 1/4, 1/8)^2)
-play((guitar * 2)-octave, 100, instrument=25)
+play((guitar * 2)-database.octave, 100, instrument=25)
 ```
 
 ## 7. 电钢琴演奏和弦进行，按照一定的规则演奏和弦内音
@@ -94,7 +94,7 @@ b = (chord('G5, F5, E5, F5, E5, D5, E5, D5, C5, B4, G4')
         % (b_duration, b_interval))
 cmajor = scale('C5', 'major')
 b_harmony = (chord([cmajor(cmajor.names().
-             index(i.name))[1]-octave for i in b])
+             index(i.name))[1]-database.octave for i in b])
                 % (b_duration, b_interval))
 b_harmony.setvolume(80)
 b &= b_harmony

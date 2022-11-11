@@ -17,7 +17,7 @@ play(a%4 | a.up(2)%4 | chd(a[0].up(3), 'maj7').set(interval=1/8))
 ```python
 a = C('Dmaj7') % (1/4,1/4) | C('Cmaj7') | C('Fadd9',3) | C('D#maj7',4) | (C('Dmaj7',3)/-2) % (5/4,)
 b = chord(['F#5','G5','A5','B5','G5'], 1/8,1/8)   
-play(a & b, 140, instrument=1, bpm=80)
+play(a & b, 140, instrument=1)
 ```
 
 ## 4. 半音下行大七小七和弦交替
