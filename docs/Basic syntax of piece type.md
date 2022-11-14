@@ -79,10 +79,10 @@ piece(tracks,
 按照我们现在的要求，可以这样构建一个乐曲类型：
 
 ```python
-C1 = chord('G4, D5, B5, F#5') % (1, 1/8) % 4
-C2 = (chord('C2, C2, G1, G1') % (1,1)) % 2
-C3 = (chord('F#6, G6') % (1/8, 1/8) % 8 | chord('A5, B5') % (1/8, 1/8) % 8) % 2
-C4 = chord('G3, G3, G3, G3') % ([3/8,1/8,1/4,1/4], [3/8,1/8,1/4,1/4]) % 4
+C1 = chord('G4, D5, B5, F#5') % (1, 1/8) * 4
+C2 = (chord('C2, C2, G1, G1') % (1,1)) * 2
+C3 = (chord('F#6, G6') % (1/8, 1/8) * 8 | chord('A5, B5') % (1/8, 1/8) * 8) * 2
+C4 = chord('G3, G3, G3, G3') % ([3/8,1/8,1/4,1/4], [3/8,1/8,1/4,1/4]) * 4
 
 new_piece = piece(tracks=[C1, C2, C3, C4],
                   instruments=['Acoustic Grand Piano', 'Electric Bass (finger)', 'Orchestral Harp', 'Synth Drum'],
@@ -195,7 +195,6 @@ b = a | n
 
 # 如果想要对这个乐曲类型的所有MIDI通道进行复制粘贴n遍的操作，那么可以写
 b = a * n
-b = a % n
 # 分别对应不同的add模式，可以参考和弦类型的对应的符号化写法的运作逻辑
 
 # 可以使用index值查看一个乐曲类型的某一个音轨的信息，以0作为第1个音轨

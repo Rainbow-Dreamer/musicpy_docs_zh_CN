@@ -1,10 +1,10 @@
-# musicpy语言作曲代码示例（第二期）
+# Musicpy语言作曲代码示例（第二期）
 
 ## 1. 非功能和声游戏bgm（正常速度，165BPM）
 ```python
 a = C('Cm7',4,1,1/8) @ [1,3,4,2.1,4.1] | 3/8
-piano = a % 4 | (a - 3) % 4
-bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') % 4) % (1/8, 1/8)
+piano = a * 4 | (a - 3) * 4
+bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') * 4) % (1/8, 1/8)
 bass += (bass - 3)
 play(P([piano, bass], [1, 34], 165, [0, 0]) * 2)
 ```
@@ -12,8 +12,8 @@ play(P([piano, bass], [1, 34], 165, [0, 0]) * 2)
 ## 2. 非功能和声游戏bgm（speedcore，500BPM）
 ```python
 a = C('Cm9',4,1,1/8) @ [1,3,5,2.1,4.1] | 3/8
-piano = a % 4 | (a + 3) % 4
-bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') % 4) % (1/8, 1/8)
+piano = a * 4 | (a + 3) * 4
+bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') * 4) % (1/8, 1/8)
 bass += (bass + 3)
 import random
 drum = concat([chord(random.choice(['D2','E2','G2'])) for i in range(64)]) % (1/8, 1/8)
@@ -23,8 +23,8 @@ play(P([piano, bass, drum], [1, 34, 1], 500, [0, 0, 0], channels=[1,2,9]) * 2)
 ## 3. 非功能和声游戏bgm（doom metal，25BPM）
 ```python
 a = C('Cm9',2,1/4,1/8) @ [1,3,5,2.1,4.1] | 3/8
-piano = a % 4 | (a + 3) % 4
-bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') % 4) % (1/8, 1/8)
+piano = a * 4 | (a + 3) * 4
+bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') * 4) % (1/8, 1/8)
 bass += (bass + 3)
 import random
 drum = concat([chord(random.choice(['D2','E2','G2'])) for i in range(64)]) % (1/8, 1/8)
@@ -34,12 +34,12 @@ play(P([piano, bass, drum], [31, 34, 1], 25, [0, 0, 0], channels=[1,2,9]) * 8)
 ## 4. 恐怖氛围配乐
 ```python
 a = C('Caug9') @ [1,3,5,2.1,4.1,5.1] % (1, 1/8) | 1/4
-bass = chord('C2, A#1') % ([1, 1], [1, 1]) * 4
+bass = chord('C2, A#1') % (1, 1) * 4
 piano = (a | a - 2) * 4
 string = C('Caug9', 4) % (1, 0)
 string |= string - 2
 string.setvolume(60)
-play(P([piano, bass, string%4], [9, 34, 49], 80, [0, 0, 0]))
+play(P([piano, bass, string * 4], [9, 34, 49], 80, [0, 0, 0]))
 ```
 
 ## 5. 吉他分解和弦演奏 (nylon string)
@@ -119,18 +119,18 @@ play(song)
 ## 11. 轻松氛围音乐
 ```python
 a = C('CM9') @ [1,3,5,2.1,4.1,5.1] % (1, 1/8) | 1/4
-bass = chord('C2, A#1') % ([1, 1], [1, 1]) * 4
+bass = chord('C2, A#1') % (1, 1) * 4
 piano = (a | a - 2) * 4
 string = C('CM9', 4) % (1, 0)
 string |= string - 2
 string.setvolume(50)
-play(P([piano, bass, string%4], [9, 34, 49], 80, [0, 0, 0]))
+play(P([piano, bass, string * 4], [9, 34, 49], 80, [0, 0, 0]))
 ```
 
 ## 12. 超好听的6451和弦配置（进阶写法）
 ```python
 q = S('C major', 4)
-r = q%(64516458, 1/2, 0.3/4, 5)
+r = q % (64516458, 1/2, 0.3/4, 5)
 r = [i('omit7')^2 for i in r]
 play(r*2, bpm=80, instrument=5)
 ```
@@ -138,12 +138,12 @@ play(r*2, bpm=80, instrument=5)
 ## 13. 轻松的都市风格氛围音乐（有转调）
 ```python
 a = C('CM9') @ [1,3,5,2.1,4.1,5.1] % (1, 1/8) | 1/4
-bass = chord('C2, A#1') % ([1, 1], [1, 1]) * 4
+bass = chord('C2, A#1') % (1, 1) * 4
 piano = (a | a - 2) * 4
 string = C('CM9', 4) % (1, 0)
 string |= string - 2
 string.setvolume(50)
-string %= 4
+string *= 4
 oboe1 = chord('B5[.16;.16], C6[.16;.16], D6[1;1], C6[.2;.2], E6[.2;.2], D6[1;1], C6[7/8;7/8]')
 part1 = P([piano | piano-4, bass | bass-4, string | string-4, oboe1 | oboe1-4], 
           [9, 34, 49, 'Pan Flute'], 
@@ -164,8 +164,8 @@ chord_part4 = (C('Cm', 5, 1/8) | 1/4 | C('Bb', 4, 1/8) | 1/4 |
                C('Ab', 4, 1/8) | 1/4 | chord('Bb4[1/8;0], D5[3/8;0], \
                F5[3/8;1/8], Bb4[1/4;.], D5[1/4;.]') |
                C('Csus',5,1)@2 | C('C',5,1)@2)
-chord_part = (chord_part1 % 3 | chord_part2 | (chord_part1 % 3) |
-              chord_part2 | chord_part1 % 3 | chord_part3 | chord_part4)
+chord_part = (chord_part1 * 3 | chord_part2 | (chord_part1 * 3) |
+              chord_part2 | chord_part1 * 3 | chord_part3 | chord_part4)
 bass_part1 = chord('C2[15/8;.], G1[1/8;.], C2[2;.], Ab1[2;.], Bb1[1.5;.], G1[1/2;.]')
 bass_part2 = (chord('C2')*32 + chord('Ab1')*16 + chord('Bb1')*12 +
               chord('G1')*4) % (1/8,1/8)
@@ -190,11 +190,11 @@ C('Fadd9',3).up(2,1)@[1,2,3,4,1,2,3,2] |
 (C('G7sus',3)^2)@[1,2,3,4,1,2,3,2] |
 C('Am11',3)@[1,2,4,6,1,4,6,4]) % (1/2,1/8)
 bass1 = chord('D2[.8;.],E2[.8;.],D2[.8;.],E2[1;.], F2[1;.], G2[1;.], A1[.2;.], A2[.8;.], G2[.8;.], E2[.8;.], D2[.8;.]')
-bass2 = (chord('E2')*8 + chord('F1')*8 + chord('G1')*8 + chord('A1,A1,E2,A1,A2,A1,G2,D2')) % (1/8,1/8) % 4
+bass2 = (chord('E2')*8 + chord('F1')*8 + chord('G1')*8 + chord('A1,A1,E2,A1,A2,A1,G2,D2')) % (1/8,1/8) * 4
 bass = bass1 | bass2
 string1 = chord('B5[1;.],C6[1;.],D6[.2;.],E6[.2;.],\
 F6[.2;.],E6[.2;.],C6[1;.],B5[.2;.],C6[.2;.],G5[1;.],\
 F5[.2;.],E5[.2;.],C5[1;.],D5[.4;.],E5[.4;.],F5[.4;.],\
 E5[.4;.],D5[.2;.],G5[.2;.],E5[1;.]')
-play(piece([guitar%3, bass, string1], [28, 34, 49], 135, [0, 4-3/8, 12]))
+play(piece([guitar * 3, bass, string1], [28, 34, 49], 135, [0, 4-3/8, 12]))
 ```

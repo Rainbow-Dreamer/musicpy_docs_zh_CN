@@ -1,4 +1,4 @@
-# musicpy取样机模块
+# Musicpy取样机模块
 
 我在2021年6月为musicpy写了一个取样机模块，用于加载音源和导出音频文件（包括wav、mp3、ogg等），这将非常有用，因为现在你不再局限于MIDI文件（其实你也可以把musicpy导出的MIDI文件放在DAW中加载音源和导出音频文件）。
 
@@ -180,12 +180,12 @@ new_song.export(C('C'), channel_num=2, mode='wav', filename='my first song.wav')
 
 #播放/导出乐曲类型的例子
 rule1 = lambda x: x % (1 / 8, 1 / 8) @ [1, 2, 3, 2]
-part1 = rule1(C('D#', 5) | rule1(C('F', 5) | rule1(C('Gm', 5) ) % 2
+part1 = rule1(C('D#', 5) | rule1(C('F', 5) | rule1(C('Gm', 5) ) * 2
 part1_bass = chord('D#3[.2;.], F3[.2;.], G3[.2;.], G3[.4;.], F3[.4;.')
 part1_harmony = part1_bass + perfect_fifth
 drums = drum('K, H, S, H, r:2').notes
 drums.setvolume(80)
-current_song = P([part1 % 2 | (part1 + database.octave) % 2, part1_bass % 4, part1_harmony % 2, drums % 4],
+current_song = P([part1 * 2 | (part1 + database.octave) * 2, part1_bass * 4, part1_harmony * 2, drums * 4],
                  bpm=120,
                  start_times=[0, 0, 4, 4.03],
                  sampler_channels=[0, 1, 1, 2])

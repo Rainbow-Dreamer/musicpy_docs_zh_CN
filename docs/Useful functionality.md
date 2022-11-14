@@ -212,7 +212,7 @@ write(current_chord,
 1.在一行musicpy代码之前加上`/`,就会直接播放这段代码代表的音乐，并且是内部播放，并不会打开任何电脑上的播放器。与此同时也会在musicpy文件夹里生成当前的musicpy代码对应的MIDI文件。这个语法等价于在这行代码放在play函数里面，play函数的参数设置可以用英文的逗号跟在代码的后面，比如bpm（曲速），instrument(乐器)等等的选择。建议实时运行同时打开（默认是打开的），就可以musicpy代码写到哪，加上`/`就可以马上听到。比如在编辑器里写
 
 ```python
-/C('Dmaj7') % 4 | C('Em7') % 4, 150
+/C('Dmaj7') * 4 | C('Em7') * 4, 150
 ```
 
 就可以直接听到这段musicpy语言对应的音乐了。
@@ -404,7 +404,7 @@ g = chord('c5, eb5, g5, a#5, d#6, bb6, f5')
 event类型的`type`参数以mido库的MIDI信息类型为准，除了`track`和`start_time`之外的其他参数以mido库的对应的MIDI信息类型的参数为准，请参考mido的官方文档的[Message Types](https://mido.readthedocs.io/en/latest/message_types.html)和[Meta Message Types](https://mido.readthedocs.io/en/latest/meta_message_types.html)。
 
 ```python
-event(type, track=0, start_time=0, **kwargs)
+event(type, track=0, start_time=0, is_meta=False, **kwargs)
 ```
 
 ## 和弦类型和乐曲类型的清除速度变化信息和弯音信息的函数的改进
@@ -423,7 +423,7 @@ a.clear_pitch_bend(cond=lambda s: s.start_time == 1 and s.value == 0)
 你可以使用`stopall`函数来停止目前所有正在播放的声音，具体来说是由`play`函数播放出来的声音。
 
 ```python
-play(C('C') % 8)
+play(C('C') * 8)
 stopall() # 停止目前正在播放的声音
 ```
 

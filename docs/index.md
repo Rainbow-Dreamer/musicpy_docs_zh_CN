@@ -51,7 +51,7 @@ play(result)
 
 ## 数据结构
 
-* [musicpy的数据结构](https://musicpy.readthedocs.io/zh_CN/latest/Data%20Structures%20of%20musicpy/) 
+* [Musicpy的数据结构](https://musicpy.readthedocs.io/zh_CN/latest/Data%20Structures%20of%20musicpy/) 
 
 ## 基本语法
 
@@ -70,22 +70,22 @@ play(result)
 
 * [实用的功能](https://musicpy.readthedocs.io/zh_CN/latest/Useful%20functionality/)
 
-## musicpy语言作曲代码示例
+## Musicpy语言作曲代码示例
 
-* [musicpy语言作曲代码示例（第一期）](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20composition%20code%20examples%20part%201/)
-* [musicpy语言作曲代码示例（第二期）](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20composition%20code%20examples%20part%202/)
-* [musicpy语言作曲代码示例（第三期）](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20composition%20code%20examples%20part%203/)
+* [Musicpy语言作曲代码示例（第一期）](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20composition%20code%20examples%20part%201/)
+* [Musicpy语言作曲代码示例（第二期）](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20composition%20code%20examples%20part%202/)
+* [Musicpy语言作曲代码示例（第三期）](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20composition%20code%20examples%20part%203/)
 
-## musicpy取样机模块
+## Musicpy取样机模块
 
-* [musicpy取样机模块](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20sampler%20module/) 
-* [musicpy取样机模块作曲代码示例](https://musicpy.readthedocs.io/zh_CN/latest/musicpy%20sampler%20module%20composition%20code%20examples/)
+* [Musicpy取样机模块](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20sampler%20module/) 
+* [Musicpy取样机模块作曲代码示例](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20sampler%20module%20composition%20code%20examples/)
 
 ## 算法
 
-* [musicpy algorithms 模块介绍](https://musicpy.readthedocs.io/zh_CN/latest/Introduction%20of%20musicpy%20algorithms%20module/)
-* [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://musicpy.readthedocs.io/zh_CN/latest/the%20algorithm%20to%20split%20the%20main%20melody%20and%20chords%20from%20a%20piece%20of%20music/)
-* [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://musicpy.readthedocs.io/zh_CN/latest/the%20algorithm%20to%20determine%20the%20chord%20type%20of%20any%20group%20of%20notes%20according%20to%20the%20logic%20of%20music%20theory/)
+* [Musicpy algorithms 模块介绍](https://musicpy.readthedocs.io/zh_CN/latest/Introduction%20of%20musicpy%20algorithms%20module/)
+* [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://musicpy.readthedocs.io/zh_CN/latest/The%20algorithm%20to%20split%20the%20main%20melody%20and%20chords%20from%20a%20piece%20of%20music/)
+* [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://musicpy.readthedocs.io/zh_CN/latest/The%20algorithm%20to%20determine%20the%20chord%20type%20of%20any%20group%20of%20notes%20according%20to%20the%20logic%20of%20music%20theory/)
 
 ## 常见的问题
 

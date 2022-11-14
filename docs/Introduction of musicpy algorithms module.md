@@ -1,4 +1,4 @@
-# musicpy algorithms 模块介绍
+# Musicpy algorithms 模块介绍
 
 有一些我正在开发的基于musicpy的音乐分析算法，你可以在musicpy包的algorithms模块中找到它们。
 
