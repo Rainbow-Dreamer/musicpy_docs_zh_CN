@@ -4,7 +4,7 @@ nav:
     - 介绍:
       - 介绍: Introduction.md
     - 数据结构:
-      - musicpy的数据结构: Data Structures of musicpy.md
+      - Musicpy的数据结构: Data Structures of musicpy.md
     - 基本语法:
       - 音符类型的基本语法: Basic syntax of note type.md
       - 和弦类型的基本语法: Basic syntax of chord type.md
@@ -23,10 +23,10 @@ nav:
       - 作曲代码示例（第二期）: Musicpy composition code examples part 2.md
       - 作曲代码示例（第三期）: Musicpy composition code examples part 3.md
     - 取样机模块:
-      - musicpy取样机模块: Musicpy sampler module.md
-      - musicpy取样机模块作曲代码示例: Musicpy sampler module composition code examples.md
+      - Musicpy取样机模块: Musicpy sampler module.md
+      - Musicpy取样机模块作曲代码示例: Musicpy sampler module composition code examples.md
     - 算法:
-      - musicpy algorithms 模块介绍: Introduction of musicpy algorithms module.md
+      - Musicpy algorithms 模块介绍: Introduction of musicpy algorithms module.md
       - 从一首完整的钢琴曲里提取主旋律以及所有和弦的算法: The algorithm to split the main melody and chords from a piece of music.md
       - 按照乐理逻辑判断任意一组音组成的和弦类型的算法: The algorithm to determine the chord type of any group of notes according to the logic of music theory.md
     - 常见的问题:
