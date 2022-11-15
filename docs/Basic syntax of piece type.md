@@ -189,9 +189,6 @@ a = piece(tracks=[A1, B1, C1, D1],
           track_names=['piano', 'electric bass', 'drums', 'strings'])
 
 # 如果想要完全重复这个乐曲类型n遍，那么可以写
-b = a | n
-
-# 如果想要对这个乐曲类型的所有MIDI通道进行复制粘贴n遍的操作，那么可以写
 b = a * n
 
 # 可以使用index值查看一个乐曲类型的某一个音轨的信息，以0作为第1个音轨
