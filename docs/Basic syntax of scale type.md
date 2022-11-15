@@ -313,7 +313,7 @@ False
 >>> print('E4' in S('C major', 5)) 
 True
 # 音符的实际音高数会被忽略，只要音名有在音阶里就会返回True，如果想要考虑音高数，
-# 可以使用'E4' in S('C major', 5).getScale()
+# 可以使用'E4' in S('C major', 5).get_scale()
 
 >>> print('A#' in S('Bb major')) # 如果是同音异名的音(十二平均律的标准下)，则会判断为包含，返回True
 True
