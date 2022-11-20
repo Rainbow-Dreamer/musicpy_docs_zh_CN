@@ -5,6 +5,8 @@ nav:
       - 介绍: Introduction.md
     - 数据结构:
       - Musicpy的数据结构: Data Structures of musicpy.md
+    - 快速入门和速查表:
+      - Musicpy快速入门和速查表: Musicpy Quickstart and Cheat Sheet.md
     - 基本语法:
       - 音符类型的基本语法: Basic syntax of note type.md
       - 和弦类型的基本语法: Basic syntax of chord type.md
