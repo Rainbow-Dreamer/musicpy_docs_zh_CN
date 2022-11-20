@@ -51,7 +51,11 @@ play(result)
 
 ## 数据结构
 
-* [Musicpy的数据结构](https://musicpy.readthedocs.io/zh_CN/latest/Data%20Structures%20of%20musicpy/) 
+* [Musicpy的数据结构](https://musicpy.readthedocs.io/zh_CN/latest/Data%20Structures%20of%20musicpy/)
+
+## 快速入门和速查表
+
+* [Musicpy快速入门和速查表](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20Quickstart%20and%20Cheat%20Sheet/)
 
 ## 基本语法
 
