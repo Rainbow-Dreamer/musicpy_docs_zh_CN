@@ -344,6 +344,11 @@ rest_symbol实例采取与beat实例相同的参数。
 
 在实践中，你可以将`rest`实例与`rest_symbol`实例互换使用，但建议使用`rest_symbol`实例来组成节奏，因为有一个`continue_symbol`类型与它一起工作，它们的名字最好更标准一些。
 
+```python
+rest_symbol(duration=1/4,
+            dotted=None)
+```
+
 
 
 ## continue_symbol (延续符类型)
@@ -351,6 +356,11 @@ rest_symbol实例采取与beat实例相同的参数。
 这是一个数据结构，它扩展了前一个音符的持续时间和间隔时间，可以和节拍类型一起使用，形成一个节奏。
 
 continue_symbol实例的参数与beat实例相同。
+
+```python
+continue_symbol(duration=1/4,
+                dotted=None)
+```
 
 
 
@@ -408,7 +418,18 @@ rhythm(beat_list,
 
 ```python
 rhythm1 = rhythm('b b b - b b b - b b b - b - b -', 2)
+'''
+等价于: rhythm1 = rhythm([beat(), beat(), beat(), continue_symbol(), beat(), beat(), beat(), continue_symbol(), beat(), beat(), beat(), continue_symbol(), beat(), continue_symbol(), beat(), continue_symbol()], 2)
+'''
+
+>>> print(rhythm1)
+[rhythm]
+rhythm: beat(1/8), beat(1/8), beat(1/8), continue(1/8), beat(1/8), beat(1/8), beat(1/8), continue(1/8), beat(1/8), beat(1/8), beat(1/8), continue(1/8), beat(1/8), continue(1/8), beat(1/8), continue(1/8)
+total bar length: 2
+time signature: 4 / 4
+
 chord1 = chord('C5, D5, E5, E5, F5, G5, E5, D5, C5, A5, G5').apply_rhythm(rhythm1)
+
 >>> print(chord1)
 [C5, D5, E5, E5, F5, G5, E5, D5, C5, A5, G5] with interval [0.125, 0.125, 0.25, 0.125, 0.125, 0.25, 0.125, 0.125, 0.25, 0.25, 0.25]
 
