@@ -64,15 +64,15 @@ p.modulation(scale('A', 'major'), scale('A', 'minor'))
 
 ## 按照音阶的级数选取对应的和弦
 
-比如C大调的4级三和弦是F，6级三和弦是Am，这时候可以用pickchord_by_degree函数，其中的参数`degree1`是和弦级数，从0开始，`num`是选取多少个音，`step`是每一次跨越几个音阶中的音。按照默认值，
+比如C大调的4级三和弦是F，6级三和弦是Am，这时候可以用pick_chord_by_degree函数，其中的参数`degree1`是和弦级数，从0开始，`num`是选取多少个音，`step`是每一次跨越几个音阶中的音。按照默认值，
 
 ```python
-scale('C', 'major').pickchord_by_degree(4)
+scale('C', 'major').pick_chord_by_degree(4)
 ```
 
 会得到C大调音阶的5级三和弦G大三和弦。
 
-按照音阶的级数选取对应的和弦的函数pickchord_by_degree可以简写成在一个音阶类型后面加上小括号，里面写参数。
+按照音阶的级数选取对应的和弦的函数pick_chord_by_degree可以简写成在一个音阶类型后面加上小括号，里面写参数。
 
 进阶写法：
 
@@ -80,9 +80,9 @@ scale('C', 'major').pickchord_by_degree(4)
 S('C major')(4)
 ```
 
-pickchord_by_degree还有很多其他的设定参数，可以用来提取自然三和弦，自然七和弦，自然九和弦等等，还可以设定每次按照三度堆叠还是其他度的堆叠，以及设定返回的和弦类型的音符长度和音符间隔等等。
+pick_chord_by_degree还有很多其他的设定参数，可以用来提取自然三和弦，自然七和弦，自然九和弦等等，还可以设定每次按照三度堆叠还是其他度的堆叠，以及设定返回的和弦类型的音符长度和音符间隔等等。
 
-pickchord_by_degree的参数按照顺序为：
+pick_chord_by_degree的参数按照顺序为：
 
 ```python
 degree1: 要提取的和弦的级数，是一个正整数
@@ -92,7 +92,7 @@ num: 提取的和弦的音的个数，默认值为3，也就是提取自然三�
 step: 提取的和弦每次往下找音阶内的下一个和弦音的步数，默认值为2，也就是按照三度堆叠。
 ```
 
-因为pickchord_by_degree函数可以简写成一对小括号，因此大家可以在一个音阶类型后直接加上一对小括号，然后在里面写pickchord_by_degree函数的参数，这样写更加简洁，比如
+因为pick_chord_by_degree函数可以简写成一对小括号，因此大家可以在一个音阶类型后直接加上一对小括号，然后在里面写pick_chord_by_degree函数的参数，这样写更加简洁，比如
 
 ```python
 # 构建一个C大调音阶，叫做c_major_scale

@@ -70,10 +70,10 @@
 |           提高/降低音阶A的第i个音到第j个音n个半音            |                 A + (n, i, j); A - (n, i, j)                 | A.up(n, i, j); A.down(n, i, j) |
 |                    提高/降低音阶A 1个半音                    |                            +A; -A                            |A.up(); A.down()|
 |获取音阶A的第1级音 | A[i] | |
-| 获取音阶A的第i级三和弦 | A(i) | A.pickchord_by_degree(i)|
-| 获取音阶A的第i级七和弦 | A(i, num=4) | A.pickchord_by_degree(i, num=4)|
+| 获取音阶A的第i级三和弦 | A(i) | A.pick_chord_by_degree(i)|
+| 获取音阶A的第i级七和弦 | A(i, num=4) | A.pick_chord_by_degree(i, num=4)|
 | 获得音阶A的第i个调式 | A / i | A.inversion(i) |
-| 获取音阶A的和弦，并按索引排序 | A @ [1, 2, 3, 4, 5] | A.pickchord_by_index([1, 2, 3, 4, 5] ) |
+| 获取音阶A的和弦，并按索引排序 | A @ [1, 2, 3, 4, 5] | A.pick_chord_by_index([1, 2, 3, 4, 5] ) |
 | 获得音阶A的反转音阶 | ~A | A.reverse() |
 | 获取音阶A的和弦行进度数 | A % 6451 | A.pattern(6451)|
 | 获取乐曲A的第1个音轨 | A[i] | |
