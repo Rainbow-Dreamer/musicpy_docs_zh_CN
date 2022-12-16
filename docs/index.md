@@ -69,6 +69,7 @@ play(result)
 * [声相类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20pan%20type/)
 * [音量类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20volume%20type/)
 * [鼓点类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20drum%20type/)
+* [节奏类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20rhythm%20type/)
 
 ## 实用的功能
 
