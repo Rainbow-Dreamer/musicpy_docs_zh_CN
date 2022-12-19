@@ -148,9 +148,9 @@ current_sampler = sampler(3)
 current_sampler.load(0, 'Arachno.sf2')
 current_sampler.modules(0) < 'Electric Piano'
 
-part1 = chd('bb2', 'm11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]
-part2 = chd('g2', 'M9#11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]
-part3 = chd('gb2', '13sus')%(1/2,1/8)@[1,3,4,5,2.1,6,4.1,5.1]
+part1 = get_chord('bb2', 'm11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]
+part2 = get_chord('g2', 'M9#11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]
+part3 = get_chord('gb2', '13sus')%(1/2,1/8)@[1,3,4,5,2.1,6,4.1,5.1]
 result = (part1 * 4 | (part1-2) * 2 | part2 | part3) * 2
 
 current_sampler.play(result, bpm=100)

@@ -109,10 +109,10 @@ A % (1.5, 1)
 
 ## 根据和弦根音与和弦名获得一个和弦
 
-介绍一个很方便的函数：getchord，这个函数可以让你得到你想要的类型的和弦，只需给定和弦的根音和和弦类型即可。由于这个函数的名字相对有点长，所以用chd这个名字（chord的缩写）也可以调用getchord。比如：
+介绍一个很方便的函数：get_chord，这个函数可以让你得到你想要的类型的和弦，只需给定和弦的根音和和弦类型即可。比如：
 
 ```python
-Am7 = chd('A', 'm7')
+Am7 = get_chord('A', 'm7')
 ```
 
 这样我们就创建了一个A的小七和弦。其表示为
@@ -122,19 +122,19 @@ Am7 = chd('A', 'm7')
 ```
 
 和弦类型的种类很多，具体可以到database.py这个文件里面的chordTypes查看，用户还可以自己添加自己喜欢的和弦种类，只需按照chordTypes里相同的格式，写上和弦名称和对应的和弦音程即可。
-chd函数的第一个参数和弦的根音，如果不指定具体的音高（比如C5，D6这种是一个有具体音高的音符），则默认按照第4个八度来看待，比如chd('A', 'm7')，等价于
-chd('A4', 'm7'), 如果指定根音具体的音高，比如现在想写根音为D6的大七和弦，则可以写：
+get_chord函数的第一个参数和弦的根音，如果不指定具体的音高（比如C5，D6这种是一个有具体音高的音符），则默认按照第4个八度来看待，比如get_chord('A', 'm7')，等价于
+get_chord('A4', 'm7'), 如果指定根音具体的音高，比如现在想写根音为D6的大七和弦，则可以写：
 
 ```python
-Dmaj7 = chd('D6', 'maj7')
+Dmaj7 = get_chord('D6', 'maj7')
 ```
 
-此外，chd函数还有非常多的参数，可以用来设置和弦的省略音，升降音，外加的音，以及和弦的每个音符具体的长度，音符的间隔等等，您甚至可以输入音符的音程来构建和弦（也可以通过设定cummulative的值来决定是要输入每个音符到根音的音程还是每两个音符之间的音程），在musicpy里，每个音程的名字已经定义好了，可以直接用，比如major_third的值为4，也就是大三度的半音数。
+此外，get_chord函数还有非常多的参数，可以用来设置和弦的省略音，升降音，外加的音，以及和弦的每个音符具体的长度，音符的间隔等等，您甚至可以输入音符的音程来构建和弦（也可以通过设定cummulative的值来决定是要输入每个音符到根音的音程还是每两个音符之间的音程），在musicpy里，每个音程的名字已经定义好了，可以直接用，比如major_third的值为4，也就是大三度的半音数。
 
 比如按照音程的关系构建一个C大七和弦，可以这么写：
 
 ```python
-chd('C', interval=[database.major_third, database.perfect_fifth, database.major_seventh])
+get_chord('C', interval=[database.major_third, database.perfect_fifth, database.major_seventh])
 ```
 
 得到的是
@@ -171,7 +171,7 @@ chord(['C5','E5', 'G5', 'B5'], interval=[0.5, 0.5, 0, 2], duration=[1, 2, 0.5, 1
 比如A是一个C大七和弦，根音为C5，
 
 ```python
-A = chd('C5', 'maj7')
+A = get_chord('C5', 'maj7')
 ```
 
 和弦A的表示为
@@ -186,7 +186,7 @@ A = chd('C5', 'maj7')
 inversion可以得到一个和弦的转位，里面有一个参数num代表和弦的第几转位。比如：
 
 ```python
-chd('A', 'm7').inversion(1) 
+get_chord('A', 'm7').inversion(1) 
 ```
 
 可以得到A的小七和弦的第一转位，表示出来是这样的：
@@ -198,14 +198,14 @@ chd('A', 'm7').inversion(1)
 进阶写法：（我为musicpy的很多功能都设计了符号化的写法，写起来更快）
 
 ```python
-chd('A', 'm7') / 1
+get_chord('A', 'm7') / 1
 ```
 
-结果和chd('A', 'm7').inversion(1)是一样的。
+结果和get_chord('A', 'm7').inversion(1)是一样的。
 也可以在'/'后面写想要转位的音符，如果音符在和弦内则会把那个音符转位到最低音，比如
 
 ```python
-chd('A', 'm7') / 'E'
+get_chord('A', 'm7') / 'E'
 ```
 
 得到的结果是
@@ -287,13 +287,13 @@ A.reverse()
 intervalof函数可以返回一个和弦的构成音之间的音程关系。参数cummulative设为True的时候返回和弦所有的的构成音（除根音外）和根音之间的音程，设为False的时候返回和弦从最低音到最高音两两之间的音程关系。默认值为True。比如：
 
 ```python
-chd('C','maj').intervalof()
+get_chord('C','maj').intervalof()
 ```
 
 会得到 [4,7]，这个表示C大三和弦（C,E,G）里面第二个音到根音之间有四个半音（大三度），第三个音到根音之间有7个半音（纯五度）。如果你想看音程在乐理上的名称，那么可以设参数translate为True，那么你就可以看到对应的音程名称了。比如：
 
 ```python
-chd('C','maj').intervalof(translate=True)
+get_chord('C','maj').intervalof(translate=True)
 ```
 
 会得到 ['major third', 'perfect fifth']，也就是大三度和纯五度。
@@ -301,7 +301,7 @@ chd('C','maj').intervalof(translate=True)
 当cummulative设置为False的时候返回和弦从低到高每两个音符之间的音程，比如：
 
 ```python
-chd('C','maj').intervalof(translate=True, cummulative=False)
+get_chord('C','maj').intervalof(translate=True, cummulative=False)
 ```
 
 会得到['major third', 'minor third']，也就是C大三和弦是由一个大三度和一个小三度构成的。
@@ -311,7 +311,7 @@ chd('C','maj').intervalof(translate=True, cummulative=False)
 比如现在我们有一个和弦A，
 
 ```python
-A = chd('C', 'maj7')
+A = get_chord('C', 'maj7')
 ```
 
 如果我们想得到和弦A的第1个音，那么就写：
@@ -451,14 +451,14 @@ A - (x, k)
 其中k表示第几个音。比如
 
 ```python
-chd('C','maj').up(1)
+get_chord('C','maj').up(1)
 ```
 
 会得到一个新的和弦，里面每个音都比之前的和弦升高一个半音，
 构成音为C#, F, G#。
 
 ```python
-chd('C','maj').up(1,0)
+get_chord('C','maj').up(1,0)
 ```
 
 会得到一个新的和弦，只有第一个音升高一个半音，构成音为C#, E, G。
@@ -538,7 +538,7 @@ A.notes
 如果想要得到和弦A的所有音符的音名的列表，那么就可以使用和弦的其中一个内置函数names，比如
 
 ```python
-chd('A','m7').names()
+get_chord('A','m7').names()
 ```
 
 就可以得到
@@ -1678,11 +1678,11 @@ b = chord('Ab0, C5, E5, G5, A5, C7, G10')
 
 ## 按照音程关系生成和弦类型
 
-你可以使用`getchord_by_interval`函数通过音程关系的列表生成和弦类型，可以选择与根音的音程关系或者相每两个相邻的音之间的音程关系。 
+你可以使用`get_chord_by_interval`函数通过音程关系的列表生成和弦类型，可以选择与根音的音程关系或者相每两个相邻的音之间的音程关系。 
 音符类型也可以使用这个函数，使用的时候音符类型本身会作为起始音。
 
 ```python
-getchord_by_interval(start,
+get_chord_by_interval(start,
                      interval1,
                      duration=0.25,
                      interval=0,
@@ -1694,16 +1694,16 @@ getchord_by_interval(start,
 # interval: 生成的和弦类型的音符间隔
 # cummulative: 如果为True，音程关系为与起始音的音程关系，如果为False，音程关系为每两个相邻的音之间的音程关系，默认值为True
 
->>> getchord_by_interval('C5', [database.major_third, database.perfect_fifth, database.major_seventh])
+>>> get_chord_by_interval('C5', [database.major_third, database.perfect_fifth, database.major_seventh])
 # 获得起始音为C5，与C5依次形成大三度，完全五度和大七度的音组成的和弦类型
 [C5, E5, G5, B5] with interval [0, 0, 0, 0] # 获得C大七和弦
 
->>> getchord_by_interval('C5', [database.major_third, database.minor_third, database.major_third], cummulative=False)
+>>> get_chord_by_interval('C5', [database.major_third, database.minor_third, database.major_third], cummulative=False)
 # 获得起始音为C5，相邻音程依次为大三度，小三度，大三度的音组成的和弦类型
 [C5, E5, G5, B5] with interval [0, 0, 0, 0] # 获得C大七和弦
 
 a = N('C5')
->>> a.getchord_by_interval([database.major_third, database.perfect_fifth, database.major_seventh]) #音符类型调用这个函数
+>>> a.get_chord_by_interval([database.major_third, database.perfect_fifth, database.major_seventh]) #音符类型调用这个函数
 [C5, E5, G5, B5] with interval [0, 0, 0, 0]
 ```
 

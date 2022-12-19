@@ -2,14 +2,14 @@
 
 ## 1. 东方主旋律
 ```python
-play((getchord_by_interval('D#4', [5,7,10,7,5], 1/2, 1/8)*3 + getchord_by_interval('F4', [1,0,-4], 1/2, 1/8)) * 3, 150)
+play((get_chord_by_interval('D#4', [5,7,10,7,5], 1/2, 1/8)*3 + get_chord_by_interval('F4', [1,0,-4], 1/2, 1/8)) * 3, 150)
 ```
 
 ## 2. 演奏出A小七和弦后接休止符半拍4遍，然后B小七和弦后接休止符半拍4遍，然后C大七和弦分解和弦1遍。
 (以上这两个例子都是没有使用进阶写法的，使用进阶写法可以让musicpy语言看起来更加紧凑，简短)
 ```python
 a = C('Am7') % (1/8, 0)
-play(a * 4 | (a + 2) * 4 | chd(a[0] + 3, 'maj7').set(interval=1/8), bpm=80)
+play(a * 4 | (a + 2) * 4 | get_chord(a[0] + 3, 'maj7').set(interval=1/8), bpm=80)
 ```
 
 ## 3. 一小段钢琴片段
@@ -84,8 +84,8 @@ play(piece([a, c, a2 * 2, c * 2], [1, 81, 34, 81], 130, [0, 1/4, 8, 33/4]))
 
 ## 11. 恐怖氛围音乐，管弦乐音色
 ```python
-a = chd('B4','maj9').sort([2,3,4,1,5])
-b = chd('B4','maj9').sort([2,3,4,1,5,2])
+a = get_chord('B4','maj9').sort([2,3,4,1,5])
+b = get_chord('B4','maj9').sort([2,3,4,1,5,2])
 q = a + a[1:-1].reverse_chord()
 q2 = b + b[3:-1].reverse_chord()
 play((q.set(1/8,1/8) + q2.set(1/8,1/8))*2, 100, instrument=50)

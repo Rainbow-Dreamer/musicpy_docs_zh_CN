@@ -12,8 +12,8 @@
 |功能 |语法（推荐） |其他写法 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |构建一个音符 C5 | N('C5') | N('c5'); note('C', 5) |
-|构建和弦 Cmaj7 | C('Cmaj7') | chd('C', 'maj7') |
-|构建一个起始音符为C5的C大七和弦 | C('C5:maj7') | C('Cmaj7', pitch=5);<br/>chd('C', 'maj7', pitch=5) |
+|构建和弦 Cmaj7 | C('Cmaj7') | get_chord('C', 'maj7') |
+|构建一个起始音符为C5的C大七和弦 | C('C5:maj7') | C('Cmaj7', pitch=5);<br/>get_chord('C', 'maj7', pitch=5) |
 |用音符 C5、E5、G6 构建一个和弦 |                     chord('C5, E5, G6')                      | chord('c5, e5, g6');<br/>chord(['C5', 'E5', 'G6']);<br/>chord(['c5', 'e5', 'g6']);<br/>chord([N('C5'), N('E5'), N('G6')]) |
 |构建C大调音阶|                         S('C major')                         |                     scale('C', 'major')                      |
 |构建一个乐曲 |build(track(content=C('C'), instrument=1, start_time=0),<br/>track(content=C('D'), instrument=47, start_time=1), bpm=150) | P(tracks=[C('C'), C('D')],<br/>instruments=[1, 47],<br/>start_times=[0, 1],<br/>bpm=150) |
