@@ -38,7 +38,7 @@ bass = chord('C2, A#1') % (1, 1) * 4
 piano = (a | a - 2) * 4
 string = C('Caug9', 4) % (1, 0)
 string |= string - 2
-string.setvolume(60)
+string.set_volume(60)
 play(P([piano, bass, string * 4], [9, 34, 49], 80, [0, 0, 0]))
 ```
 
@@ -96,7 +96,7 @@ cmajor = scale('C5', 'major')
 b_harmony = (chord([cmajor(cmajor.names().
              index(i.name))[1]-database.octave for i in b])
                 % (b_duration, b_interval))
-b_harmony.setvolume(80)
+b_harmony.set_volume(80)
 b &= b_harmony
 b *= 2
 song = build([a, 5, 0],
@@ -123,7 +123,7 @@ bass = chord('C2, A#1') % (1, 1) * 4
 piano = (a | a - 2) * 4
 string = C('CM9', 4) % (1, 0)
 string |= string - 2
-string.setvolume(50)
+string.set_volume(50)
 play(P([piano, bass, string * 4], [9, 34, 49], 80, [0, 0, 0]))
 ```
 
@@ -142,7 +142,7 @@ bass = chord('C2, A#1') % (1, 1) * 4
 piano = (a | a - 2) * 4
 string = C('CM9', 4) % (1, 0)
 string |= string - 2
-string.setvolume(50)
+string.set_volume(50)
 string *= 4
 oboe1 = chord('B5[.16;.16], C6[.16;.16], D6[1;1], C6[.2;.2], E6[.2;.2], D6[1;1], C6[7/8;7/8]')
 part1 = P([piano | piano-4, bass | bass-4, string | string-4, oboe1 | oboe1-4], 

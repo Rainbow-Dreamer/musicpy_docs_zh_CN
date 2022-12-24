@@ -108,7 +108,7 @@ F6[.2;.],E6[.2;.],C6[1;.],B5[.2;.],C6[.2;.],G5[1;.],\
 F5[.2;.],E5[.2;.],C5[1;.],D5[.4;.],E5[.4;.],F5[.4;.],\
 E5[.4;.],D5[.2;.],G5[.2;.],E5[1;.]')
 drum1 = drum('K, H, S, H, r:2, K, H, OH;S, H, K, H, S, H').notes
-drum1.setvolume(112)
+drum1.set_volume(112)
 result = piece([guitar * 2 | guitar2, bass, string1, rhythm_guitar,drum1 * 4 + 2],
                [2, 34, 49, 31, 1],
                bpm=165,
@@ -153,7 +153,7 @@ a42 = translate('F#, G, F#, a:1/8;., G[l:1/4; i:.]')
 
 a4 = a41 * 2 + a42
 
-a4.setvolume(80)
+a4.set_volume(80)
 
 result = P([a1, a2, a3, a4], [31, 34, 1, 31], channels=[0, 1, 9, 2], bpm=165, start_times=[0, 0, 3/8, 0])
 

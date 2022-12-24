@@ -34,7 +34,7 @@ drum1 &= drum2
 drum3 = drum('K, H, S, H, K[l:.16; i:.], K[l:.8; i:.], H[l:.16; i:.], S[l:.8; i:.], H[l:.8; i:.]').notes
 
 synth_pad1 = chord('E5, G5, C6') % (1,) | chord('E5, B5, D6') % (1,) | chord('E5, A5, C6') % (1,) | chord('D5, F5, A5') % (1,)
-synth_pad1.setvolume(80)
+synth_pad1.set_volume(80)
 
 bass_part = (bass1 * 2 | bass2 * 4) + 3
 guitar_part = (guitar1 * 2 | guitar2 * 4) + 3
@@ -83,7 +83,7 @@ guitar22 = translate('F#, G, F#, a:1/8;., G[l:1/4; i:.]')
 
 guitar2_part = guitar21 * 2 + guitar22
 
-guitar2_part.setvolume(80)
+guitar2_part.set_volume(80)
 
 result = P(tracks=[guitar1_part, bass_part, drum_part, guitar2_part],
            instruments=[31, 34, 1, 31],
@@ -118,7 +118,7 @@ rhythm_guitar12 = (rhythm_guitar11 | rhythm_guitar11 + 3 |
                    rhythm_guitar11 - 2 | rhythm_guitar11 - 4)
 rhythm_guitar13 = C('G5(+octave)',2) % (1/8, 0) * 5 | C('A5(+octave)',2) % (1/8, 0) * 3
 rhythm_guitar = rhythm_guitar12 * 2 | rhythm_guitar13
-rhythm_guitar.setvolume(70)
+rhythm_guitar.set_volume(70)
 
 drum11 = drum('C;K, H, S, H | K, H, S, H, r:5, C;K, H;S[r:2], PH, OH, S;OH[r:3]').notes
 drum12 = drum('C;K;H;S, H;S[r:2], PH, OH, S;OH[r:3]').notes

@@ -1058,7 +1058,7 @@ a = C('Dmaj7')
 
 ```python
 a = C('Dmaj7')
-a.setvolume([80,80,100,100])
+a.set_volume([80,80,100,100])
 # 查看一个和弦类型的音符音量列表
 >>> print(a.get_volume())
 [80, 80, 100, 100]
@@ -1285,9 +1285,9 @@ example = chord('G5[3/4;3/4], F5[.8;.8], E5[.8;.8], F5[3/4;1/4], r[.2], E5[.8;.8
 ## 设定一个和弦类型的音量的另一种方法
 
 ```python
-# 可以使用setvolume方法设置一个和弦类型的音量
+# 可以使用set_volume方法设置一个和弦类型的音量
 a = C('Emaj7')
-a.setvolume(80)
+a.set_volume(80)
 # 也可以使用set函数或者进阶写法%来设定音量，作为第音符长度和间隔之后的第三个参数
 a = a.set(1/8,1/8,80)
 a = a % (1/8,1/8,80)
@@ -1639,12 +1639,12 @@ filter(self, cond, action=None, mode=0, action_mode=0)
 # action_mode: 如果为0，action函数作用音符的返回值会替换掉它作用的音符，如果为1，action函数会直接作用到音符上
 
 a = chord('C, E, G, B') # 初始化一个和弦
-a.setvolume([10, 20, 50, 90]) # 设置音符的音量
+a.set_volume([10, 20, 50, 90]) # 设置音符的音量
 >>> a.filter(lambda s: 20 <= s.volume < 80) # 筛选出和弦类型里音量在20到80之间的音符
 ([E4, G4] with interval [0, 0], 0) # 返回筛选出来的音符组成的和弦类型以及第一个筛选出来的音符的开始时间
 
 # 对于音量在20到80之间的音符，音量都设置为50
-b = a.filter(lambda s: 20 <= s.volume < 80, action=lambda s: s.setvolume(50), action_mode=1)
+b = a.filter(lambda s: 20 <= s.volume < 80, action=lambda s: s.set_volume(50), action_mode=1)
 >>> b
 [C4, E4, G4, B4] with interval [0, 0, 0, 0] # 返回经过action函数修改音量的和弦类型
 >>> b.get_volume() # 获得新的和弦类型的音量
