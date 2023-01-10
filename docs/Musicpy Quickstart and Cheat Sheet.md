@@ -109,6 +109,6 @@
 | 构建一个pitch_bend实例，值为100分，开始时间为0 | pitch_bend(100, start_time=0) | |
 | 构建一个pan实例，值为100%，开始时间为0 | pan(100, start_time=0) | |
 | 构建一个volume实例，数值为100%，开始时间为0 | volume(100, start_time=0) | |
-| | | |
-| | | |
-| | | |
+| 构建一个节奏实例 | rhythm('b b 0 0 b 0 b 0', 1) | |
+| 从节奏中生成和弦 | get_chords_from_rhythm(C('C'), rhythm('b b 0 0 b 0 b 0', 1)) | |
+| 产生两个八度之间的和弦的琶音 | arp(C('Cmaj7'), 3, 7) | |
