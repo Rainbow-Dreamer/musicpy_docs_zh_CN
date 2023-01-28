@@ -20,6 +20,8 @@
 - [停止目前所有正在播放的声音](#停止目前所有正在播放的声音)
 - [音程名称的使用](#音程名称的使用)
 - [修改乐理类型的属性的同时返回新的乐理类型](#修改乐理类型的属性的同时返回新的乐理类型)
+- [将音乐数据结构转换为JSON格式](#将音乐数据结构转换为JSON格式)
+- [读取和写入musicxml文件](#读取和写入musicxml文件)
 
 
 
@@ -446,4 +448,58 @@ a = C('C')
 >>> a.reset(interval=[1,1,1])
 [C4, E4, G4] with interval [1, 1, 1]
 ```
+
+## 将音乐数据结构转换为JSON格式
+
+你可以将音乐数据结构转换为JSON文件，作为一种更便携的存储方法，并从JSON文件中读取，以获得存储在其中的音乐数据结构。
+
+使用`write_json`函数将音乐数据结构转换成JSON文件。参数及其用法与`write`函数类似，支持的数据结构包括音符、和弦、乐曲、轨道、鼓。在转换过程中，为了简洁起见，所有的数据结构都将转换为乐曲实例。JSON文件将被写入给定的文件路径中。
+
+```python
+write_json(current_chord,
+           bpm=120,
+           channel=0,
+           start_time=None,
+           name=None,
+           filename='untitled.json',
+           instrument=None,
+           i=None,
+           msg=None,
+           nomsg=False)
+```
+
+* filename: 转换后的JSON文件的文件名
+* 其他参数的用法与`write`函数相同
+
+使用`read_json`函数读取一个由`write_json`函数导出的JSON文件，并提取其中存储的音乐数据结构。返回值是一个乐曲实例。
+
+```python
+read_json(file)
+```
+
+* file: JSON文件的文件名
+
+## 读取和写入musicxml文件
+
+你需要通过`pip install partitura`来安装partitura来使用这个功能。
+
+你可以使用`read_musicxml`函数来读取musicxml文件，并将其转换为乐曲实例。在返回的结果中，musicxml独有的信息以字典的形式存储在`musicxml_info`属性中。
+
+```python
+read_musicxml(file, load_musicxml_args={}, save_midi_args={})
+```
+
+* file: musicxml文件的文件名
+* load_musicxml_args: 传递给`partitura.load_musicxml`函数的关键字参数字典。
+* save_midi_args: 传递给`partitura.save_score_midi`函数的关键字参数字典。
+
+你可以使用`write_musicxml`函数把音乐数据结构写到musicxml文件中。支持的数据结构与`write`函数相同。
+
+```python
+write_musicxml(current_chord, filename, save_musicxml_args={})
+```
+
+* current_chord: 你想写入的音乐数据结构
+* filename: musicxml文件的文件名
+* save_musicxml_args: 传递给`partitura.save_musicxml`函数的关键字参数字典。
 

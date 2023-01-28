@@ -269,7 +269,7 @@ a.merge(add_labels=True,
 
 # get_off_drums: 为True的时候，结果会去除鼓轨
 
-# track_names_add_channel: 当设置为True时，作品类型中的音轨名称事件将存储音轨的通道
+# track_names_add_channel: 当设置为True时，乐曲类型中的音轨名称事件将存储音轨的通道
 
 b, bpm, start_time = a.merge()
 # 使用乐曲类型的内置函数merge可以得到(合并后的和弦类型, bpm, 开始时间)的元组，开始时间的单位为小节
