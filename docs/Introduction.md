@@ -23,7 +23,7 @@ Musicpy不只可以用来写代码作曲，它还有一些我自己开发的音�
 
 **注意：如果你在使用musicpy时遇到任何问题，你可以先看看这个章节 [常见的问题](https://github.com/Rainbow-Dreamer/musicpy/wiki/常见的问题)，看看你的问题是否是其中之一，并在这里找到解决方法。**
 
-装musicpy
+安装musicpy
 -------------
 先确定电脑里有安装python，python版本最好是 >= 3.7，
 打开电脑的cmd然后输入
@@ -32,15 +32,15 @@ Musicpy不只可以用来写代码作曲，它还有一些我自己开发的音�
 pip install musicpy
 ```
 
-**注意：在Linux上，你需要确保安装的pygame版本早于2.0.3，否则musicpy的play函数将不能正常运行，这是由于pygame的较新版本的一个现有bug。你可以在终端运行`pip install pygame==2.0.2`来安装pygame 2.0.2或任何早于2.0.3的版本。你还需要安装freepats以使play函数在Linux上运行，你可以运行`sudo apt-get install freepats`（在Ubuntu上）。**
+**注意事项1: 在Linux上，你需要确保安装的pygame版本早于2.0.3，否则musicpy的play函数将不能正常运行，这是由于pygame的较新版本的一个现有bug。你可以在终端运行`pip install pygame==2.0.2`来安装pygame 2.0.2或任何早于2.0.3的版本。你还需要安装freepats以使play函数在Linux上运行，你可以运行`sudo apt-get install freepats`（在Ubuntu上）。**
 
-除此之外，我为musicpy专门写了一个编辑器，你可以在这里写musicpy的代码，这个编辑器可以实时自动编译和运行，比在常规的python IDE里更加方便。这个编辑器有一些语法糖，并且你可以实时地听到你写的musicpy代码生成的音乐，更加地方便与互动。
+**注意事项2: 如果你在运行play函数时听不到任何声音，这是因为有些IDE不会等待pygame的播放结束，他们会在所有代码执行完后停止整个过程，而不等待播放。你可以在播放函数的参数中设置 `wait=True`，这将阻塞该函数直到播放结束，这样你就可以听到声音了。**
 
-我强烈推荐大家使用这个musicpy编辑器来写musicpy代码。
-
-你可以在仓库[musicpy_editor](https://github.com/Rainbow-Dreamer/musicpy_editor)下载musicpy editor, 准备步骤在README。
+除此之外，我为musicpy专门写了一个编辑器，你可以在这里写musicpy的代码，这个编辑器可以实时自动编译和运行，比在常规的python IDE里更加方便。这个编辑器有一些语法糖，并且你可以实时地听到你写的musicpy代码生成的音乐，更加地方便与互动。我强烈推荐大家使用这个musicpy编辑器来写musicpy代码。你可以在仓库[musicpy_editor](https://github.com/Rainbow-Dreamer/musicpy_editor)下载musicpy editor, 准备步骤在README。
 
 Musicpy对于Windows, macOS和Linux都是兼容的。
+
+Musicpy现在也支持读写musicxml文件，注意你需要通过`pip install partitura`安装partitura来使用这些功能。
 
 import这个库
 -------------
