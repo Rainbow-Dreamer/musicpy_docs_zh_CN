@@ -118,7 +118,7 @@ read(name,
 current_piece = read('Clair de Lune.mid')
 ```
 
-现在我们可以对乐曲类型current_piece进行各种乐理上的操作了。乐曲类型current_piece里面存储的是整首曲子的信息，包括所有的音轨，乐器，音符，音符的间隔等。可以使用基础语法部分里面讲到的很多语法来对乐曲类型current_piece进行乐理上的玩转，比如转调，升调，降调，切片，倒序等等。
+现在我们可以对乐曲类型current_piece进行各种乐理上的操作了。乐曲类型current_piece里面存储的是整首曲子的信息，包括所有的音轨，乐器，音符，音符的间隔等。可以使用基本语法部分里面讲到的很多语法来对乐曲类型current_piece进行乐理上的玩转，比如转调，升调，降调，切片，倒序等等。
 
 ## 把乐理类型写入MIDI文件，以方便DAW中查看和编辑
 
@@ -250,7 +250,7 @@ write_data(C('C'), name='C major chord.mpb')
 result = load_data('C major chord.mpb')
 
 >>> result
-[C4, E4, G4] with interval [0, 0, 0]
+chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
 ```
 
 在有些时候，当你不想存储musicpy代码或者其生成的MIDI文件时，存储为二进制数据文件是一个不错的选择。
@@ -444,9 +444,9 @@ reset(**kwargs)
 
 a = C('C')
 >>> a
-[C4, E4, G4] with interval [0, 0, 0]
+chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
 >>> a.reset(interval=[1,1,1])
-[C4, E4, G4] with interval [1, 1, 1]
+chord(notes=[C4, E4, G4], interval=[1, 1, 1], start_time=0)
 ```
 
 ## 将音乐数据结构转换为JSON格式

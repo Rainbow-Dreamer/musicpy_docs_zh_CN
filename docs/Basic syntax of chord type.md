@@ -118,7 +118,7 @@ Am7 = get_chord('A', 'm7')
 这样我们就创建了一个A的小七和弦。其表示为
 
 ```python
-[A5, C6, E6, G6] with interval [0, 0, 0, 0]
+chord(notes=[A5, C6, E6, G6], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 和弦类型的种类很多，具体可以到database.py这个文件里面的chordTypes查看，用户还可以自己添加自己喜欢的和弦种类，只需按照chordTypes里相同的格式，写上和弦名称和对应的和弦音程即可。
@@ -140,7 +140,7 @@ get_chord('C', interval=[database.major_third, database.perfect_fifth, database.
 得到的是
 
 ```python
-[C5, E5, G5, B5] with interval [0, 0, 0, 0]
+chord(notes=[C5, E5, G5, B5], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 当一个和弦的interval全部为0的时候，这个和弦就是所有音符一起同时演奏。如果某个interval为0，表示的是两个音同时一起开始弹。
@@ -165,19 +165,9 @@ chord(['C5','E5', 'G5', 'B5'], interval=[0.5, 0.5, 0, 2], duration=[1, 2, 0.5, 1
 在musicpy里，一个和弦类型的表示为：
 
 ```python
-[音符1, 音符2, 音符3, ...] with interval [间隔1, 间隔2, 间隔3, ...]
-```
-
-比如A是一个C大七和弦，根音为C5，
-
-```python
-A = get_chord('C5', 'maj7')
-```
-
-和弦A的表示为
-
-```python
-[C5, E5, G5, B5] with interval [0, 0, 0, 0]
+#比如一个C大七和弦，根音为C5
+>>> get_chord('C5', 'maj7')
+chord(notes=[C4, E4, G4, B4], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 
@@ -192,7 +182,7 @@ get_chord('A', 'm7').inversion(1)
 可以得到A的小七和弦的第一转位，表示出来是这样的：
 
 ```python
-[C6, E6, G6, A6] with interval [0, 0, 0, 0]
+chord(notes=[C6, E6, G6, A6], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 进阶写法：（我为musicpy的很多功能都设计了符号化的写法，写起来更快）
@@ -211,7 +201,7 @@ get_chord('A', 'm7') / 'E'
 得到的结果是
 
 ```python
-[E6, G6, A6, C7] with interval [0, 0, 0, 0]
+chord(notes=[E6, G6, A6, C7], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 也就是A小七和弦的第二转位。
@@ -615,7 +605,7 @@ A[1] = 'F5'
 然后我们再打印一下和弦A，
 
 ```python
-[C5, F5, G5, B5] with interval [0, 0, 0, 0]
+chord(notes=[C5, F5, G5, B5], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 会看到和弦A的第二个音已经从E5变成了F5。
@@ -671,7 +661,7 @@ A.on('C5')
 表示出来是
 
 ```python
-[C5, G5, B5, D6] with interval [0, 0, 0, 0]
+chord(notes=[C5, G5, B5, D6], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 进阶写法：
@@ -726,17 +716,17 @@ D大七和弦和以D5为根音的D大七和弦
 
 ```python
 >>> trans('Dmaj7')
-[D4, F#4, A4, C#5] with interval [0, 0, 0, 0]
+chord(notes=[D4, F#4, A4, C#5], interval=[0, 0, 0, 0], start_time=0)
 
 >>> trans('D5:maj7')
-[D5, F#5, A5, C#6] with interval [0, 0, 0, 0]
+chord(notes=[D5, F#5, A5, C#6], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 F大三和弦的第二转位
 
 ```python
 >>> trans('F/C')
-[C5, F5, A5] with interval [0, 0, 0]
+chord(notes=[C5, F5, A5], interval=[0, 0, 0], start_time=0)
 ```
 
 转位的解析也可以接收数字，比如:
@@ -763,21 +753,21 @@ C大三和弦
 
 ```python
 >>> trans('C')
-[C4, E4, G4] with interval [0, 0, 0]
+chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
 ```
 
 A小三和弦叠在G小三和弦上面的复合和弦
 
 ```python
 >>> trans('Am/Gm')
-[G4, A#4, D5, A5, C6, E6] with interval [0, 0, 0, 0, 0, 0]
+chord(notes=[G4, A#4, D5, A5, C6, E6], interval=[0, 0, 0, 0, 0, 0], start_time=0)
 ```
 
 G大三和弦加上一个C在最低音的和弦
 
 ```python
 >>> trans('G/C', 6, 1, 1)
-[C6, G6, B6, D7] with interval [1, 1, 1, 1]
+chord(notes=[C6, G6, B6, D7], interval=[1, 1, 1, 1], start_time=0)
 ```
 
 trans函数的简写方法：
@@ -799,7 +789,7 @@ A('#9')
 得到的是
 
 ```python
-[C5, E5, G5, A#5, D#6] with interval [0, 0, 0, 0, 0]
+chord(notes=[C5, E5, G5, A#5, D#6], interval=[0, 0, 0, 0, 0], start_time=0)
 ```
 
 C属七降九和弦则是
@@ -839,7 +829,7 @@ C('Amaj7') / 'D'
 得到的是
 
 ```python
-[D4, A4, C#5, E5, G#5] with interval [0, 0, 0, 0, 0]
+chord(notes=[D4, A4, C#5, E5, G#5], interval=[0, 0, 0, 0, 0], start_time=0)
 ```
 
 也就是Amaj7和弦底下加上D作为最低音。
@@ -852,7 +842,7 @@ C('A') / C('G')
 得到的是
 
 ```python
-[G4, B4, D5, A4, C#5, E5] with interval [0, 0, 0, 0, 0, 0]
+chord(notes=[G4, B4, D5, A4, C#5, E5], interval=[0, 0, 0, 0, 0, 0], start_time=0)
 ```
 
 也就是G大三和弦叠在A大三和弦下面构成的复合和弦。
@@ -866,7 +856,7 @@ C('Cmaj7,no5')
 得到的是
 
 ```python
-[C4, E4, B4] with interval [0, 0, 0]
+chord(notes=[C4, E4, B4], interval=[0, 0, 0], start_time=0)
 ```
 
 ## 和弦转位一个音转位到最高音
@@ -970,7 +960,7 @@ A.sortchord()
 ```python
 A = C('Cmaj7')
 >>> alg.negative_harmony(scale('C', 'major'), A)
-[G3, D#4, C5, G#4] with interval [0, 0, 0, 0]
+chord(notes=[G3, D#4, C5, G#4], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 得到的是和弦A的音符关于C大调音阶的负面和声的转换过后的组成的新的和弦。
@@ -1000,7 +990,7 @@ A.get([1, 3, 2, 3, 1.1, 3, 2, 3])
 得到的结果是
 
 ```python
-[C5, G5, E5, G5, C6, G5, E5, G5] with interval [0, 0, 0, 0, 0, 0, 0, 0]
+chord(notes=[C5, G5, E5, G5, C6, G5, E5, G5], interval=[0, 0, 0, 0, 0, 0, 0, 0], start_time=0)
 ```
 
 这里的1, 2, 3表示的是和弦A里的第几个音，1.1这种小数表示的是第几个音（小数点前的数字）升高几个八度（小数点后的数字）。
@@ -1094,7 +1084,7 @@ chord('C, E, G, B, D')
 会得到
 
 ```python
-[C4, E4, G4, B4, D5] with interval [0, 0, 0, 0, 0]
+chord(notes=[C4, E4, G4, B4, D5], interval=[0, 0, 0, 0, 0], start_time=0)
 ```
 
 chord函数既可以接收音名组成的字符串，也可以接收由音名字符串组成的列表，比如
@@ -1106,7 +1096,7 @@ chord(['C', 'E', 'G', 'B', 'D'])
 会得到
 
 ```python
-[C4, E4, G4, B4, D5] with interval [0, 0, 0, 0, 0]
+chord(notes=[C4, E4, G4, B4, D5], interval=[0, 0, 0, 0, 0], start_time=0)
 ```
 
 当然，最直接的还是接收音符类型的列表，比如
@@ -1171,7 +1161,7 @@ chord([])
 会得到
 
 ```python
-[] with interval []
+chord(notes=[], interval=[], start_time=0)
 ```
 
 空和弦可以作为循环添加新的和弦的初始化和弦，也可以作为一个和弦类型当做曲子来看待的时候（可以往里面添加新的旋律或者和弦的音符）的初始化和弦,比如
@@ -1263,7 +1253,7 @@ example % (example_duration, example_interval)
 ```python
 example = chord('G5[3/4;3/4], F5[.8;.8], E5[.8;.8], F5[3/4;3/4], E5[.8;.8], D5[.8;.8], E5[.4;.4], D5[.4;.4], C5[.2;.2], B4[.2;.2], G4[.2;.2]')
 >>> example
-[G5, F5, E5, F5, E5, D5, E5, D5, C5, B4, G4] with interval [0.75, 0.125, 0.125, 0.75, 0.125, 0.125, 0.25, 0.25, 0.5, 0.5, 0.5]
+chord(notes=[G5, F5, E5, F5, E5, D5, E5, D5, C5, B4, ...], interval=[0.75, 0.125, 0.125, 0.75, 0.125, 0.125, 0.25, 0.25, 0.5, 0.5, ...], start_time=0)
 ```
 
 chord函数接收这种新的语法的音名字符串的格式和语法糖和之前写的to_note函数的都是一样的，也是以`;`作为参数之间的分隔符，同样也可以使用小括号，中括号，大括号中的任意一种，参数之间也可以空格，同样也有`.n`表示n分音符的语法糖，参数的顺序为[音符长度;音符间隔;音符音量]，参数的设定同样也是可变的，可以只设置音符长度，或者只设置音符长度和音符间隔，或者3个参数都设置。这个新语法的最大的好处是如果在写一段旋律的时候，有时需要改动其中某个音的音符长度或者某个音和下一个音之间的音符间隔，可以直接在音符名称后面修改，而不需要到音符长度的列表和音符间隔的列表里找到想要修改的音符的位置再修改。chord函数也支持这种新语法的音名字符串的列表。
@@ -1279,7 +1269,7 @@ chord('G5[3/4;.], F5[.8;.], E5[.8;.]')
 ```python
 example = chord('G5[3/4;3/4], F5[.8;.8], E5[.8;.8], F5[3/4;1/4], r[.2], E5[.8;.8], D5[.8;.8], E5[.4;.4], D5[.4;.4], C5[.2;.2], B4[.2;.2], G4[.2;.2]')
 >>> example
-[G5, F5, E5, F5, E5, D5, E5, D5, C5, B4, G4] with interval [0.75, 0.125, 0.125, 0.75, 0.125, 0.125, 0.25, 0.25, 0.5, 0.5, 0.5]
+chord(notes=[G5, F5, E5, F5, E5, D5, E5, D5, C5, B4, ...], interval=[0.75, 0.125, 0.125, 0.75, 0.125, 0.125, 0.25, 0.25, 0.5, 0.5, ...], start_time=0)
 ```
 
 ## 设定一个和弦类型的音量的另一种方法
@@ -1322,7 +1312,7 @@ guitar_chord(frets,
 
 # 比如吉他的C大三和弦在前三品的一个标准按法是5弦3品，4弦2品，3弦空弦，2弦1品，1弦空弦，那么就可以写
 >>> alg.guitar_chord([None, 3, 2, 0, 1, 0])
-[C3, E3, G3, C4, E4] with interval [0, 0, 0, 0, 0]
+chord(notes=[C3, E3, G3, C4, E4], interval=[0, 0, 0, 0, 0], start_time=0)
 >>> alg.guitar_chord([None, 3, 2, 0, 1, 0], return_chord=False)
 'Cmajor'
 ```
@@ -1424,10 +1414,10 @@ a.most_appear()
 # 也就是 C5, D#5, G5, A#5, D#6, A#6, F5, 那么可以写
 a = chord('C5, Eb5, G5, A#5, D#6, Bb6, F5')
 >>> print(a)
-[C5, Eb5, G5, A#5, D#6, Bb6, F5] with interval [0, 0, 0, 0, 0, 0, 0]
+chord(notes=[C5, Eb5, G5, A#5, D#6, Bb6, F5], interval=[0, 0, 0, 0, 0, 0, 0], start_time=0)
 a = a.standard_notation()
 >>> print(a)
-[C5, D#5, G5, A#5, D#6, A#6, F5] with interval [0, 0, 0, 0, 0, 0, 0]
+chord(notes=[C5, D#5, G5, A#5, D#6, A#6, F5], interval=[0, 0, 0, 0, 0, 0, 0], start_time=0)
 ```
 
 ## 把和弦类型根据里面的速度变化重新量化音符长度和音符间隔
@@ -1479,11 +1469,11 @@ split(return_type, get_time=False, sort=False)
 # sort为True的时候，会按照起始时间的先后对实时速度变化类型或者弯音类型进行排序。
 a = chord(['A5', 'B5', 'C5', tempo(150), 'D5', pitch_bend(50), 'E5', 'F5', tempo(170)])
 >>> print(a.split(tempo))
-[tempo(bpm=150, start_time=None, channel=None, track=None), tempo(bpm=170, start_time=None, channel=None, track=None)] with interval [0, 0]
+chord(notes=[tempo(bpm=150, start_time=None, channel=None, track=None), tempo(bpm=170, start_time=None, channel=None, track=None)], interval=[0, 0], start_time=0)
 >>> print(a.split(pitch_bend))
-[pitch_bend(value=2048, start_time=None, channel=None, track=None, cents=50)] with interval [0]
+chord(notes=[pitch_bend(value=2048, start_time=None, channel=None, track=None, cents=50)], interval=[0], start_time=0)
 >>> print(a.split(note))
-[A5, B5, C5, D5, E5, F5] with interval [0, 0, 0, 0, 0, 0, 0]
+chord(notes=[A5, B5, C5, D5, E5, F5], interval=[0, 0, 0, 0, 0, 0], start_time=0)
 # 返回的和弦类型是你想要提取的乐理类型的集合，可以当做列表来使用。
 ```
 
@@ -1522,7 +1512,7 @@ chord_progression_example = chord_progression(['F', 'G', 'Am', 'Em'])
 chord_progression_example = chord_progression([('F',4), ('G',4), ('C',5), ('Am',4)])
 chord_progression_example = chord_progression([C('F')^2, C('G')^2, C('Am')^2, C('Em')^2])
 >>> print(chord_progression_example)
-[F4, C5, A5, G4, D5, B5, A4, E5, C6, E4, B4, G5] with interval [0, 0, 0.25, 0, 0, 0.25, 0, 0, 0.25, 0, 0, 0]
+chord(notes=[F4, C5, A5, G4, D5, B5, A4, E5, C6, E4, ...], interval=[0, 0, 0.25, 0, 0, 0.25, 0, 0, 0.25, 0, ...], start_time=0)
 # 如果对于每个和弦的音符排列(比如转位或者按照一定的音符排列模式演奏等等)有更高的要求，建议使用和弦类型传入，和弦类型也可以直接写旋律，
 # 如果是字符串就仅限于C函数可以解析的范围内。
 ```
@@ -1566,9 +1556,9 @@ root: C4
 ```python
 a1 = chord('C, E, G')
 >>> print(a1.sus())
-[C4, F4, G4] with interval [0, 0, 0]
+chord(notes=[C4, F4, G4], interval=[0, 0, 0], start_time=0)
 >>> print(a1.sus(2))
-[C4, D4, G4] with interval [0, 0, 0]
+chord(notes=[C4, D4, G4], interval=[0, 0, 0], start_time=0)
 # sus函数可以接收2或者4为参数，对一个和弦类型里的对于最低音的3度音进行sus操作，替换为2度音或者4度音，
 # 不只适用于三和弦，同样也适用于七和弦，九和弦，十一和弦等等更复杂的和弦
 ```
@@ -1581,10 +1571,10 @@ a1 = chord('C, E, G')
 ```python
 a1 = chord('C, E, G')
 >>> print(a1 & (3, 1/8)) # 将和弦类型a1播放3遍，每一次比开头多延后1/8个小节
-[C4, E4, G4, C4, E4, G4, C4, E4, G4] with interval [0, 0, 0.125, 0.0, 0.0, 0.125, 0.0, 0.0, 0.25]
+chord(notes=[C4, E4, G4, C4, E4, G4, C4, E4, G4], interval=[0, 0, 0.125, 0.0, 0.0, 0.125, 0.0, 0.0, 0.25], start_time=0)
 
 >>> print(a1 | (3, 1/8))  将和弦类型a1播放3遍，每一次都接在后头，但是都会先间隔1/8个小节
-[C4, E4, G4, C4, E4, G4, C4, E4, G4] with interval [0, 0, 0.375, 0, 0, 0.375, 0, 0, 0]
+chord(notes=[C4, E4, G4, C4, E4, G4, C4, E4, G4], interval=[0, 0, 0.375, 0, 0, 0.375, 0, 0, 0], start_time=0)
 ```
 
 ## 输入和弦名解析新增add和sus语法的解析
@@ -1597,16 +1587,16 @@ a1 = chord('C, E, G')
 
 ```python
 >>> print(C('C,add9'))
-[C4, E4, G4, D5] with interval [0, 0, 0, 0]
+chord(notes=[C4, E4, G4, D5], interval=[0, 0, 0, 0], start_time=0)
 
 >>> print(C('Cm7,add11'))
-[C4, D#4, G4, A#4, F5] with interval [0, 0, 0, 0, 0]
+chord(notes=[C4, D#4, G4, A#4, F5], interval=[0, 0, 0, 0, 0], start_time=0)
 
 >>> print(C(Cmaj7,sus4))
-[C4, F4, G4, B4] with interval [0, 0, 0, 0]
+chord(notes=[C4, F4, G4, B4], interval=[0, 0, 0, 0], start_time=0)
 
 >>> print(C('Bb9,sus'))
-[Bb4, D#5, F5, G#5, C6] with interval [0, 0, 0, 0, 0]
+chord(notes=[Bb4, D#5, F5, G#5, C6], interval=[0, 0, 0, 0, 0], start_time=0)
 ```
 
 ## 统一和弦类型的音符的升降号
@@ -1616,9 +1606,9 @@ a1 = chord('C, E, G')
 ```python
 a = chord('C5, D#5, F5, Ab5, E5, D5, C#5')
 >>> a.same_accidentals('#')
-[C5, D#5, F5, G#5, E5, D5, C#5] with interval [0, 0, 0, 0, 0, 0, 0]
+chord(notes=[C5, D#5, F5, G#5, E5, D5, C#5], interval=[0, 0, 0, 0, 0, 0, 0], start_time=0)
 >>> a.same_accidentals('b')
-[C5, Eb5, F5, Ab5, E5, D5, Db5] with interval [0, 0, 0, 0, 0, 0, 0]
+chord(notes=[C5, Eb5, F5, Ab5, E5, D5, Db5], interval=[0, 0, 0, 0, 0, 0, 0], start_time=0)
 ```
 
 ## 筛选出和弦类型中满足指定条件的音符
@@ -1641,12 +1631,12 @@ filter(self, cond, action=None, mode=0, action_mode=0)
 a = chord('C, E, G, B') # 初始化一个和弦
 a.set_volume([10, 20, 50, 90]) # 设置音符的音量
 >>> a.filter(lambda s: 20 <= s.volume < 80) # 筛选出和弦类型里音量在20到80之间的音符
-([E4, G4] with interval [0, 0], 0) # 返回筛选出来的音符组成的和弦类型以及第一个筛选出来的音符的开始时间
+(chord(notes=[E4, G4], interval=[0, 0], start_time=0), 0) # 返回筛选出来的音符组成的和弦类型以及第一个筛选出来的音符的开始时间
 
 # 对于音量在20到80之间的音符，音量都设置为50
 b = a.filter(lambda s: 20 <= s.volume < 80, action=lambda s: s.set_volume(50), action_mode=1)
 >>> b
-[C4, E4, G4, B4] with interval [0, 0, 0, 0] # 返回经过action函数修改音量的和弦类型
+chord(notes=[C4, E4, G4, B4], interval=[0, 0, 0, 0], start_time=0) # 返回经过action函数修改音量的和弦类型
 >>> b.get_volume() # 获得新的和弦类型的音量
 [10, 50, 50, 90] # 之间音量在20到80之间的音符的音量现在都变成了50
 ```
@@ -1667,12 +1657,12 @@ pitch_filter(self, x='A0', y='C8')
 
 a = chord('Ab0, C5, E5, G5, B5, G10') # this is a chord with 2 notes that the pitches do not belongs to A0 ~ C8
 >>> a.pitch_filter() # 使用默认音高范围A0到C8对和弦类型进行音符的筛选
-([C5, E5, G5, B5] with interval [0, 0, 0, 0], 0)
+(chord(notes=[C5, E5, G5, B5], interval=[0, 0, 0, 0], start_time=0), 0)
 # 返回筛选出来的在指定音高范围内的音符组成的和弦类型，和第一个筛选出来的音符的开始时间
 
 b = chord('Ab0, C5, E5, G5, A5, C7, G10')
 >>> b.pitch_filter('C5', 'C6') # 筛选出音高在C5到C6之间的音符
-([C5, E5, G5, A5] with interval [0, 0, 0, 0], 0)
+(chord(notes=[C5, E5, G5, A5], interval=[0, 0, 0, 0], start_time=0), 0)
 # 返回筛选出来的在指定音高范围内的音符组成的和弦类型，和第一个筛选出来的音符的开始时间
 ```
 
@@ -1696,15 +1686,15 @@ get_chord_by_interval(start,
 
 >>> get_chord_by_interval('C5', [database.major_third, database.perfect_fifth, database.major_seventh])
 # 获得起始音为C5，与C5依次形成大三度，完全五度和大七度的音组成的和弦类型
-[C5, E5, G5, B5] with interval [0, 0, 0, 0] # 获得C大七和弦
+chord(notes=[C5, E5, G5, B5], interval=[0, 0, 0, 0], start_time=0) # 获得C大七和弦
 
 >>> get_chord_by_interval('C5', [database.major_third, database.minor_third, database.major_third], cummulative=False)
 # 获得起始音为C5，相邻音程依次为大三度，小三度，大三度的音组成的和弦类型
-[C5, E5, G5, B5] with interval [0, 0, 0, 0] # 获得C大七和弦
+chord(notes=[C5, E5, G5, B5], interval=[0, 0, 0, 0], start_time=0) # 获得C大七和弦
 
 a = N('C5')
 >>> a.get_chord_by_interval([database.major_third, database.perfect_fifth, database.major_seventh]) #音符类型调用这个函数
-[C5, E5, G5, B5] with interval [0, 0, 0, 0]
+chord(notes=[C5, E5, G5, B5], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 ## 查找一个和弦类型的某度音
@@ -1720,7 +1710,7 @@ interval_note(self, interval, mode=0)
 # mode: 为0的时候，如果查找不到指定度数的音，返回None，为1的时候，会返回和弦类型的起始音加上指定度数的音符类型
 
 >>> C('Cm11') # C小十一和弦
-[C4, D#4, G4, A#4, D5, F5] with interval [0, 0, 0, 0, 0, 0]
+chord(notes=[C4, D#4, G4, A#4, D5, F5], interval=[0, 0, 0, 0, 0, 0], start_time=0)
 
 >>> C('Cm11').interval_note(3) # 查找C小十一和弦的3度音
 D#4 # 返回C小十一和弦的3度音，这里更加乐理上严谨一些的话应该是Eb4，
@@ -1747,7 +1737,7 @@ note_interval(self, current_note, mode=0)
 # mode: 为0的时候，会返回以升降号和数字表示的度数，为1的时候，会返回纯英文的音程表示
 
 >>> C('Cm11') # C小十一和弦
-[C4, D#4, G4, A#4, D5, F5] with interval [0, 0, 0, 0, 0, 0]
+chord(notes=[C4, D#4, G4, A#4, D5, F5], interval=[0, 0, 0, 0, 0, 0], start_time=0)
 
 >>> C('Cm11').note_interval('Eb4') # 确认音符Eb4是以C4为起始音的C小十一和弦原位的几度音
 'b3' # 返回的结果是3度音(b3表示小3度，或者也可以说降3度，因为没有降的3度是大3度)
@@ -1777,7 +1767,7 @@ get_voicing(self, voicing)
 
 >>> C('Cm11').get_voicing([1,5,9,3,11,7]) # C小十一和弦按照根音，5度音，9度音，3度音，11度音，7度音的顺序摆放，
 # 并且重新按照后面的音比前面的音更高的规则重新分配所有音符的八度数
-[C4, G4, D5, D#5, F5, A#5] with interval [0, 0, 0, 0, 0, 0]
+chord(notes=[C4, G4, D5, D#5, F5, A#5], interval=[0, 0, 0, 0, 0, 0], start_time=0)
 # 返回按照指定的和弦声位列表进行声部排列的C小十一和弦的voicing的和弦类型
 
 play(C('Cm11').get_voicing([1,5,9,3,11,7]) % (1, 1/8), 150) # 以快速琶音进行演奏
@@ -1805,7 +1795,7 @@ near_voicing(self, other, keep_root=True, root_lower=False)
 # 当前和弦类型的最低音会在标准的和弦类型的最低音的下方，为False的时候在上方。
 
 >>> C('F').near_voicing(C('Am'), keep_root=False) # 得到F和弦原位关于Am和弦原位的最近距离的voicing，不保持最低音
-[A4, C5, F5] with interval [0, 0, 0]
+chord(notes=[A4, C5, F5], interval=[0, 0, 0], start_time=0)
 
 # 写一段C大调的2516和弦进行的平滑声部连接
 chord1 = C('Dm7', 3).get_voicing([1, 7, 3]) % (1,[1/4,1/4,1/2])
@@ -1845,12 +1835,12 @@ arpeggio(chord_type,
 Cmaj7_arpeggio = arpeggio('Cmaj7')
 
 >>> Cmaj7_arpeggio
-[C3, E3, G3, B3, C4, E4, G4, B4, C5, E5, G5, B5, C6, E6, G6, B6] with interval [0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125]
+chord(notes=[C3, E3, G3, B3, C4, E4, G4, B4, C5, E5, ...], interval=[0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, ...], start_time=0)
 
 Cmaj7_arpeggio = arp('Cmaj7', 3, 6)
 
 >>> Cmaj7_arpeggio
-[C3, E3, G3, B3, C4, E4, G4, B4, C5, E5, G5, B5] with interval [0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125]
+chord(notes=[C3, E3, G3, B3, C4, E4, G4, B4, C5, E5, ...], interval=[0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, 0.03125, ...], start_time=0)
 ```
 
 ## 重新设定和弦类型的整体八度数
@@ -1861,12 +1851,12 @@ Cmaj7_arpeggio = arp('Cmaj7', 3, 6)
 a = C('Cmaj7', 5)
 
 >>> a
-[C5, E5, G5, B5] with interval [0, 0, 0, 0]
+chord(notes=[C5, E5, G5, B5], interval=[0, 0, 0, 0], start_time=0)
 
 b = a.reset_octave(3)
 
 >>> b
-[C3, E3, G3, B3] with interval [0, 0, 0, 0]
+chord(notes=[C3, E3, G3, B3], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 ## 与其他MIDI信息一起构建和弦类型
@@ -1901,7 +1891,7 @@ a = multi_voice(chord('C2') % (1, 1) * 2,
                 C('G') % (1/8, 1/8) * 4)
 
 >>> a
-[C2, G4, B4, D5, G4, B4, D5, G4, B4, C2, D5, G4, B4, D5] with interval [0, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.0, 0.125, 0.125, 0.125, 0.125]
+chord(notes=[C2, G4, B4, D5, G4, B4, D5, G4, B4, C2, ...], interval=[0, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.0, ...], start_time=0)
 ```
 
 ## 把一个列表中的和弦类型进行合并
@@ -1921,12 +1911,12 @@ concat(chordlist, mode='+', extra=None, start=None)
 
 chord_list = [C('C'), C('D'), C('E')]
 >>> chord_list
-[[C4, E4, G4] with interval [0, 0, 0], [D4, F#4, A4] with interval [0, 0, 0], [E4, G#4, B4] with interval [0, 0, 0]]
+[chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0), chord(notes=[D4, F#4, A4], interval=[0, 0, 0], start_time=0), chord(notes=[E4, G#4, B4], interval=[0, 0, 0], start_time=0)]
 
 combined_chord = concat(chord_list, '|')
 
 >>> combined_chord
-[C4, E4, G4, D4, F#4, A4, E4, G#4, B4] with interval [0, 0, 0.25, 0, 0, 0.25, 0, 0, 0]
+chord(notes=[C4, E4, G4, D4, F#4, A4, E4, G#4, B4], interval=[0, 0, 0.25, 0, 0, 0.25, 0, 0, 0], start_time=0)
 ```
 
 ## 把多个音符按照长度比例平均分配到指定的小节长度内
@@ -1958,7 +1948,7 @@ distribute(current_chord,
 a = distribute(C('Cmaj9') % (1/8, 1/8), 1/2)
 
 >>> a
-[C4, E4, G4, B4, D5] with interval [0.1, 0.1, 0.1, 0.1, 0.1]
+chord(notes=[C4, E4, G4, B4, D5], interval=[0.1, 0.1, 0.1, 0.1, 0.1], start_time=0)
 
 >>> a.get_duration()
 [0.1, 0.1, 0.1, 0.1, 0.1]
@@ -1967,7 +1957,7 @@ a = distribute(C('Cmaj9') % (1/8, 1/8), 1/2)
 b = distribute('C[.2;.], D[.4;.], {2}', 1/2)
 
 >>> b
-[C4, D4, C4, D4] with interval [0.16666666666666666, 0.08333333333333333, 0.16666666666666666, 0.08333333333333333]
+chord(notes=[C4, D4, C4, D4], interval=[0.16666666666666666, 0.08333333333333333, 0.16666666666666666, 0.08333333333333333], start_time=0)
 
 >>> b.get_duration()
 [0.16666666666666666, 0.08333333333333333, 0.16666666666666666, 0.08333333333333333]
@@ -1979,13 +1969,13 @@ b = distribute('C[.2;.], D[.4;.], {2}', 1/2)
 
 ```python
 >>> translate('A2[l:1; i:1; r:2], i:1, D3[l:1; i:1; r:2]')
-[A2, A2, D3, D3] with interval [1, 2, 1, 1]
+chord(notes=[A2, A2, D3, D3], interval=[1, 2, 1, 1], start_time=0)
 
 >>> translate('C5[l:.8; i:.; r:3], D5[l:.16; i:.; r:2], E5[l:.8; i:.], r:2')
-[C5, C5, C5, D5, D5, E5, C5, C5, C5, D5, D5, E5] with interval [0.125, 0.125, 0.125, 0.0625, 0.0625, 0.125, 0.125, 0.125, 0.125, 0.0625, 0.0625, 0.125]
+chord(notes=[C5, C5, C5, D5, D5, E5, C5, C5, C5, D5, ...], interval=[0.125, 0.125, 0.125, 0.0625, 0.0625, 0.125, 0.125, 0.125, 0.125, 0.0625, ...], start_time=0)
 
 >>> translate('C5, E5, G5')
-[C5, E5, G5] with interval [0, 0, 0]
+chord(notes=[C5, E5, G5], interval=[0, 0, 0], start_time=0)
 ```
 
 ## 重新设定和弦类型的整体音高
@@ -1996,13 +1986,13 @@ b = distribute('C[.2;.], D[.4;.], {2}', 1/2)
 a = C('Cmaj7')
 
 >>> a
-[C4, E4, G4, B4] with interval [0, 0, 0, 0]
+chord(notes=[C4, E4, G4, B4], interval=[0, 0, 0, 0], start_time=0)
 
 >>> a.reset_pitch('E')
-[E4, G#4, B4, D#5] with interval [0, 0, 0, 0]
+chord(notes=[E4, G#4, B4, D#5], interval=[0, 0, 0, 0], start_time=0)
 
 >>> a.reset_pitch('E3')
-[E3, G#3, B3, D#4] with interval [0, 0, 0, 0]
+chord(notes=[E3, G#3, B3, D#4], interval=[0, 0, 0, 0], start_time=0)
 ```
 
 ## 和弦类型从index列表中提取音符组成新的和弦类型
@@ -2036,12 +2026,12 @@ replace_chord(ind1, ind2=None, value=None, mode=0)
 a = chord('C5, D5, E5, F5, G5, A5, B5', interval=1/8)
 
 >>> a
-[C5, D5, E5, F5, G5, A5, B5] with interval [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]
+chord(notes=[C5, D5, E5, F5, G5, A5, B5], interval=[0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125], start_time=0)
 
 a.replace_chord(ind1=1, value=C('A', duration=2))
 
 >>> a
-[C5, A4, C#5, E5, G5, A5, B5] with interval [0.125, 0, 0, 0, 0.125, 0.125, 0.125]
+chord(notes=[C5, A4, C#5, E5, G5, A5, B5], interval=[0.125, 0, 0, 0, 0.125, 0.125, 0.125], start_time=0)
 
 >>> a.get_duration()
 [0.25, 2, 2, 2, 0.25, 0.25, 0.25]
@@ -2049,12 +2039,12 @@ a.replace_chord(ind1=1, value=C('A', duration=2))
 b = chord('C5, D5, E5, F5, G5, A5, B5', interval=1/8)
 
 >>> b
-[C5, D5, E5, F5, G5, A5, B5] with interval [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]
+chord(notes=[C5, D5, E5, F5, G5, A5, B5], interval=[0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125], start_time=0)
 
 b.replace_chord(ind1=1, value=C('A'), mode=1)
 
 >>> b
-[C5, A4, C#5, E5, G5, A5, B5] with interval [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]
+chord(notes=[C5, A4, C#5, E5, G5, A5, B5], interval=[0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125], start_time=0)
 
 >>> b.get_duration()
 [0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]

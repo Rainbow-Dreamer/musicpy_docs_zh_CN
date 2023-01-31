@@ -93,10 +93,10 @@ new_piece = piece(tracks=[C1, C2, C3, C4],
 >>> new_piece
 [piece] 
 BPM: 120
-track 1 piano | instrument: Acoustic Grand Piano | start time: 0 | [G4, D5, B5, F#5, G4, D5, B5, F#5, G4, D5, B5, F#5, G4, D5, B5, F#5] with interval [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]
-track 2 bass | instrument: Electric Bass (finger) | start time: 2 | [C2, C2, G1, G1, C2, C2, G1, G1] with interval [1, 1, 1, 1, 1, 1, 1, 1]
-track 3 harp | instrument: Orchestral Harp | start time: 2 | [F#6, G6, F#6, G6, F#6, G6, F#6, G6, F#6, G6, F#6, G6, F#6, G6, F#6, G6, A5, B5, A5, B5, A5, B5, A5, B5, A5, B5, A5, B5, A5, B5, A5, B5, F#6, G6, F#6, G6, F#6, G6, F#6, G6, F#6, G6, F#6, G6, F#6, G6, F#6, G6, A5, B5, A5, B5, A5, B5, A5, B5, A5, B5, A5, B5, A5, B5, A5, B5] with interval [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]
-track 4 drum | instrument: Synth Drum | start time: 6 | [G3, G3, G3, G3, G3, G3, G3, G3, G3, G3, G3, G3, G3, G3, G3, G3] with interval [0.375, 0.125, 0.25, 0.25, 0.375, 0.125, 0.25, 0.25, 0.375, 0.125, 0.25, 0.25, 0.375, 0.125, 0.25, 0.25]
+track 1 piano | instrument: Acoustic Grand Piano | start time: 0 | chord(notes=[G4, D5, B5, F#5, G4, D5, B5, F#5, G4, D5, ...], interval=[0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, ...], start_time=0)
+track 2 bass | instrument: Electric Bass (finger) | start time: 2 | chord(notes=[C2, C2, G1, G1, C2, C2, G1, G1], interval=[1, 1, 1, 1, 1, 1, 1, 1], start_time=0)
+track 3 harp | instrument: Orchestral Harp | start time: 2 | chord(notes=[F#6, G6, F#6, G6, F#6, G6, F#6, G6, F#6, G6, ...], interval=[0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, ...], start_time=0)
+track 4 drum | instrument: Synth Drum | start time: 6 | chord(notes=[G3, G3, G3, G3, G3, G3, G3, G3, G3, G3, ...], interval=[0.375, 0.125, 0.25, 0.25, 0.375, 0.125, 0.25, 0.25, 0.375, 0.125, ...], start_time=0)
 ```
 
 其中如果有鼓点的轨道，可以让对应channel为9，这样乐器就可以选择General Midi中专门的鼓的类型了，比如Standard, Room, Electronic等等。
@@ -196,11 +196,11 @@ b = a * n
 >>> a[0]
 [track] 
 BPM: 150
-channel 0 piano | instrument: Acoustic Grand Piano | start time: 0 | [C4, E4, G4, B4] with interval [0, 0, 0, 0]
+channel 0 piano | instrument: Acoustic Grand Piano | start time: 0 | chord(notes=[C4, E4, G4, B4], interval=[0, 0, 0, 0], start_time=0)
 
 # 使用a(n)的语法可以得到第n条音轨的和弦类型
 >>> a(0)
-[C4, E4, G4, B4] with interval [0, 0, 0, 0]
+chord(notes=[C4, E4, G4, B4], interval=[0, 0, 0, 0], start_time=0)
 
 # 升高/降低整首曲子n个半音，同样也是与音符类型，和弦类型相同的语法，可以使用up/down函数或者+/-的进阶语法
 b = a.up()
@@ -364,15 +364,15 @@ piece1 = P([C('C'), C('D')], [1, 49])
 >>> piece1
 [piece] 
 BPM: 120
-track 1 | instrument: Acoustic Grand Piano | start time: 0 | [C4, E4, G4] with interval [0, 0, 0]
-track 2 | instrument: String Ensemble 1 | start time: 0 | [D4, F#4, A4] with interval [0, 0, 0]
+track 1 | instrument: Acoustic Grand Piano | start time: 0 | chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
+track 2 | instrument: String Ensemble 1 | start time: 0 | chord(notes=[D4, F#4, A4], interval=[0, 0, 0], start_time=0)
 
 piece1.change_instruments([2, 47]) # 改变整体的音轨的乐器
 >>> piece1
 [piece] 
 BPM: 120
-track 1 | instrument: Bright Acoustic Piano | start time: 0 | [C4, E4, G4] with interval [0, 0, 0]
-track 2 | instrument: Orchestral Harp | start time: 0 | [D4, F#4, A4] with interval [0, 0, 0]
+track 1 | instrument: Bright Acoustic Piano | start time: 0 | chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
+track 2 | instrument: Orchestral Harp | start time: 0 | chord(notes=[D4, F#4, A4], interval=[0, 0, 0], start_time=0)
 
 # 或者也可以写
 piece1.change_instruments(['Bright Acoustic Piano', 'Orchestral Harp'])
@@ -381,8 +381,8 @@ piece1.change_instruments(5, 0) # 把第1条音轨的乐器改变为MIDI编号�
 >>> piece1
 [piece] 
 BPM: 120
-track 1 | instrument: Electric Piano 1 | start time: 0 | [C4, E4, G4] with interval [0, 0, 0]
-track 2 | instrument: Orchestral Harp | start time: 0 | [D4, F#4, A4] with interval [0, 0, 0]
+track 1 | instrument: Electric Piano 1 | start time: 0 | chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
+track 2 | instrument: Orchestral Harp | start time: 0 | chord(notes=[D4, F#4, A4], interval=[0, 0, 0], start_time=0)
 
 # 或者也可以写
 piece1.change_instruments('Electric Piano 1', 0)
@@ -525,11 +525,11 @@ a = P([C('C'), drum('0,1,2,1').notes], channels=[0, 9])
 >>> a
 [piece] 
 BPM: 120
-track 1 channel 0 | instrument: Acoustic Grand Piano | start time: 0 | [C4, E4, G4] with interval [0, 0, 0]
-track 2 channel 9 | instrument: Acoustic Grand Piano | start time: 0 | [C2, F#2, E2, F#2] with interval [0.125, 0.125, 0.125, 0.125]
+track 1 channel 0 | instrument: Acoustic Grand Piano | start time: 0 | chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
+track 2 channel 9 | instrument: Acoustic Grand Piano | start time: 0 | chord(notes=[C2, F#2, E2, F#2], interval=[0.125, 0.125, 0.125, 0.125], start_time=0)
 >>> a.get_off_drums()
 >>> a
 [piece] 
 BPM: 120
-track 1 channel 0 | instrument: Acoustic Grand Piano | start time: 0 | [C4, E4, G4] with interval [0, 0, 0]
+track 1 channel 0 | instrument: Acoustic Grand Piano | start time: 0 | chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
 ```

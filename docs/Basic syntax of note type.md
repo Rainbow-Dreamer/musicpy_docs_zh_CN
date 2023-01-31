@@ -153,7 +153,7 @@ A = a + b + c + d
 ```python
 A3 = N('A3')
 >>> print(A3('sus'))
-[A3, D4, E4] with interval [0, 0, 0]
+chord(notes=[A3, D4, E4], interval=[0, 0, 0], start_time=0)
 # 也同样支持转位，复合和弦等C函数支持解析的和弦名称的语法
 ```
 
@@ -164,7 +164,7 @@ A3 = N('A3')
 ```python
 a = N('C5')
 >>> a.with_interval(database.major_seventh) # 形成一个表示C5的大七度的音程的和弦
-[C5, B5] with interval [0, 0]
+chord(notes=[C5, B5], interval=[0, 0], start_time=0)
 ```
 
 ## 附点音符的使用
