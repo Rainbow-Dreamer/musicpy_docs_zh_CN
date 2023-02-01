@@ -1,16 +1,16 @@
-# Musicpy取样机模块作曲代码示例
+# Musicpy宿主模块作曲代码示例
 
-使用musicpy的取样机模块，你可以制作更加真实的音乐，也可以不仅限于MIDI文件，可以读取和输出mp3, ogg, wav等音频文件，加载音频采样，SoundFont音源文件等作为取样机的音轨上的音源。这个章节是一些使用musicpy的取样机模块作曲的代码示例。
+使用musicpy的宿主模块，你可以制作更加真实的音乐，也可以不仅限于MIDI文件，可以读取和输出mp3, ogg, wav等音频文件，加载音频采样，SoundFont音源文件等作为宿主的音轨上的音源。这个章节是一些使用musicpy的宿主模块作曲的代码示例。
 
 **请注意，这些示例里加载的音源文件，有些是SoundFont文件，因为可能的版权问题，在这里不提供下载，可以到网上按照名字找这些SoundFont文件。在每个示例的最后都会提供这些代码示例生成的音乐文件的试听链接。**
 
 ## 1. 一小段电子舞曲
 ```python
-from musicpy.sampler import *
+from musicpy.daw import *
 
-current_sampler = sampler(3)
-current_sampler.load(0, 'EMU II ACOUSTIC GUITAR.sf2')
-current_sampler.load(1, 'Arachno.sf2')
+current_daw = daw(3)
+current_daw.load(0, 'EMU II ACOUSTIC GUITAR.sf2')
+current_daw.load(1, 'Arachno.sf2')
 
 bass1 = chord('A1') % (1,) * 4
 bass2 = (chord('A1, A2') % (1/16, 1/8) * 4 |
@@ -44,20 +44,20 @@ synth_pad_part = (synth_pad1 * 4) + 3
 result = P(tracks=[bass_part, guitar_part, drum_part, synth_pad_part],
            instruments=[34, 3, 1, 51],
            channels=[0, 1, 9, 2],
-           sampler_channels=[1, 0, 1, 1],
+           daw_channels=[1, 0, 1, 1],
            start_times=[0, 0, 4, 8],
            bpm=165)
 result.change_instruments([26, 128], 2)
-current_sampler.play(result)
+current_daw.play(result)
 ```
 [点击这里试听](https://drive.google.com/file/d/1j66Ux0KYMiOW6yHGBidIhwF9zcbDG5W0/view?usp=sharing)
 
 ## 2. 使用musicpy还原一小段Iron Maiden的The Trooper
 ```python
-from musicpy.sampler import *
+from musicpy.daw import *
 
-current_sampler = sampler(3)
-current_sampler.load(0, 'Arachno.sf2')
+current_daw = daw(3)
+current_daw.load(0, 'Arachno.sf2')
 
 guitar11 = translate('D, G, D, a:1/8;., E[l:1/4; i:.], G[l:1/8; i:.] | F#, G, F#, G, a:1/16;., n:1, B[l:1/8; i:.], G[l:1/8; i:.], u:1, G[l:1/8; i:.], E[l:1/8; i:.], E[l:1/4; i:.]') * 2
 
@@ -88,20 +88,20 @@ guitar2_part.set_volume(80)
 result = P(tracks=[guitar1_part, bass_part, drum_part, guitar2_part],
            instruments=[31, 34, 1, 31],
            channels=[0, 1, 9, 2],
-           sampler_channels=[0, 0, 0, 0],
+           daw_channels=[0, 0, 0, 0],
            start_times=[0, 0, 3/8, 0],
            bpm=165)
 result.change_instruments([1, 128], 2)
-current_sampler.play(result)
+current_daw.play(result)
 ```
 [点击这里试听](https://drive.google.com/file/d/1lspnOVY4GGQGQTkV8j-yOA581hESkD8-/view?usp=sharing)
 
 ## 3. 使用musicpy还原一小段Rolling Star - Yui
 ```python
-from musicpy.sampler import *
+from musicpy.daw import *
 
-current_sampler = sampler(3)
-current_sampler.load(0, 'Arachno.sf2')
+current_daw = daw(3)
+current_daw.load(0, 'Arachno.sf2')
 
 bass11 = translate('B1[l:.8; i:.; r:8], D2[l:.8; i:.; r:8], A1[l:.8; i:.; r:8], G1[l:.8; i:.; r:8]')
 bass12 = translate('G1[l:.8; i:.; r:6], A1[l:.8; i:.; r:2]')
@@ -130,29 +130,29 @@ synth1 = synth11
 result = P(tracks=[bass1, guitar1, rhythm_guitar, drum1, synth1],
            instruments=[34, 31, 28, 1, 91],
            channels=[0, 1, 2, 9, 3],
-           sampler_channels=[0, 0, 0, 0, 0],
+           daw_channels=[0, 0, 0, 0, 0],
            start_times=[0, 0, 0, 0, 4],
            bpm=165)
 
 result.change_instruments([1,128], 3)
 
-current_sampler.play(result)
+current_daw.play(result)
 ```
 [点击这里试听](https://drive.google.com/file/d/1vWXdNa232J500rlYxlziKwMA75x5SElS/view?usp=sharing)
 
 ## 4. 有点神秘空灵的电钢琴配乐
 ```python
-from musicpy.sampler import *
+from musicpy.daw import *
 
-current_sampler = sampler(3)
-current_sampler.load(0, 'Arachno.sf2')
-current_sampler.modules(0) < 'Electric Piano'
+current_daw = daw(3)
+current_daw.load(0, 'Arachno.sf2')
+current_daw.modules(0) < 'Electric Piano'
 
 part1 = get_chord('bb2', 'm11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]
 part2 = get_chord('g2', 'M9#11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]
 part3 = get_chord('gb2', '13sus')%(1/2,1/8)@[1,3,4,5,2.1,6,4.1,5.1]
 result = (part1 * 4 | (part1-2) * 2 | part2 | part3) * 2
 
-current_sampler.play(result, bpm=100)
+current_daw.play(result, bpm=100)
 ```
 [点击这里试听](https://drive.google.com/file/d/14hp-y_n-GqlI6ZGSPDBRL1Vt9cxLjpuv/view?usp=sharing)

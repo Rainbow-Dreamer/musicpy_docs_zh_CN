@@ -25,7 +25,7 @@ track(content,
       volume=None,
       bpm=120,
       name=None,
-      sampler_channel=None)
+      daw_channel=None)
 ```
 
 - content: 和弦类型，音轨类型的内容
@@ -37,7 +37,7 @@ track(content,
 - volume: 音轨的音量
 - bpm: 曲速 (BPM)
 - name: 音轨属于的乐曲的名字
-- sampler_channel: 在sampler模块中音轨对应的取样机的通道编号
+- daw_channel: 在daw模块中音轨对应的宿主的通道编号
 
 
 piece类型的`__getitem__`内置函数(也就是`a[index]`的语法,a为乐曲类型，index为音轨的索引，以0作为第1条音轨)的返回值现在改为音轨类型(track类型)，有着完整的和piece类型一样的信息，并且可以进行提取类型信息的操作。  

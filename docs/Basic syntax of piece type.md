@@ -51,7 +51,7 @@ piece(tracks,
       pan=None,
       volume=None,
       other_messages=[],
-      sampler_channels=None)
+      daw_channels=None)
 ```
 
 * tracks: 每个音轨的和弦类型的列表
@@ -74,7 +74,7 @@ piece(tracks,
 
 * other_messages: 乐曲的其他的MIDI信息的列表
 
-* sampler_channels: 在sampler模块里用来指明每个音轨对应的sampler的通道编号
+* daw_channels: 在daw模块里用来指明每个音轨对应的daw的通道编号
 
 按照我们现在的要求，可以这样构建一个乐曲类型：
 

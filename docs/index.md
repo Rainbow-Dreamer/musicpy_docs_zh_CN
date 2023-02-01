@@ -83,8 +83,8 @@ play(result)
 
 ## Musicpy取样机模块
 
-* [Musicpy取样机模块](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20sampler%20module/) 
-* [Musicpy取样机模块作曲代码示例](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20sampler%20module%20composition%20code%20examples/)
+* [Musicpy取样机模块](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20daw%20module/) 
+* [Musicpy取样机模块作曲代码示例](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20daw%20module%20composition%20code%20examples/)
 
 ## 算法
 
