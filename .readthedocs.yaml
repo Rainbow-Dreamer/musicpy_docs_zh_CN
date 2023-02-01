@@ -25,9 +25,9 @@ nav:
       - 作曲代码示例（第一期）: Musicpy composition code examples part 1.md
       - 作曲代码示例（第二期）: Musicpy composition code examples part 2.md
       - 作曲代码示例（第三期）: Musicpy composition code examples part 3.md
-    - 取样机模块:
-      - Musicpy取样机模块: Musicpy sampler module.md
-      - Musicpy取样机模块作曲代码示例: Musicpy sampler module composition code examples.md
+    - 宿主模块:
+      - Musicpy宿主模块: Musicpy daw module.md
+      - Musicpy宿主模块作曲代码示例: Musicpy daw module composition code examples.md
     - 算法:
       - Musicpy algorithms 模块介绍: Introduction of musicpy algorithms module.md
       - 从一首完整的钢琴曲里提取主旋律以及所有和弦的算法: The algorithm to split the main melody and chords from a piece of music.md

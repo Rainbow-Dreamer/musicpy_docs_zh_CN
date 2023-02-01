@@ -81,10 +81,10 @@ play(result)
 * [Musicpy语言作曲代码示例（第二期）](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20composition%20code%20examples%20part%202/)
 * [Musicpy语言作曲代码示例（第三期）](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20composition%20code%20examples%20part%203/)
 
-## Musicpy取样机模块
+## Musicpy宿主模块
 
-* [Musicpy取样机模块](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20daw%20module/) 
-* [Musicpy取样机模块作曲代码示例](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20daw%20module%20composition%20code%20examples/)
+* [Musicpy宿主模块](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20daw%20module/) 
+* [Musicpy宿主模块作曲代码示例](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20daw%20module%20composition%20code%20examples/)
 
 ## 算法
 
