@@ -731,7 +731,7 @@ Musicpy daw是我的其他项目之一，它是一个完整的音乐宿主和tra
 你可以使用musicpy daw加载音源，用musicpy制作音乐，用各种音频文件格式导出音频文件。
 Musicpy daw有GUI，所以你可以用musicpy和一些GUI的帮助来制作音乐。这个项目在github上（点击[这里](https://github.com/Rainbow-Dreamer/musicpy-daw)），如果你喜欢它，你可以加个星或fork。
 
-事实上，musicpy宿主模块是musicpy中easy宿主的移植。我首先完成了musicpy daw的开发，然后将musicpy daw的功能移植到musicpy中，
+事实上，musicpy宿主模块是musicpy中musicpy daw的移植。我首先完成了musicpy daw的开发，然后将musicpy daw的功能移植到musicpy中，
 这就形成了musicpy中的一个新模块，叫做musicpy daw。所以musicpy daw模块本质上是musicpy daw的非GUI版本。
 我几乎把musicpy daw的所有功能都移植到musicpy daw模块中,所以musicpy daw和musicpy daw模块有着几乎相同的功能。
 正如MDI的名字一样，这个音源的格式来自于musicpy daw。
