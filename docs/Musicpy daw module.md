@@ -496,9 +496,7 @@ new_song.export(set_effect(a, adsr(500, 1000, 20, 2000)), 1)
 
 
 ### 从musicpy数据结构中获取宿主生成的音频
-你可以使用`audio`函数从宿主对象中获得一个AudioSegment实例。AudioSegment实例本身可以被导出 
-并做许多其他的音频编辑操作，关于更多的细节，你可以参考pydub的API文档。AudioSegment实例也可以 
-放入musicpy的数据结构中，如和弦类型和乐曲类型，并传递给宿主来播放或导出。
+你可以使用`audio`函数从宿主对象中获得一个AudioSegment实例。AudioSegment实例本身可以被导出并做许多其他的音频编辑操作，关于更多的细节，你可以参考pydub的API文档。AudioSegment实例也可以放入musicpy的数据结构中，如和弦类型和乐曲类型，并传递给宿主来播放或导出。
 ```python
 audio(obj, daw, channel_num=0, bpm=None)
 
@@ -533,8 +531,8 @@ audio_chord([audio(C('Cmaj7') + i, new_song) for i in range(10)], 1/8, 1, 50)
 ### 将音频文件从路径加载到音频对象中
 将音源加载到宿主对象中，可能方便对整个musicpy数据结构进行播放或导出操作。
 但有时我们需要对更多的单个音频文件逐一进行操作。你可以使用`sound`类从文件路径加载一个音频文件 
-并可以在和弦类型或乐曲类型中使用它的`sounds`属性（它是一个AudioSegment对象）作为一个音频剪辑。一个AudioSegment对象 
-可以被用作和弦类型中的一个音符，由于乐曲类型是建立在和弦类型之上的，AudioSegment对象也可以在乐曲类型中使用。
+并可以在和弦类型或乐曲类型中使用它的`sounds`属性（它是一个AudioSegment对象）作为一个音频剪辑。一个AudioSegment对象可以被用作和弦类型中的一个音符，由于乐曲类型是建立在和弦类型之上的，AudioSegment对象也可以在乐曲类型中使用。
+
 ```python
 sound(path, format=None)
 
@@ -619,7 +617,9 @@ get_wave(C('C') % (1, 1/8), triangle, volume=20) # 产生一个C大三和弦的�
 
 ### 生成更加一般形式的波形
 你可以使用`pulse`函数来生成更加一般形式的波形，你可以指定波形的占空比 (duty cycle)。  
+
 实际上这仍然只限于脉冲波（包括方波），但你可以从这个函数中获得更多的新音色。
+
 ```python
 pulse(freq=440, duty_cycle=0.5, duration=1000, volume=0)
 
