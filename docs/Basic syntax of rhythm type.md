@@ -205,7 +205,8 @@ analyze_rhythm(current_chord,
                total_length=None,
                remove_empty_beats=False,
                unit=None,
-               find_unit_ignore_duration=False)
+               find_unit_ignore_duration=False,
+               merge_continue=True)
 ```
 
 * current_chord: 一个和弦实例
@@ -214,6 +215,7 @@ analyze_rhythm(current_chord,
 * remove_empty_beats: 删除持续时间为0的节拍
 * unit: 你可以手动提供一个以小节为单位的单位
 * find_unit_ignore_duration: 只从和弦的间隔中寻找单位
+* merge_continue：将连续的continue符号作为额外的持续时间合并到它们之前的节拍
 
 ```python
 chord1 = get_chords_from_rhythm(N('C5'), rhythm('b - b. b. b b -', 1))
@@ -222,7 +224,7 @@ chord(notes=[C5, C5, C5, C5, C5], interval=[0.25, 0.1875, 0.1875, 0.125, 0.25], 
 
 >>> analyze_rhythm(chord1)
 [rhythm]
-rhythm: beat(1/8), continue(1/8), beat(1/8.), beat(1/8.), beat(1/8), beat(1/8), continue(1/8)
+rhythm: beat(1/4), beat(1/8.), beat(1/8.), beat(1/8), beat(1/4)
 total bar length: 1
 time signature: 4 / 4
 ```
