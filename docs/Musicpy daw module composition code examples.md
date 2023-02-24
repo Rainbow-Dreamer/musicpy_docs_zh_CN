@@ -146,7 +146,7 @@ from musicpy.daw import *
 
 current_daw = daw(3)
 current_daw.load(0, 'Arachno.sf2')
-current_daw.modules(0) < 'Electric Piano'
+current_daw.instruments(0) < 'Electric Piano'
 
 part1 = get_chord('bb2', 'm11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]
 part2 = get_chord('g2', 'M9#11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]

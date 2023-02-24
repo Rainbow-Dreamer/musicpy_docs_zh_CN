@@ -61,7 +61,7 @@ Musicpy宿主目前可以加载的音源格式有: SoundFont音源文件(.sf2, .
 ### SoundFont音源文件
 SoundFont是一种非常流行的音源文件格式，你可以加载任何的SoundFont音源文件到musicpy的宿主中，支持.sf2, .sf3, .dls。
 
-这个宿主模块自带[sf2_loader](https://github.com/Rainbow-Dreamer/sf2_loader)，这是我的另一个项目，使用教程可以看这个项目的readme，你可以使用sf2_loader的语法来切换加载的SoundFont的当前的乐器，单独播放一段musicpy代码等等。你可以通过`current_daw.modules(i)`来得到第i个通道上加载的音源对象(从0开始)，(current_daw是你当前的宿主的变量名) 如果第i个通道上加载的是SoundFont文件，那么将会返回一个sf2_loader对象。
+这个宿主模块自带[sf2_loader](https://github.com/Rainbow-Dreamer/sf2_loader)，这是我的另一个项目，使用教程可以看这个项目的readme，你可以使用sf2_loader的语法来切换加载的SoundFont的当前的乐器，单独播放一段musicpy代码等等。你可以通过`current_daw.instruments(i)`来得到第i个通道上加载的音源对象(从0开始)，(current_daw是你当前的宿主的变量名) 如果第i个通道上加载的是SoundFont文件，那么将会返回一个sf2_loader对象。
 
 ### 音频文件
 Musicpy宿主可以加载一个文件夹的音频文件作为每个通道的音源，音频文件的格式可以是混合的（例如，文件夹可以包含wav、mp3、ogg等文件的混合物）。强烈建议将每个音频文件命名为一个音高，例如，`C5.wav`，这是一个带有八度数的音符名称。如果音符名中含有降号，建议改成带有升号的同等音名（在十二音平均律中），例如，如果是`Ab5.wav`，改成`G#5.wav`。
@@ -73,7 +73,7 @@ Musicpy宿主可以加载一个文件夹的音频文件作为每个通道的音�
 
 你可以使用`make_mdi`函数来轻松制作mdi文件。
 ```python
-make_mdi(path_of_sound_modules_folder, name_of_sound_modules_you_want_to_have)
+make_mdi(path_of_instruments_folder, name_of_instruments_you_want_to_have)
 ```
 一个mdi文件将被生成在当前工作目录下。
 
@@ -83,7 +83,7 @@ make_mdi(path_of_sound_modules_folder, name_of_sound_modules_you_want_to_have)
 
 你可以为宿主对象中的每个通道加载一个音源。
 ```python
-new_song.load(channel_number, path_of_sound_modules) # channel number从0开始
+new_song.load(channel_number, path_of_instruments) # channel number从0开始
 
 new_song.load(0, 'piano') #加载一个名为'piano'的其中有音频文件的文件夹作为第一个通道的音源
 
@@ -228,11 +228,11 @@ new_song.channel_dict[2]['F#2'] = 'CH1'
 你可以通过2种方式改变每个通道的音源。
 ```python
 # 使用新的路径为通道加载新的音源
-new_song.load(0, new_path_of_sound_modules)
+new_song.load(0, new_path_of_instruments)
 
-# 或者在宿主对象的"channel_sound_modules_name"属性中修改某些通道的音源的路径
+# 或者在宿主对象的"channel_instrument_names"属性中修改某些通道的音源的路径
 # 然后为修改了音源路径的通道重新加载
-new_song.channel_sound_modules_name[0] = new_path_of_sound_modules
+new_song.channel_instrument_names[0] = new_path_of_instruments
 new_song.reload_channel_sounds(0)
 ```
 
