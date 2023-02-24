@@ -47,7 +47,6 @@ result = P(tracks=[bass_part, guitar_part, drum_part, synth_pad_part],
            daw_channels=[1, 0, 1, 1],
            start_times=[0, 0, 4, 8],
            bpm=165)
-result.change_instruments([26, 128], 2)
 current_daw.play(result)
 ```
 [点击这里试听](https://drive.google.com/file/d/1j66Ux0KYMiOW6yHGBidIhwF9zcbDG5W0/view?usp=sharing)
@@ -91,7 +90,6 @@ result = P(tracks=[guitar1_part, bass_part, drum_part, guitar2_part],
            daw_channels=[0, 0, 0, 0],
            start_times=[0, 0, 3/8, 0],
            bpm=165)
-result.change_instruments([1, 128], 2)
 current_daw.play(result)
 ```
 [点击这里试听](https://drive.google.com/file/d/1lspnOVY4GGQGQTkV8j-yOA581hESkD8-/view?usp=sharing)
@@ -133,8 +131,6 @@ result = P(tracks=[bass1, guitar1, rhythm_guitar, drum1, synth1],
            daw_channels=[0, 0, 0, 0, 0],
            start_times=[0, 0, 0, 0, 4],
            bpm=165)
-
-result.change_instruments([1,128], 3)
 
 current_daw.play(result)
 ```
