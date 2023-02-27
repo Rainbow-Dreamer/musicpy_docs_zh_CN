@@ -24,7 +24,7 @@
 
 ## 导入前的准备工作
 
-首先，打开cmd/terminal，运行`pip install sf2_loader`来安装运行musicpy daw所有需要的python模块和包。如果你使用的是Linux或者macOS，依赖库sf2_loader有一些必须的配置步骤，详情请看[这里](https://github.com/Rainbow-Dreamer/sf2_loader#installation)。
+首先，打开cmd/terminal，运行`pip install sf2_loader pedalboard scipy numpy`来安装运行musicpy daw所有需要的python模块和包。如果你使用的是Linux或者macOS，依赖库sf2_loader有一些必须的配置步骤，详情请看[这里](https://github.com/Rainbow-Dreamer/sf2_loader#installation)。
 
 接下来，请在[Release](https://github.com/Rainbow-Dreamer/musicpy/releases/latest)中下载`ffmpeg.zip`，从文件中提取ffmpeg文件夹，然后把文件夹放到`C:`，如果你是在Windows上，或者在macOS/Linux上的同等根路径。
 
@@ -87,17 +87,19 @@ new_song.load(channel_number, path_of_instruments) # channel number从0开始
 
 new_song.load(0, 'piano') #加载一个名为'piano'的其中有音频文件的文件夹作为第一个通道的音源
 
-new_song.load(0, 'test.sf2') # 加载一个名为'test.sf2'的sondfont音源文件作为第一个通道的音源
+new_song.load(0, 'test.sf2') # 加载一个名为'test.sf2'的soundfont音源文件作为第一个通道的音源
 
-new_song.load(0, mdi='piano.mdi') # 载入一个mdi文件作为第一个通道的音源
+new_song.load(0, 'piano.mdi') # 载入一个mdi文件作为第一个通道的音源
 ```
 
 ## 播放和导出音频文件
 
-你可以使用宿主对象的`export`功能将musicpy数据结构转换为音频文件，或者使用加载的音源播放
-使用宿主对象的`play`功能来播放。 
+你可以使用宿主对象的`export`功能将musicpy数据结构转换为音频文件，或者使用加载的音源播放使用宿主对象的`play`功能来播放。 
+
 支持导出或播放的musicpy数据结构包括音符、和弦、乐曲和轨道。 
+
 如果输入的不是乐曲类型，你还可以指定使用哪个通道来播放或导出。如果输入的是乐曲类型，你可以用乐曲类型的`daw_channels`属性来指定每个音轨使用哪个通道。
+
 ```python
 play(current_chord,
      channel_num=0,
@@ -642,7 +644,7 @@ from pydub.generators import SignalGenerator
 
 在musicpy宿主模块中写有一个音高变换器，用于改变音频片段的音高。
 
-**请注意: 使用这部分的功能需要安装一些额外的python库, 你可以在cmd/terminal里运行`pip install librosa soundfile numpy==1.20.3 numba==0.48`来进行安装。**
+**请注意: 使用这部分的功能需要安装一些额外的python库, 你可以在cmd/terminal里运行`pip install librosa soundfile`来进行安装。**
 
 你可以通过半音或更多的微调单位来改变音频片段的音高或降低。
 
@@ -757,7 +759,7 @@ F#2,CH1
 ```
 然后使用
 ```python
-new_song.load(2, mdi='drum.mdi')
+new_song.load(2, 'drum.mdi')
 ```
 来加载鼓的音源 (如果鼓的MDI文件的名称是drum.mdi)
 
