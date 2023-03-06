@@ -25,11 +25,11 @@ a = note('D', 6)
 ```
 
 a为音符D6。
-note的其他参数还有duration（音符长度，以小节为单位），volume（音符力度，对应MIDI的0~127,也就是0到127之间的任意整数(包括0和127)）
+note的其他参数还有duration（音符长度，以小节为单位），volume（音符力度，对应MIDI的0~127,也就是0到127之间的任意整数(包括0和127)），channel（MIDI通道编号）
 比如
 
 ```python
-a = note('C', 5, 0.5, 100)
+a = note(name='C', num=5, duration=0.5, volume=100)
 ```
 
 表示a为音符C5，音符长度为0.5个小节，音符力度为100。
