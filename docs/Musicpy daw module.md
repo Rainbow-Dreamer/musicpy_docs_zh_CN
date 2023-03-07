@@ -384,9 +384,9 @@ new_song.clear_all_channels()
 
 ### 在调音台的角度上进行混音
 
-每个daw对象都有一个内置的调音台，你可以在主控和每个通道上添加效果。
+每个daw对象都有一个内置的调音台，你可以在主控和每个通道上添加效果器。
 
-daw对象的`master_effects`属性是一个列表，可以使用`Synth`数据结构作为效果插件。daw对象的`channel_effects`属性是一个列表，可以把`Synth`数据结构作为每个通道的效果插件。daw对象的每个通道都有一个列表来存储效果插件。
+daw对象的`master_effects`属性是一个列表，可以使用`Synth`数据结构作为效果器插件。daw对象的`channel_effects`属性是一个列表的列表，可以把`Synth`数据结构作为每个通道的效果器插件。daw对象的每个通道都有一个列表来存储效果器插件。
 
 你可以通过`load_effect`方法从python脚本或VST3插件加载效果到主控或通道，当你加载VST3插件时，它将被转换为`Synth`数据结构以便更方便的处理。
 
@@ -395,18 +395,18 @@ load_effect(channel_num, file_path)
 
 # channel_num: 当它是'master'时，将效果加载到master，当它是一个整数时，将效果按索引加载到相应的通道（基于0）。
 
-# file_path: 效果插件的文件路径，可以是一个python脚本文件或VST3插件
+# file_path: 效果器插件的文件路径，可以是一个python脚本文件或VST3插件
 ```
 
-你也可以使用全局函数`load_effect`来从文件路径加载一个效果插件作为`Synth`实例。
+你也可以使用全局函数`load_effect`来从文件路径加载一个效果器插件作为`Synth`实例。
 
-对于`Synth`实例，你可以将`enabled`属性设置为`False`，以便在播放或导出时禁用该效果。
+对于`Synth`实例，你可以将`enabled`属性设置为`False`，以便在播放或导出时禁用该效果器。
 
-你可以通过`master_effects`和`channel_effects`属性直接添加、删除和替换效果，并通过修改`Synth`实例的`effect_parameters`字典来修改效果参数。
+你可以通过`master_effects`和`channel_effects`属性直接添加、删除和替换效果器，并通过修改`Synth`实例的`effect_parameters`字典来修改效果器参数。
 
-如果你加载一个VST3插件作为效果，你可以从`Synth`实例的`vst`属性得到`VST3Plugin`实例。
+如果你加载一个VST3插件作为效果器，你可以从`Synth`实例的`vst`属性得到`VST3Plugin`实例。
 
-P.S. 目前pedalboard库只支持加载和使用VST3效果插件，开发人员仍在努力为项目提供MIDI和VSTi插件支持。如果pedalboard将来开始支持VST乐器，我将把加载和使用VST乐器的功能整合到daw模块中。
+P.S. 目前pedalboard库只支持加载和使用VST3效果器插件，开发人员仍在努力为项目提供MIDI和VSTi插件支持。如果pedalboard将来开始支持VST乐器，我将把加载和使用VST乐器的功能整合到daw模块中。
 
 
 
