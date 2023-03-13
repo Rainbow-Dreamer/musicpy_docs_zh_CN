@@ -12,6 +12,8 @@
 你可以使用tempo类型（速度类型）插入到一个和弦类型中，可以设定tempo类型插入的具体位置，  
 也可以直接按照插入的位置作为速度变化的位置。插入实时速度变化可以让你的曲子的速度进行动态的变化。
 
+
+
 ### tempo类型的构成
 ```python
 tempo(bpm, start_time=None, channel=None, track=None)
@@ -21,6 +23,8 @@ tempo(bpm, start_time=None, channel=None, track=None)
 - channel: MIDI通道编号
 - track: MIDI音轨编号
 
+
+
 ### tempo类型插入到和弦类型中
 只需要把tempo类型当做一个音符类型插入到和弦类型中就行了。
 ```python
@@ -29,12 +33,16 @@ play(a, 80)
 # 和弦类型a从开始到E5会以80BPM的速度演奏，之后会以150BPM的速度演奏
 ```
 
+
+
 ### 设定start_time可以选择在哪里开始变化速度
 ```python
 a = chord(['C5', 'D5', 'E5', 'F5', 'G5', 'A5', 'B5', tempo(150, 0.5)]) % (1/8,1/8)
 play(a, 80)
 # 和弦类型a从开始到第0.5小节会以80BPM的速度演奏，之后会以150BPM的速度演奏(以第0小节作为开头)
 ```
+
+
 
 ### 写在一个字符串里的tempo类型构建的语法
 ```python

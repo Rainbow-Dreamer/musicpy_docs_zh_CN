@@ -1,5 +1,7 @@
 # Musicpy语言作曲代码示例（第二期）
 
+
+
 ## 1. 非功能和声游戏bgm（正常速度，165BPM）
 ```python
 a = C('Cm7',4,1,1/8) @ [1,3,4,2.1,4.1] | 3/8
@@ -8,6 +10,8 @@ bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') * 4) % (1/8, 1/8)
 bass += (bass - 3)
 play(P([piano, bass], [1, 34], 165, [0, 0]) * 2)
 ```
+
+
 
 ## 2. 非功能和声游戏bgm（speedcore，500BPM）
 ```python
@@ -20,6 +24,8 @@ drum = concat([chord(random.choice(['D2','E2','G2'])) for i in range(64)]) % (1/
 play(P([piano, bass, drum], [1, 34, 1], 500, [0, 0, 0], channels=[1,2,9]) * 2)
 ```
 
+
+
 ## 3. 非功能和声游戏bgm（doom metal，25BPM）
 ```python
 a = C('Cm9',2,1/4,1/8) @ [1,3,5,2.1,4.1] | 3/8
@@ -30,6 +36,8 @@ import random
 drum = concat([chord(random.choice(['D2','E2','G2'])) for i in range(64)]) % (1/8, 1/8)
 play(P([piano, bass, drum], [31, 34, 1], 25, [0, 0, 0], channels=[1,2,9]) * 8)
 ```
+
+
 
 ## 4. 恐怖氛围配乐
 ```python
@@ -42,11 +50,15 @@ string.set_volume(60)
 play(P([piano, bass, string * 4], [9, 34, 49], 80, [0, 0, 0]))
 ```
 
+
+
 ## 5. 吉他分解和弦演奏 (nylon string)
 ```python
 guitar = C('CM7',4, 1)^2 | C('G7sus', 3, 1)^2 | C('A7sus', 3, 1)^2 | C('FM7', 3, 1)^2
 play((guitar%(1/4, 1/8) * 2)-database.octave, 100, instrument=25)
 ```
+
+
 
 ## 6. 吉他分解和弦演奏另一个和弦进行 (nylon string)
 ```python
@@ -56,6 +68,8 @@ C('FM7', 3, 1/4, 1/8)^2 | C('CM7', 4, 1/4, 1/8)@1 |
 C('AbM7', 3, 1/4, 1/8)^2 | C('G7sus', 3, 1/4, 1/8)^2)
 play((guitar * 2)-database.octave, 100, instrument=25)
 ```
+
+
 
 ## 7. 电钢琴演奏和弦进行，按照一定的规则演奏和弦内音
 ```python
@@ -72,6 +86,8 @@ a = (rule(C('Cmaj7',4)) |
 play(a * 2, 150, instrument=5)
 ```
 
+
+
 ## 8. 大调中借用lydian调式的和弦进行
 ```python
 a = (C('Cmaj7') | C('D7') | C('Fmaj7',3) | C('Cmaj7/-3')) % (1, 1/4) * 4
@@ -84,6 +100,8 @@ song = build([a, 5, 0],
              bpm=165)
 play(song)
 ```
+
+
 
 ## 9. 大调中借用lydian调式的和弦进行（附带和声，第二段旋律线）
 ```python
@@ -106,6 +124,8 @@ song = build([a, 5, 0],
 play(song)
 ```
 
+
+
 ## 10. 例子8的进阶写法（更简洁的写法，是我最近新加入的高级语法）
 ```python
 a = (C('Cmaj7') | C('D7') | C('Fmaj7',3) | C('Cmaj7/-3')) % (1, 1/4) * 4
@@ -115,6 +135,8 @@ song = build([a, 5, 0],
              bpm=165)
 play(song)
 ```
+
+
 
 ## 11. 轻松氛围音乐
 ```python
@@ -127,6 +149,8 @@ string.set_volume(50)
 play(P([piano, bass, string * 4], [9, 34, 49], 80, [0, 0, 0]))
 ```
 
+
+
 ## 12. 超好听的6451和弦配置（进阶写法）
 ```python
 q = S('C major', 4)
@@ -134,6 +158,8 @@ r = q % (64516458, 1/2, 0.3/4, 5)
 r = [i('omit7')^2 for i in r]
 play(r*2, bpm=80, instrument=5)
 ```
+
+
 
 ## 13. 轻松的都市风格氛围音乐（有转调）
 ```python
@@ -151,6 +177,9 @@ part1 = P([piano | piano-4, bass | bass-4, string | string-4, oboe1 | oboe1-4],
           [0, 0, 0, 3+7/8])
 play(part1)
 ```
+
+
+
 ## 14. 电子游戏8-bit曲风
 ```python
 chord_part1 = (C('Cm', 5, 1/8) | 1/4 | C('Bb', 4, 1/8) | 1/4 |
@@ -178,6 +207,8 @@ bass_part5 = (chord('Ab1')*8 + chord('Bb1')*8 + chord('C2')*8 +
 bass_part = bass_part1 | bass_part2 | bass_part3 | bass_part4 | bass_part5
 play(piece([bass_part, chord_part], [81, 81], 130, [0, 1/4]))
 ```
+
+
 
 ## 15. 日系摇滚前奏
 ```python

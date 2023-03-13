@@ -4,6 +4,8 @@
 
 **请注意，这些示例里加载的音源文件，有些是SoundFont文件，因为可能的版权问题，在这里不提供下载，可以到网上按照名字找这些SoundFont文件。在每个示例的最后都会提供这些代码示例生成的音乐文件的试听链接。**
 
+
+
 ## 1. 一小段电子舞曲
 ```python
 from musicpy.daw import *
@@ -51,6 +53,8 @@ current_daw.play(result)
 ```
 [点击这里试听](https://drive.google.com/file/d/1j66Ux0KYMiOW6yHGBidIhwF9zcbDG5W0/view?usp=sharing)
 
+
+
 ## 2. 使用musicpy还原一小段Iron Maiden的The Trooper
 ```python
 from musicpy.daw import *
@@ -94,6 +98,8 @@ current_daw.play(result)
 ```
 [点击这里试听](https://drive.google.com/file/d/1lspnOVY4GGQGQTkV8j-yOA581hESkD8-/view?usp=sharing)
 
+
+
 ## 3. 使用musicpy还原一小段Rolling Star - Yui
 ```python
 from musicpy.daw import *
@@ -135,6 +141,8 @@ result = P(tracks=[bass1, guitar1, rhythm_guitar, drum1, synth1],
 current_daw.play(result)
 ```
 [点击这里试听](https://drive.google.com/file/d/1vWXdNa232J500rlYxlziKwMA75x5SElS/view?usp=sharing)
+
+
 
 ## 4. 有点神秘空灵的电钢琴配乐
 ```python

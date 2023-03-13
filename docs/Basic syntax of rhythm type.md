@@ -97,7 +97,7 @@ time signature: 4 / 4
 chord1 = chord('C5, D5, E5, E5, F5, G5, E5, D5, C5, A5, G5').apply_rhythm(rhythm1)
 
 >>> print(chord1)
-chord(notes=[C5, D5, E5, E5, F5, G5, E5, D5, C5, A5, ...], interval=[0.125, 0.125, 0.25, 0.125, 0.125, 0.25, 0.125, 0.125, 0.25, 0.25, ...], start_time=0)
+chord(notes=[C5, D5, E5, E5, F5, G5, E5, D5, C5, A5, ...], interval=[1/8, 1/8, 1/4, 1/8, 1/8, 1/4, 1/8, 1/8, 1/4, 1/4, ...], start_time=0)
 
 ```
 
@@ -190,7 +190,7 @@ get_chords_from_rhythm(chords, current_rhythm, set_duration=True)
 
 ```python
 >>> get_chords_from_rhythm(C('C'), rhythm('b - b. b. b b -', 1))
-chord(notes=[C4, E4, G4, C4, E4, G4, C4, E4, G4, C4, ...], interval=[0, 0, 0.25, 0.0, 0.0, 0.1875, 0.0, 0.0, 0.1875, 0.0, ...], start_time=0)
+chord(notes=[C4, E4, G4, C4, E4, G4, C4, E4, G4, C4, ...], interval=[0, 0, 1/4, 0, 0, 3/16, 0, 0, 3/16, 0, ...], start_time=0)
 ```
 
 
@@ -220,7 +220,7 @@ analyze_rhythm(current_chord,
 ```python
 chord1 = get_chords_from_rhythm(N('C5'), rhythm('b - b. b. b b -', 1))
 >>> chord1
-chord(notes=[C5, C5, C5, C5, C5], interval=[0.25, 0.1875, 0.1875, 0.125, 0.25], start_time=0)
+chord(notes=[C5, C5, C5, C5, C5], interval=[1/4, 3/16, 3/16, 1/8, 1/4], start_time=0)
 
 >>> analyze_rhythm(chord1)
 [rhythm]

@@ -90,6 +90,8 @@ A.play(150)
 
 以150的BPM播放和弦A。
 
+
+
 ## 读取MIDI文件，转换成乐曲类型，以便于进行各种乐理上的操作
 
 使用read函数可以读取一个MIDI文件，将MIDI文件的内容转换成乐曲类型。
@@ -110,6 +112,8 @@ read(name,
 * clear_other_channel_msg: 设置为True时，会清除返回的每一个音轨中不属于当前音轨的通道编号的MIDI信息。
 * split_channels: 当读取的MIDI文件是把所有不同的乐器的音符全部放在一个MIDI轨道里，设置这个参数为True以转换为正确的乐曲类型。
 
+
+
 ### read函数使用示例：
 
 比如现在有一个MIDI文件`Clair de Lune.mid`，现在使用read函数读取，转换为乐曲类型。
@@ -119,6 +123,8 @@ current_piece = read('Clair de Lune.mid')
 ```
 
 现在我们可以对乐曲类型current_piece进行各种乐理上的操作了。乐曲类型current_piece里面存储的是整首曲子的信息，包括所有的音轨，乐器，音符，音符的间隔等。可以使用基本语法部分里面讲到的很多语法来对乐曲类型current_piece进行乐理上的玩转，比如转调，升调，降调，切片，倒序等等。
+
+
 
 ## 把乐理类型写入MIDI文件，以方便DAW中查看和编辑
 
@@ -164,6 +170,8 @@ write(current_chord,
 * ticks_per_beat: MIDI文件每拍的tick数，设置得越高，分辨率越高
 
 * midi_args: MIDI文件的其他参数，详情请参考[mido的官方文档](https://mido.readthedocs.io/en/latest/lib.html#midi-files)
+
+
 
 ## 我专门为musicpy这个项目写了一个IDE供大家使用
 
@@ -224,6 +232,8 @@ write(current_chord,
 
 这个musicpy编辑器我之后还会多加完善，希望大家用的开心~
 
+
+
 ## 将musicpy的数据结构存储为单独的数据文件
 
 你可以使用`write_data`函数将任何的musicpy的数据结构存储为一个单独的二进制数据文件，建议的文件后缀名为`mpb` (musicpy binary), 比如
@@ -244,6 +254,8 @@ chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
 ```
 
 在有些时候，当你不想存储musicpy代码或者其生成的MIDI文件时，存储为二进制数据文件是一个不错的选择。
+
+
 
 ## 音符和频率之间的转换
 
@@ -268,6 +280,8 @@ B4
 C5
 ```
 
+
+
 ## play函数在选择乐器的时候可以用简写
 
 在使用play函数指定乐器演奏的时候，可以用instrument=乐器，现在加入了另一个比较简短的参数，比如演奏a这个和弦类型，可以写
@@ -282,6 +296,8 @@ play(a, i=乐器)
 play(a, instrument=乐器)
 ```
 
+
+
 ## 当读取的MIDI文件是把所有不同的乐器的音符全部放在一个MIDI音轨里如何转换为乐曲类型
 
 我最近在读取一些东方的官方MIDI文件的时候，发现ZUN貌似基本上都是把所有不同的乐器的音符全部放在了一个MIDI音轨里，一般正常来说一个MIDI文件应该是有最多16个MIDI通道，有多个MIDI音轨，每个MIDI音轨可以有自己的乐器设定，有自己的乐器演奏的音符，并且每一个MIDI音轨还可以有自己的名字，还有MIDI通道编号。可是在我试着读取一些ZUN的东方曲官方MIDI文件时(从THBWiki上面下载的)，发现ZUN制作的MIDI文件是把所有的不同乐器的MIDI通道的音符全部放在了一个MIDI音轨里，每个音符有一个MIDI通道编号的属性，以区分每个音符是属于哪个MIDI通道的，并且在MIDI文件的开头也有program change的信息，分别指明了每个MIDI通道的编号的乐器类型，可是实际上只有1个MIDI音轨，我必须设计一些算法将这些音符分配到他们属于的MIDI音轨上，并且设定好每个MIDI音轨的乐器，然后才方便将MIDI文件转换为乐曲类型，而且因为ZUN把所有的不同的MIDI通道（对应着不同的乐器）的音符全部放在了1个MIDI音轨里，因此音符之间的间隔并不是分开之后每个MIDI音轨里的音符之间的间隔，我需要重新计算每个MIDI音轨的正确的音符的间隔，还有音符的长度，以及每个MIDI音轨的开始时间。如果大家在读取MIDI文件的时候遇到了这种情况，在使用read函数的时候，把`split_channels`设置为True，就可以进行以上的操作。
@@ -295,6 +311,8 @@ play(a, instrument=乐器)
 
 a = read('th06_01.mid', split_channels=True)
 ```
+
+
 
 ## 新增对于小写字母音名的支持
 
@@ -323,6 +341,8 @@ g = chord('C5, Eb5, G5, A#5, D#6, Bb6, F5')
 g = chord('c5, eb5, g5, a#5, d#6, bb6, f5')
 ```
 
+
+
 ## eval_time函数新增返回时间数值的功能
 
 `eval_time`的参数mode设置为`number`的时候，返回秒数的数值，数值类型为小数。  
@@ -333,10 +353,14 @@ g = chord('c5, eb5, g5, a#5, d#6, bb6, f5')
 92.56
 ```
 
+
+
 ## reverse函数的重新设计
 
 在2021年6月，`reverse`函数有了重新的设计，重新设计过后的`reverse`函数的算法得到的结果与音频文件的反向本质上是一致的 (除了声音的开始和结束的反向的听感)。 
 如果你想使用以前的reverse函数的算法，可以使用`reverse_chord`函数。这个改变使用于和弦类型，乐曲类型和音轨类型。
+
+
 
 ## 新增读取其他种类的MIDI信息的功能
 
@@ -354,6 +378,8 @@ g = chord('c5, eb5, g5, a#5, d#6, bb6, f5')
 
 如果你不想写入任何`other_messages`，那么可以设置`nomsg`参数为True (默认值为False)，会忽略传入的乐理类型的`other_messages`以及指定的`msg`参数。
 
+
+
 ### event类型
 
 在musicpy里，event类型表示MIDI信息。
@@ -366,6 +392,8 @@ event类型的`type`参数以mido库的MIDI信息类型为准，除了`track`和
 event(type, track=0, start_time=0, is_meta=False, **kwargs)
 ```
 
+
+
 ## 和弦类型和乐曲类型的清除速度变化信息和弯音信息的函数的改进
 
 现在和弦类型和乐曲类型的`clear_tempo`函数和`clear_pitch_bend`函数增加了`cond`参数，你可以指定一个条件函数(推荐使用lambda函数) 
@@ -377,6 +405,8 @@ a.clear_tempo(cond=lambda s: s.start_time == 1 and s.bpm == 120)
 a.clear_pitch_bend(cond=lambda s: s.start_time == 1 and s.value == 0)
 ```
 
+
+
 ## 停止目前所有正在播放的声音
 
 你可以使用`stopall`函数来停止目前所有正在播放的声音，具体来说是由`play`函数播放出来的声音。
@@ -385,6 +415,8 @@ a.clear_pitch_bend(cond=lambda s: s.start_time == 1 and s.value == 0)
 play(C('C') * 8)
 stopall() # 停止目前正在播放的声音
 ```
+
+
 
 ## 音程名称的使用
 
@@ -425,6 +457,8 @@ semitone = halfstep = 1
 wholetone = wholestep = tone = 2
 ```
 
+
+
 ## 修改乐理类型的属性的同时返回新的乐理类型
 
 常见的乐理类型都可以使用`reset`函数，重新设置任意多个属性，并且返回全新的乐理类型，这个函数只接受关键字参数。
@@ -438,6 +472,8 @@ chord(notes=[C4, E4, G4], interval=[0, 0, 0], start_time=0)
 >>> a.reset(interval=[1,1,1])
 chord(notes=[C4, E4, G4], interval=[1, 1, 1], start_time=0)
 ```
+
+
 
 ## 将音乐数据结构转换为JSON格式
 
@@ -467,6 +503,8 @@ read_json(file)
 ```
 
 * file: JSON文件的文件名
+
+
 
 ## 读取和写入musicxml文件
 

@@ -42,22 +42,28 @@ play(result)
 如果你认为这太过于简单，musicpy也可以在不到30行的代码内制作出[这样](https://drive.google.com/file/d/1j66Ux0KYMiOW6yHGBidIhwF9zcbDG5W0/view?usp=sharing)的音乐(如果你不关心可读性，代码还可以更短)。不过，这也只是一个非常短的电子舞曲的例子，并没有写的很复杂。
 
 
-## 目录
--------------
 
-## 序言
+## 目录
+
+### 序言
 
 * [介绍](https://musicpy.readthedocs.io/zh_CN/latest/Introduction/)
 
-## 数据结构
+
+
+### 数据结构
 
 * [Musicpy的数据结构](https://musicpy.readthedocs.io/zh_CN/latest/Data%20Structures%20of%20musicpy/)
 
-## 快速入门和速查表
+
+
+### 快速入门和速查表
 
 * [Musicpy快速入门和速查表](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20Quickstart%20and%20Cheat%20Sheet/)
 
-## 基本语法
+
+
+### 基本语法
 
 * [音符类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20note%20type/)
 * [和弦类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20chord%20type/)
@@ -71,27 +77,37 @@ play(result)
 * [鼓点类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20drum%20type/)
 * [节奏类型的基本语法](https://musicpy.readthedocs.io/zh_CN/latest/Basic%20syntax%20of%20rhythm%20type/)
 
-## 实用的功能
+
+
+### 实用的功能
 
 * [实用的功能](https://musicpy.readthedocs.io/zh_CN/latest/Useful%20functionality/)
 
-## Musicpy语言作曲代码示例
+
+
+### Musicpy语言作曲代码示例
 
 * [Musicpy语言作曲代码示例（第一期）](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20composition%20code%20examples%20part%201/)
 * [Musicpy语言作曲代码示例（第二期）](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20composition%20code%20examples%20part%202/)
 * [Musicpy语言作曲代码示例（第三期）](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20composition%20code%20examples%20part%203/)
 
-## Musicpy宿主模块
+
+
+### Musicpy宿主模块
 
 * [Musicpy宿主模块](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20daw%20module/) 
 * [Musicpy宿主模块作曲代码示例](https://musicpy.readthedocs.io/zh_CN/latest/Musicpy%20daw%20module%20composition%20code%20examples/)
 
-## 算法
+
+
+### 算法
 
 * [Musicpy algorithms 模块介绍](https://musicpy.readthedocs.io/zh_CN/latest/Introduction%20of%20musicpy%20algorithms%20module/)
 * [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://musicpy.readthedocs.io/zh_CN/latest/The%20algorithm%20to%20split%20the%20main%20melody%20and%20chords%20from%20a%20piece%20of%20music/)
 * [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://musicpy.readthedocs.io/zh_CN/latest/The%20algorithm%20to%20determine%20the%20chord%20type%20of%20any%20group%20of%20notes%20according%20to%20the%20logic%20of%20music%20theory/)
 
-## 常见的问题
+
+
+### 常见的问题
 
 * [常见的问题](https://musicpy.readthedocs.io/zh_CN/latest/Frequently%20Asked%20Questions/)
