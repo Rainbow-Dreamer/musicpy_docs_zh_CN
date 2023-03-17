@@ -126,7 +126,7 @@ get_chord('A4', 'm7'), 如果指定根音具体的音高，比如现在想写根
 Dmaj7 = get_chord('D6', 'maj7')
 ```
 
-此外，get_chord函数还有非常多的参数，可以用来设置和弦的省略音，升降音，外加的音，以及和弦的每个音符具体的长度，音符的间隔等等，您甚至可以输入音符的音程来构建和弦（也可以通过设定cummulative的值来决定是要输入每个音符到根音的音程还是每两个音符之间的音程），在musicpy里，每个音程的名字已经定义好了，可以直接用，比如major_third的值为4，也就是大三度的半音数。
+此外，get_chord函数还有非常多的参数，可以用来设置和弦的省略音，升降音，外加的音，以及和弦的每个音符具体的长度，音符的间隔等等，您甚至可以输入音符的音程来构建和弦（也可以通过设定cumulative的值来决定是要输入每个音符到根音的音程还是每两个音符之间的音程），在musicpy里，每个音程的名字已经定义好了，可以直接用，比如major_third的值为4，也就是大三度的半音数。
 
 比如按照音程的关系构建一个C大七和弦，可以这么写：
 
@@ -486,19 +486,19 @@ get_chord_by_interval(start,
                      interval1,
                      duration=0.25,
                      interval=0,
-                     cummulative=True)
+                     cumulative=True)
 
 # start: 和弦类型的起始音，可以是表示音符的字符串或者音符类型
 # interval1: 表示音程关系的列表，元素为整数
 # duration: 生成的和弦类型的音符长度
 # interval: 生成的和弦类型的音符间隔
-# cummulative: 如果为True，音程关系为与起始音的音程关系，如果为False，音程关系为每两个相邻的音之间的音程关系，默认值为True
+# cumulative: 如果为True，音程关系为与起始音的音程关系，如果为False，音程关系为每两个相邻的音之间的音程关系，默认值为True
 
 >>> get_chord_by_interval('C5', [database.major_third, database.perfect_fifth, database.major_seventh])
 # 获得起始音为C5，与C5依次形成大三度，完全五度和大七度的音组成的和弦类型
 chord(notes=[C5, E5, G5, B5], interval=[0, 0, 0, 0], start_time=0) # 获得C大七和弦
 
->>> get_chord_by_interval('C5', [database.major_third, database.minor_third, database.major_third], cummulative=False)
+>>> get_chord_by_interval('C5', [database.major_third, database.minor_third, database.major_third], cumulative=False)
 # 获得起始音为C5，相邻音程依次为大三度，小三度，大三度的音组成的和弦类型
 chord(notes=[C5, E5, G5, B5], interval=[0, 0, 0, 0], start_time=0) # 获得C大七和弦
 
@@ -634,7 +634,7 @@ A.reverse()
 
 ## 获得一个和弦的音程关系
 
-intervalof函数可以返回一个和弦的构成音之间的音程关系。参数cummulative设为True的时候返回和弦所有的的构成音（除根音外）和根音之间的音程，设为False的时候返回和弦从最低音到最高音两两之间的音程关系。默认值为True。比如：
+intervalof函数可以返回一个和弦的构成音之间的音程关系。参数cumulative设为True的时候返回每个音与起始音的音程关系，设为False的时候返回每两个相邻的音之间的音程关系。默认值为True。比如：
 
 ```python
 get_chord('C','maj').intervalof()
@@ -648,10 +648,10 @@ get_chord('C','maj').intervalof(translate=True)
 
 会得到 ['major third', 'perfect fifth']，也就是大三度和纯五度。
 
-当cummulative设置为False的时候返回和弦从低到高每两个音符之间的音程，比如：
+当cumulative设置为False的时候返回和弦从低到高每两个音符之间的音程，比如：
 
 ```python
-get_chord('C','maj').intervalof(translate=True, cummulative=False)
+get_chord('C','maj').intervalof(translate=True, cumulative=False)
 ```
 
 会得到['major third', 'minor third']，也就是C大三和弦是由一个大三度和一个小三度构成的。
