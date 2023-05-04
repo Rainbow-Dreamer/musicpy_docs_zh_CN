@@ -143,7 +143,10 @@ write(current_chord,
       save_as_file=True,
       msg=None,
       nomsg=False,
-      ticks_per_beat=960,
+      ticks_per_beat=None,
+      ignore_instrument=False,
+      ignore_bpm=False,
+      ignore_track_names=False,
       **midi_args)
 ```
 
@@ -165,9 +168,15 @@ write(current_chord,
 
 * msg: 你想要写入MIDI文件的其他的MIDI信息的列表
 
-* nomsg: 可以设置是否写入其他的MIDI信息,为True的时候将不会写入
+* nomsg: 可以设置是否写入其他的MIDI信息, 为True的时候将不会写入
 
-* ticks_per_beat: MIDI文件每拍的tick数，设置得越高，分辨率越高
+* ticks_per_beat: MIDI文件每拍的tick数，设置得越高，分辨率越高，如果为None，则使用默认的值960
+
+* ignore_instrument: 忽略自带的乐器音色的设定，不额外添加音色改变的事件
+
+* ignore_bpm: 忽略给定的bpm，不额外添加速度改变的事件
+
+* ignore_track_names: 忽略自带的轨道名称，不额外添加轨道名称改变的事件
 
 * midi_args: MIDI文件的其他参数，详情请参考[mido的官方文档](https://mido.readthedocs.io/en/latest/lib.html#midi-files)
 
