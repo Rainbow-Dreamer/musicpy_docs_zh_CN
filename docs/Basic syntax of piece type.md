@@ -218,21 +218,18 @@ b = a - 2
 b = a.up(mode=1)
 
 # 可以往指定的位置添加实时的速度变化
-a.add_tempo_change(bpm=100, start_time=None, ind=None, track_ind=None)
+a.add_tempo_change(bpm=100, start_time=0, track_ind=0)
 # bpm: 想要变化到的速度，单位为BPM
-# start_time: 速度变化发生的时间，单位为小节，如果不设置则以ind为准
-# ind: 速度变化信息插入的位置，需要和track_ind配合使用
+# start_time: 速度变化发生的时间，单位为小节
 # track_ind: 可以选择在第几个MIDI通道插入速度的信息，以0作为第1个MIDI通道，ind是选择的MIDI通道里放在第几个位置
-# 如果ind和track_ind没有设置，那么就默认往第一个MIDI通道的最后添加速度变化的信息
 
 # 可以往指定的位置添加实时的弯音（pitch bend可以模拟出音符的弯音，滑音，颤音等效果）
-a.add_pitch_bend(value, start_time=0, channel='all', track=0, mode='cents', ind=None)
-# value: 音符的音高变化的量
+a.add_pitch_bend(value, start_time=0, channel='all', track=0, mode='cents')
+# value: 音符的音高变化的值
 # start_time: 音符的音高变化发生的时间，单位为小节
 # channel: 选择往第几个通道插入pitch bend信息，以0作为第1个MIDI通道，如果为'all'则往所有的MIDI通道插入相同的pitch bend信息
-# track: MIDI轨道，一般情况下不用设置
+# track: MIDI轨道
 # mode: 弯音信息的单位，之前有详细的说明
-# ind: 弯音信息插入的位置，如果start_time有设置则以start_time的位置为准
 
 # 查看乐曲类型个MIDI通道数量
 >>> len(a)

@@ -54,7 +54,6 @@
 - [把一个和弦类型的所有音符统一升降音](#把一个和弦类型的所有音符统一升降音)
 - [把和弦类型根据里面的速度变化重新量化音符长度和音符间隔](#把和弦类型根据里面的速度变化重新量化音符长度和音符间隔)
 - [计算一个和弦类型里两个index之间的小节范围](#计算一个和弦类型里两个index之间的小节范围)
-- [提取一个和弦类型里的实时速度变化或者弯音信息](#提取一个和弦类型里的实时速度变化或者弯音信息)
 - [构建一个和弦进行](#构建一个和弦进行)
 - [查看一个和弦类型的乐理分析信息](#查看一个和弦类型的乐理分析信息)
 - [获得一个和弦类型的sus](#获得一个和弦类型的sus)
@@ -1354,7 +1353,14 @@ a = C('Cmaj7') | C('Dm7') | C('E9sus') | C('Amaj9', 3)
 >>> a.eval_time(80)
 '3.0s'
 
-eval_time(bpm, ind1=None, ind2=None, mode='seconds', start_time=0)
+eval_time(bpm,
+          ind1=None,
+          ind2=None,
+          mode='seconds',
+          start_time=0,
+          normalize_tempo=False,
+          audio_mode=0)
+
 # bpm: 指定的速度BPM
 
 # ind1, ind2: 选择小节的区间，以0作为第1个小节，如果不设置则默认以整首曲子为准
@@ -1364,6 +1370,10 @@ eval_time(bpm, ind1=None, ind2=None, mode='seconds', start_time=0)
 # 或者'number'返回格式为秒数的浮点数
 
 # start_time: 和弦的开始时间
+
+# normalize_tempo: 是否量化速度变化
+
+# audio_mode: 参考bars函数的参数
 ```
 
 
@@ -1376,16 +1386,19 @@ eval_time(bpm, ind1=None, ind2=None, mode='seconds', start_time=0)
 cut(ind1=0,
     ind2=None,
     start_time=0,
-    return_inds=False,
-    mode=0)
+    cut_extra_duration=False,
+    cut_extra_interval=False,
+    round_duration=False)
 
 # ind1, ind2: 提取的小节数的范围，ind2如果不设置，则提取到最后，ind1默认值为0，也就是从开头第0个小节开始提取
 
 # start_time: 在读取一个MIDI文件时，一个MIDI通道的音符会有自己的开始时间，在这里可以作为和弦类型延后演奏的设置，这里的单位为小节
 
-# return_inds: 如果为True，返回提取的小节范围内开始和结束的音符下标
+# cut_extra_duration: cut函数默认是包括所有在指定小节范围内开始演奏的音符(不包括右端点), 与音符长度无关，所以可能出现音符长度超过小节范围的情况，如果设为True，则会对于音符长度超过小节范围的音符的音符长度进行调整
 
-# mode: cut函数默认是包括所有在指定小节范围内开始演奏的音符(不包括右端点), 与音符长度无关，所以可能出现音符长度超过小节范围的情况，如果mode为1，则会对于音符长度超过小节范围的音符的音符长度进行调整
+# cut_extra_interval: 如果设为True，对于超过小节范围的音符间隔进行调整
+
+# round_duration: 如果设为True，对于调整后的音符长度出现极小值的情况当做去除音符处理
 
 # cut函数返回的是一个新的和弦类型，内容为指定的小节数的范围内的切片
 
@@ -1531,28 +1544,6 @@ bar_length = a.count_bars(2, 10, False)
 >>> print(bar_length)
 6
 # 这里的数值仅为举例
-```
-
-
-
-## 提取一个和弦类型里的实时速度变化或者弯音信息
-
-使用和弦类型的内置函数`split`可以对一个和弦类型所包含的任意乐理类型进行提取，也就是从和弦类型的音符列表里提取。  
-使用这个函数可以很方便地从一个和弦类型里提取出音符类型，实时速度变化类型和弯音类型等乐理类型，只需传入类型名称即可。
-
-```python
-split(return_type, get_time=False, sort=False)
-# return_type是想要提取的乐理类型，返回值为指定和弦类型里的音符列表中所包含的这个乐理类型组成的和弦类型。
-# get_time为True的时候，会对于没有指定起始时间的实时速度变化类型或者弯音类型进行起始时间的计算，并且指定起始时间。
-# sort为True的时候，会按照起始时间的先后对实时速度变化类型或者弯音类型进行排序。
-a = chord(['A5', 'B5', 'C5', tempo(150), 'D5', pitch_bend(50), 'E5', 'F5', tempo(170)])
->>> print(a.split(tempo))
-chord(notes=[tempo(bpm=150, start_time=None, channel=None, track=None), tempo(bpm=170, start_time=None, channel=None, track=None)], interval=[0, 0], start_time=0)
->>> print(a.split(pitch_bend))
-chord(notes=[pitch_bend(value=2048, start_time=None, channel=None, track=None, cents=50)], interval=[0], start_time=0)
->>> print(a.split(note))
-chord(notes=[A5, B5, C5, D5, E5, F5], interval=[0, 0, 0, 0, 0, 0], start_time=0)
-# 返回的和弦类型是你想要提取的乐理类型的集合，可以当做列表来使用。
 ```
 
 
