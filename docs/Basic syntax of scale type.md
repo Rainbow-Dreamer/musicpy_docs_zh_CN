@@ -142,12 +142,18 @@ chord(notes=[E4, G4, B4, D5], interval=[0, 0, 0, 0], start_time=0)
 get(current_ind,
     default_duration=1 / 8,
     default_interval=1 / 8,
-    default_volume=100)
+    default_volume=100,
+    pitch_mode=0)
 
 # current_ind: 一个字符串，包含你想得到的所有音符
+
 # default_duration: 每个音符的默认持续时间
+
 # default_interval: 每个音符的默认间隔时间
+
 # default_volume: 每个音符的默认音量
+
+# pitch_mode：如果设置为0，当选择1到7级音时，八度数是固定的，所以在某些音阶中，高音级的音高比低音级的音高低；如果设置为1，只有1级音的八度数是固定的，高音级的音高将由音阶里的音程来计算
 ```
 
 下面是一个例子，说明如何使用音阶类型的`get`方法。
