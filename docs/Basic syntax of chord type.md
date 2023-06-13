@@ -1388,7 +1388,8 @@ cut(ind1=0,
     start_time=0,
     cut_extra_duration=False,
     cut_extra_interval=False,
-    round_duration=False)
+    round_duration=False,
+    round_cut_interval=False)
 
 # ind1, ind2: 提取的小节数的范围，ind2如果不设置，则提取到最后，ind1默认值为0，也就是从开头第0个小节开始提取
 
@@ -1399,6 +1400,8 @@ cut(ind1=0,
 # cut_extra_interval: 如果设为True，对于超过小节范围的音符间隔进行调整
 
 # round_duration: 如果设为True，对于调整后的音符长度出现极小值的情况当做去除音符处理
+
+# round_cut_interval: 如果设为True，在计算音符间隔的时候，如果非常接近ind2, 则把当前的值作为ind2
 
 # cut函数返回的是一个新的和弦类型，内容为指定的小节数的范围内的切片
 
