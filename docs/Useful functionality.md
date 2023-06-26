@@ -22,6 +22,8 @@
 - [修改乐理类型的属性的同时返回新的乐理类型](#修改乐理类型的属性的同时返回新的乐理类型)
 - [将音乐数据结构转换为JSON格式](#将音乐数据结构转换为JSON格式)
 - [读取和写入musicxml文件](#读取和写入musicxml文件)
+- [将音乐数据结构转换为yaml格式](#将音乐数据结构转换为yaml格式)
+- [将音乐数据结构序列化为一个字典](#将音乐数据结构序列化为一个字典)
 
 
 
@@ -538,4 +540,29 @@ write_musicxml(current_chord, filename, save_musicxml_args={})
 * current_chord: 你想写入的音乐数据结构
 * filename: musicxml文件的文件名
 * save_musicxml_args: 传递给`partitura.save_musicxml`函数的关键字参数字典。
+
+
+
+## 将音乐数据结构转换为yaml格式
+
+你可以将音乐数据结构转换为yaml文件，作为一种更便携的存储方式，并从yaml文件中读取，以获得存储在其中的音乐数据结构。
+
+使用`write_yaml`函数将音乐数据结构转换成yaml文件。参数和它们的用途与`write_json`函数相同。
+
+使用`read_yaml`函数读取由`write_yaml`函数导出的yaml文件，并提取其中存储的音乐数据结构。返回值是一个乐曲实例。
+
+
+
+## 将音乐数据结构序列化为一个字典
+
+你可以使用`to_dict`函数将音乐数据结构序列化为一个字典，它可以被用来输出为JSON, yaml和其他可移植格式。参数和用法与`write`函数类似，支持的数据结构包括音符、和弦、乐曲、轨道、鼓。在转换过程中，为了简洁起见，所有的数据结构将被转换为片段实例。返回值是一个字典。
+
+```python
+to_dict(current_chord,
+        bpm=120,
+        channel=0,
+        start_time=None,
+        instrument=None,
+        i=None)
+```
 
