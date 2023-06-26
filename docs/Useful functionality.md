@@ -499,9 +499,7 @@ write_json(current_chord,
            start_time=None,
            filename='untitled.json',
            instrument=None,
-           i=None,
-           msg=None,
-           nomsg=False)
+           i=None)
 ```
 
 * filename: 转换后的JSON文件的文件名
