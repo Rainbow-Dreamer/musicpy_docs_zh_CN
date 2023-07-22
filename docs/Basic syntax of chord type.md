@@ -620,27 +620,27 @@ A.reverse()
 
 ## 获得一个和弦的音程关系
 
-intervalof函数可以返回一个和弦的构成音之间的音程关系。参数cumulative设为True的时候返回每个音与起始音的音程关系，设为False的时候返回每两个相邻的音之间的音程关系。默认值为True。比如：
+`intervalof`函数可以返回一个和弦的构成音之间的音程关系。参数`cumulative`设为`True`的时候返回每个音与起始音的音程关系，设为`False`的时候返回每两个相邻的音之间的音程关系。默认值为`True`。比如：
 
 ```python
 get_chord('C','maj').intervalof()
 ```
 
-会得到 [4,7]，这个表示C大三和弦（C,E,G）里面第二个音到根音之间有四个半音（大三度），第三个音到根音之间有7个半音（纯五度）。如果你想看音程在乐理上的名称，那么可以设参数translate为True，那么你就可以看到对应的音程名称了。比如：
+会得到 `[4, 7]`，这个表示C大三和弦（C,E,G）里面第二个音到根音之间有四个半音（大三度），第三个音到根音之间有7个半音（纯五度）。如果你想看音程在乐理上的名称，那么可以设参数`translate`为`True`，那么你就可以看到对应的音程名称了。比如：
 
 ```python
 get_chord('C','maj').intervalof(translate=True)
 ```
 
-会得到 ['major third', 'perfect fifth']，也就是大三度和纯五度。
+会得到` [M3, P5]`，也就是大三度和纯五度。
 
-当cumulative设置为False的时候返回和弦从低到高每两个音符之间的音程，比如：
+当`cumulative`设置为`False`的时候返回和弦从低到高每两个音符之间的音程，比如：
 
 ```python
 get_chord('C','maj').intervalof(translate=True, cumulative=False)
 ```
 
-会得到['major third', 'minor third']，也就是C大三和弦是由一个大三度和一个小三度构成的。
+会得到`[M3, m3]`，也就是C大三和弦是由一个大三度和一个小三度构成的。
 
 
 

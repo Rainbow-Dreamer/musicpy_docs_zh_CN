@@ -2,7 +2,7 @@
 
 musicpy这门语言可以让你用非常简洁的语法，来表达一段音乐的音符，节奏等等信息，并且可以简单地输出成MIDI文件的格式。这个库里面涉及到非常多的乐理知识，所以个人推荐至少要先了解一部分乐理再来使用会比较上手。相对地，如果你是一个对乐理比较了解的人，那么看完我写的教程之后你应该很快就上手了。
 
-**特别提醒：在musicpy中，除了个别的乐理函数，乐理类型本身的索引都是从0开始的，比如和弦类型，音阶类型，乐曲类型等等。**
+**特别提醒: 在musicpy中，除了个别的乐理函数，乐理类型本身的索引都是从0开始的，比如和弦类型，音阶类型，乐曲类型等等。**
 
 在musicpy里面，最基本的数据结构是note (音符), chord (和弦)和scale (音阶)。这几个类型是构成音乐代码的基础。musicpy里面的乐理功能非常多，先从几个最基本的开始介绍吧。
 
@@ -29,6 +29,8 @@ musicpy这门语言可以让你用非常简洁的语法，来表达一段音乐�
   - [rest_symbol (休止符类型)](#rest_symbol-休止符类型)
   - [continue_symbol (延续符类型)](#continue_symbol-延续符类型)
   - [rhythm (节奏类型)](#rhythm-节奏类型)
+  - [Interval (音程类型)](#interval-音程类型)
+  - [chord_type (和弦种类类型)](#chord_type-和弦种类类型)
 
 
 
@@ -36,13 +38,13 @@ musicpy这门语言可以让你用非常简洁的语法，来表达一段音乐�
 
 初始化一个note的实例只需要给一个音名（比如C, Eb, A#，也可以是小写）和一个八度数（一个整数），现在你就可以使用这个音符去做音乐里的任何事情了。你还可以设定音符的duration（音符长度）和volume（音符的音量大小）。音符长度默认为0.25（1/4个小节），音量默认为100。
 
-比如： 
+比如:  
 
 ```python
 a = note('A', 5)
 ```
 
-这样就是把音符A5赋值给了a，表示出来是这样：
+这样就是把音符A5赋值给了a，表示出来是这样: 
 
 ```python
 A5
@@ -88,7 +90,7 @@ note(name,
 
 初始化一个和弦实例，只需要给一个音符的列表即可。还可以设定duration（所有音符的长度设置），interval（音符之间的间隔，用列表表示）。这里比较人性化的一个地方是，你在给定音符列表时无需先用note类初始化，而只需要直接写音符的名字（字符串）就行了。
 
-比如： 
+比如:  
 
 ```python
 Cmaj7 = chord(['C5', 'E5', 'G5', 'B5'])
@@ -104,7 +106,7 @@ Cmaj7 = chord(['C5', 'E5', 'G5', 'B5'])
 play(Cmaj7)
 ```
 
-这个C大七和弦表示出来是这样：
+这个C大七和弦表示出来是这样: 
 
 ```python
 chord(notes=[C5, E5, G5, B5], interval=[0, 0, 0, 0], start_time=0)
@@ -168,7 +170,7 @@ chord(notes,
 scale('C5', interval=[2, 2, 1, 2, 2, 2, 1], name='major')
 ```
 
-这样就得到了以C5为根音的C大调音阶，表示出来是这样：
+这样就得到了以C5为根音的C大调音阶，表示出来是这样: 
 
 ```python
 [scale]
@@ -291,7 +293,7 @@ scale(start=None,
 
 ## rest (休止符类型)
 
-目前在musicpy中休止符的定义是一种数据结构，可以在和弦类型构建与合并时传入，但是不会作为一个音符存在于和弦类型的音符列表中，因为按照和弦类型的定义，相邻的音符之间的间隔已经由和弦类型的音符间隔的列表定义了，因此休止符目前在和弦类型中存在的必要不是很大。当你在构建和弦类型时传入了休止符，休止符会体现在音符间隔的列表中，但是休止符本身不会添加到和弦类型的音符列表中。目前和弦类型的音符列表只可以包含3种数据结构：音符类型，速度类型，弯音类型。
+目前在musicpy中休止符的定义是一种数据结构，可以在和弦类型构建与合并时传入，但是不会作为一个音符存在于和弦类型的音符列表中，因为按照和弦类型的定义，相邻的音符之间的间隔已经由和弦类型的音符间隔的列表定义了，因此休止符目前在和弦类型中存在的必要不是很大。当你在构建和弦类型时传入了休止符，休止符会体现在音符间隔的列表中，但是休止符本身不会添加到和弦类型的音符列表中。目前和弦类型的音符列表只可以包含3种数据结构: 音符类型，速度类型，弯音类型。
 
 
 
@@ -336,7 +338,7 @@ chord(notes=[C4, E4, G4, B4, D4, F#4, A4, C#5], interval=[0, 0, 0, 3/4, 0, 0, 0,
 
 ## beat (节拍类型)
 
-这是一个数据结构，代表音乐理论中的节拍，在一段节奏中使用。
+这是一个数据结构，代表乐理中的节拍，在一段节奏中使用。
 
 一个节拍实例保存一个单一的节拍，有一个持续时间和一个附点数（如果它是一个附点节拍的话）。
 
@@ -352,7 +354,7 @@ beat(duration=1/4,
 ```
 
 * duration: 节拍的持续时间，以小节为单位（不算附点数）
-* dotted：节拍的附点数，如果它是None，则该节拍不是一个附点节拍
+* dotted: 节拍的附点数，如果它是None，则该节拍不是一个附点节拍
 
 你可以使用节拍实例的`get_duration`方法，通过应用附点数来获得节拍的实际持续时间，这个方法也适用于rest_symbol和continue_symbol。
 
@@ -395,4 +397,112 @@ continue_symbol(duration=1/4,
 你可以把这个数据结构看成是鼓点类型的更高层次的抽象。
 
 在`节奏类型的基本语法`章节有关于节奏类型的详细介绍。
+
+
+
+### Interval (音程类型)
+
+这是一个表示音程的数据结构，例如乐理中的大三度、全五度。
+
+这些音程存储在`database`模块中，每个音程都有多种读取方式，例如缩写，如 `P5, M3, m7`（完全五度、大三度、小七度），或全称，如 `perfect_fifth, major_third, minor_seventh`（完全五度、大三度、小七度）。
+
+你可以为音符或者和弦加上或者减去音程，这将使音符或和弦的按照给定的音程移动，例如
+
+```python
+note1 = N('C4')
+
+>>> note1 + database.m3
+Eb4
+
+>> note1 - database.m3
+A3
+
+chord1 = C('Cmaj7', pitch=4)
+
+>>> chord1 + database.m3
+chord(notes=[Eb4, G4, Bb4, D5], interval=[0, 0, 0, 0], start_time=0)
+
+>>> chord1 - database.m3
+chord(notes=[A3, C#4, E4, G#4], interval=[0, 0, 0, 0], start_time=0)
+```
+
+### 音程类型的构成
+
+```python
+Interval(number, quality, name=None, direction=1)
+```
+
+* number: 度数，应为 1 到 17 之间的整数
+* quality: 音程类型，应为['P'、'M'、'm'、'd'、'A'、'dd'、'AA']`之一或者其中之一的叠加
+* 名称: 音程的名称
+* 方向: 音程的方向，设置为 1 表示正方向，-1 表示负方向
+
+你可以像这样初始化一个音程实例: 
+
+```python
+interval1 = database.Interval(number=3, quality='M')
+>>> interval1
+M3
+```
+
+
+
+## chord_type (和弦种类类型)
+
+这是一个数据结构，用于详细表示和弦是如何产生的，包括根音、和弦类型、转位、省略、交替、和弦声部、复合和弦等。该数据结构目前主要用于算法模块中的和弦分析功能，有助于存储一组音符如何按所需顺序转化为和弦的信息和程序。
+
+### 和弦种类类型的组成
+
+```python
+root: str = None
+chord_type: str = None
+chord_speciality: str = 'root position'
+inversion: int = None
+omit: list = None
+altered: list = None
+non_chord_bass_note: str = None
+voicing: list = None
+type: str = 'chord'
+note_name: str = None
+interval_name: str = None
+polychords: list = None
+order: list = None
+```
+
+* root: 和弦的根音
+
+* chord_type: 和弦的类型，如 `maj7`, `maj9`
+
+* chord_speciality: 和弦的特殊性，可以是 `root position`, `inverted chord`, `altered chord`, `chord voicings`, `polychord` 中的一种
+
+* inversion: 和弦的转位编号，如果它是一个转位和弦的话
+
+* omit: 和弦省略的音符
+
+* altered: 和弦的变化音
+
+* non_chord_bass_note: 和弦的非和弦低音
+
+* voicing: 和弦的声部排列
+
+* type: 区分单音，音程和和弦的类型
+
+* note_name: 音符名称，如果类型为单音
+
+* interval_name: 音程名称，如果类型为音程
+
+* polychords: 和弦种类实例的列表，如果是复合和弦
+
+* order: 表示和弦派生顺序的整数列表，整数的含义如下: 
+
+  ```
+  0: 省略某些音符
+  1: 改变某些音符
+  2: 转位
+  3: 和弦变化音
+  4: 添加一个非和弦低音
+  ```
+
+
+使用和弦种类实例的`to_text`方法可以获得完整的和弦名称，`to_chord`方法可以获得按照记录的信息推算出来的和弦，`get_root_position`方法可以获得原位和弦名称。
 

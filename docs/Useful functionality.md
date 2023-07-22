@@ -18,7 +18,6 @@
 - [新增读取其他种类的MIDI信息的功能](#新增读取其他种类的midi信息的功能)
 - [和弦类型和乐曲类型的清除速度变化信息和弯音信息的函数的改进](#和弦类型和乐曲类型的清除速度变化信息和弯音信息的函数的改进)
 - [停止目前所有正在播放的声音](#停止目前所有正在播放的声音)
-- [音程名称的使用](#音程名称的使用)
 - [修改乐理类型的属性的同时返回新的乐理类型](#修改乐理类型的属性的同时返回新的乐理类型)
 - [将音乐数据结构转换为JSON格式](#将音乐数据结构转换为JSON格式)
 - [读取和写入musicxml文件](#读取和写入musicxml文件)
@@ -425,47 +424,6 @@ a.clear_pitch_bend(cond=lambda s: s.start_time == 1 and s.value == 0)
 ```python
 play(C('C') * 8)
 stopall() # 停止目前正在播放的声音
-```
-
-
-
-## 音程名称的使用
-
-在musicpy的database模块里有着完整的音程名称的定义。比如`major_third`(大三度)的值为4 (半音数), `perfect_eleventh`(完全十一度)的值为17 (半音数)。 
-此外，最近也加入了音程名称的简写的定义，比如你可以使用`M3`来代替`major_third`(大三度), `m3`来代替`minor_third`(小三度), `M7`来代替`major_seventh`(大七度)等等。在这里我会展示出musicpy里完整的音程名称的定义，在这里的所有的音程名称都可以用`database.major_third`这样的方式使用。
-
-```python
-perfect_unison = diminished_second = P1 = d2 = 0
-minor_second = augmented_unison = m2 = A1 = 1
-major_second = diminished_third = M2 = d3 = 2
-minor_third = augmented_second = m3 = A2 = 3
-major_third = diminished_fourth = M3 = d4 = 4
-perfect_fourth = augmented_third = P4 = A3 = 5
-diminished_fifth = augmented_fourth = tritone = d5 = A4 = 6
-perfect_fifth = diminished_sixth = P5 = d6 = 7
-minor_sixth = augmented_fifth = m6 = A5 = 8
-major_sixth = diminished_seventh = M6 = d7 = 9
-minor_seventh = augmented_sixth = m7 = A6 = 10
-major_seventh = diminished_octave = M7 = d8 = 11
-perfect_octave = octave = augmented_seventh = diminished_ninth = P8 = A7 = d9 = 12
-minor_ninth = augmented_octave = m9 = A8 = 13
-major_ninth = diminished_tenth = M9 = d10 = 14
-minor_tenth = augmented_ninth = m10 = A9 = 15
-major_tenth = diminished_eleventh = M10 = d11 = 16
-perfect_eleventh = augmented_tenth = P11 = A10 = 17
-diminished_twelfth = augmented_eleventh = d12 = A11 = 18
-perfect_twelfth = tritave = diminished_thirteenth = P12 = d13 = 19
-minor_thirteenth = augmented_twelfth = m13 = A12 = 20
-major_thirteenth = diminished_fourteenth = M13 = d14 = 21
-minor_fourteenth = augmented_thirteenth = m14 = A13 = 22
-major_fourteenth = diminished_fifteenth = M14 = d15 = 23
-perfect_fifteenth = double_octave = augmented_fourteenth = P15 = A14 = 24
-minor_sixteenth = augmented_fifteenth = m16 = A15 = 25
-major_sixteenth = diminished_seventeenth = M16 = d17 = 26
-minor_seventeenth = augmented_sixteenth = m17 = A16 = 27
-major_seventeenth = M17 = 28
-semitone = halfstep = 1
-wholetone = wholestep = tone = 2
 ```
 
 
