@@ -400,7 +400,7 @@ continue_symbol(duration=1/4,
 
 
 
-### Interval (音程类型)
+## Interval (音程类型)
 
 这是一个表示音程的数据结构，例如乐理中的大三度、全五度。
 
