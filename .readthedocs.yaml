@@ -1,6 +1,4 @@
 version: 2
-theme:
-  name: mkdocs
 build:
   os: ubuntu-22.04
   tools:
