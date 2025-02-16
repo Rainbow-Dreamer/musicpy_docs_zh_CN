@@ -163,7 +163,7 @@ get(current_ind,
 chord(notes=[C4, C4, G4, G4, A4, A4, G4, F4, F4, E4, ...], interval=[1/8, 1/8, 1/8, 1/8, 1/4, 1/8, 1/8, ...], start_time=0)
 
 >> S('A#5 major').get('1,7,5,3,2,3[.16;.], o4, 1[.8.;.],7,1,-, o3, 6;3.1;1.1, 6;3.1;1.1, 5;7.1;2.1, 5; 7.1; 2.1, 6;3.1;1.1,-')
-chord( notes=[A#5, A5, F5, D5, C5, D5, A#4, A4, A#4, G3, ...], interval=[1/8, 1/8, 1/8, 1/8, 1/16, 3/16, 1/8, 1/4, 0, ...], start_time=0)
+chord(notes=[A#5, A5, F5, D5, C5, D5, A#4, A4, A#4, G3, ...], interval=[1/8, 1/8, 1/8, 1/8, 1/16, 3/16, 1/8, 1/4, 0, ...], start_time=0)
 ```
 
 
@@ -227,13 +227,13 @@ current_scale = S('C major')
 >>> current_scale.inversion(2)
 [scale]
 scale name: D4 dorian scale
-scale intervals: [2, 1, 2, 2, 2, 1, 2]
+scale intervals: [M2, m2, M2, M2, M2, m2, M2]
 scale notes: [D4, E4, F4, G4, A4, B4, C5, D5]
 
 >>> current_scale / 3
 [scale]
 scale name: E4 phrygian scale
-scale intervals: [1, 2, 2, 2, 1, 2, 2]
+scale intervals: [m2, M2, M2, M2, m2, M2, M2]
 scale notes: [E4, F4, G4, A4, B4, C5, D5, E5]
 ```
 
@@ -248,8 +248,8 @@ current_scale = S('C major')
 >>> ~current_scale
 [scale]
 scale name: C4 phrygian scale
-scale intervals: [1, 2, 2, 2, 1, 2, 2]
-scale notes: [C4, C#4, D#4, F4, G4, G#4, A#4, C5]
+scale intervals: [m2, M2, M2, M2, m2, M2, M2]
+scale notes: [C4, Db4, Eb4, F4, G4, Ab4, Bb4, C5]
 ```
 
 

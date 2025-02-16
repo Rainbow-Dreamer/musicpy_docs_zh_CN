@@ -4,7 +4,7 @@
 
 ## 1. 非功能和声游戏bgm（正常速度，165BPM）
 ```python
-a = C('Cm7',4,1,1/8) @ [1,3,4,2.1,4.1] | 3/8
+a = C('Cm7',4,1/2,1/8) @ [1,3,4,2.1,4.1] | 3/8
 piano = a * 4 | (a - 3) * 4
 bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') * 4) % (1/8, 1/8)
 bass += (bass - 3)
@@ -15,7 +15,7 @@ play(P([piano, bass], [1, 34], 165, [0, 0]) * 2)
 
 ## 2. 非功能和声游戏bgm（speedcore，500BPM）
 ```python
-a = C('Cm9',4,1,1/8) @ [1,3,5,2.1,4.1] | 3/8
+a = C('Cm9',4,1/2,1/8) @ [1,3,5,2.1,4.1] | 3/8
 piano = a * 4 | (a + 3) * 4
 bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') * 4) % (1/8, 1/8)
 bass += (bass + 3)
@@ -34,7 +34,7 @@ bass = (chord('C2, C2, G2, C2, A#2, C2, C3, C2') * 4) % (1/8, 1/8)
 bass += (bass + 3)
 import random
 drum = concat([chord(random.choice(['D2','E2','G2'])) for i in range(64)]) % (1/8, 1/8)
-play(P([piano, bass, drum], [31, 34, 1], 25, [0, 0, 0], channels=[1,2,9]) * 8)
+play(P([piano, bass, drum], [31, 34, 1], 25, [0, 0, 0], channels=[1,2,9]) * 2)
 ```
 
 

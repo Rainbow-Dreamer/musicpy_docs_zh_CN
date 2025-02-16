@@ -167,7 +167,7 @@ chord(notes,
 这个类可以表示一个特定的音阶。使用这个类可以快速按照音的间隔来构建调式，比如大调的音的排列是全全半全全全半（全代表全音，半代表半音），那么如果想构建一个C大调音阶，就可以写
 
 ```python
-scale('C5', interval=[2, 2, 1, 2, 2, 2, 1], name='major')
+scale('C5', interval=[2, 2, 1, 2, 2, 2, 1], mode='major')
 ```
 
 这样就得到了以C5为根音的C大调音阶，表示出来是这样: 
@@ -190,7 +190,7 @@ scale('C5', 'major')
 ```python
 [scale]
 scale name: C5 major scale
-scale intervals: [2, 2, 1, 2, 2, 2, 1]
+scale intervals: [M2, M2, m2, M2, M2, M2, m2]
 scale notes: [C5, D5, E5, F5, G5, A5, B5, C6]
 ```
 
@@ -205,8 +205,8 @@ scale('C5', 'minor')
 ```python
 [scale]
 scale name: C5 minor scale
-scale intervals: [2, 1, 2, 2, 1, 2, 2]
-scale notes: [C5, D5, D#5, F5, G5, G#5, A#5, C6]
+scale intervals: [M2, m2, M2, M2, m2, M2, M2]
+scale notes: [C5, D5, Eb5, F5, G5, Ab5, Bb5, C6]
 ```
 
 等等。

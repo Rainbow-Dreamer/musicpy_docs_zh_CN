@@ -198,6 +198,59 @@ a = piece(tracks=[A1, B1, C1, D1],
 # 如果想要完全重复这个乐曲类型n遍，那么可以写
 b = a * n
 
+# 如果想要完全重复这个乐曲类型n遍，并且额外加上i小节的间隔，那么可以写
+b = a * (n, i)
+
+# 往乐曲类型最后添加i小节的间隔
+a = a | i
+
+# 前后拼接两个乐曲类型
+c = a | b
+
+# 前后拼接两个乐曲类型，并且额外加上i小节的间隔
+c = a | (b, i)
+
+# 上下叠加两个乐曲类型，从头开始叠加
+c = a & b
+
+# 上下叠加两个乐曲类型，被叠加的乐曲类型从第i小节开始
+c = a & (b, i)
+
+# 上下叠加同一个乐曲类型n遍，并且每次往后延迟i个小节
+b = a & (n, i)
+
+# 合并两个乐曲类型的函数
+merge_track(n,
+            mode='after',
+            start_time=0,
+            ind_mode=1,
+            include_last_interval=False,
+            ignore_last_duration=False,
+            extra_interval=0)
+# n: 需要合并的乐曲类型
+# mode: 为'after'时，将乐曲类型进行拼接，为'head'时，将乐曲类型进行上下叠加
+# start_time: mode为'head'时，乐曲叠加的开始小节
+# ind_mode: 合并乐曲类型时，当被合并的乐曲类型的当前音轨的乐器在合并到的乐曲类型中可以找到时，
+# 设定为'0'合并到第一个有相同乐器的音轨，设定为'1'合并到当前同序号的音轨，
+# 如果音轨序号已经超过合并到的乐曲类型的音轨长度，则在合并乐曲中新建一个音轨进行合并
+# include_last_interval: 计算乐曲长度时，是否包括乐曲最后的音符间隔
+# ignore_last_duration: 计算乐曲长度时，是否忽略乐曲最后的音符长度
+# extra_interval: mode为'after'时，乐曲拼接后的额外间隔
+
+# 重复一个乐曲类型n遍的函数
+repeat(n,
+       start_time=0,
+       include_last_interval=False,
+       ignore_last_duration=False,
+       ind_mode=1,
+       mode='after')
+# n: 重复次数
+# start_time: mode为'head'时，乐曲叠加的开始小节，mode为'after'时，乐曲拼接后的额外间隔
+# include_last_interval: 同merge_track的参数用法
+# ignore_last_duration: 同merge_track的参数用法
+# ind_mode: 同merge_track的参数用法
+# mode: 同merge_track的参数用法
+
 # 可以使用index值查看一个乐曲类型的某一个音轨的信息，以0作为第1个音轨
 # 使用a[n]的语法可以得到第n个音轨类型
 >>> a[0]

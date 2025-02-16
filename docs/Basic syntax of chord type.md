@@ -264,6 +264,7 @@ chord(notes=[G5, F5, E5, F5, E5, D5, E5, D5, C5, B4, ...], interval=[3/4, 1/8, 1
 * 使用`+no`表示前一个音符升高n个八度，`+nom`表示前一个音符升高n个八度之后升高m个半音，也支持`++`的语法
 * 把以上的语法改为`-`表示降低音高
 * 使用相对音程的语法必须在之前有至少一个绝对音高
+* 可以使用`C4(+n)`的语法来表示当前音符为以`C4`为基准音升高n个半音后的音符，改为`-`表示降低n个半音，同样也支持`+no`和`+nom`的语法
 
 这里是一些例子:
 
@@ -275,6 +276,10 @@ chord(notes=[A#4, F5, G#5, C6, C#6, D#6, C#6, C6], interval=[1/8, 1/8, 1/8, 1/8,
 example2 = chord('C5, ++2, ++2, ++1, ++2', default_interval=1/8, default_duration=1/8)
 >>> example2
 chord(notes=[C5, D5, E5, F5, G5], interval=[1/8, 1/8, 1/8, 1/8, 1/8], start_time=0)
+             
+example3 = chord('C5(+1)[.8;.], E5, G5', default_interval=1/8, default_duration=1/8)
+>>> example3
+chord(notes=[C#5, E5, G5], interval=[1/8, 1/8, 1/8], start_time=0)
 ```
 
 
@@ -1199,9 +1204,9 @@ negative_harmony函数的其他参数：
 ```python
 >>> alg.negative_harmony(scale('C', 'major'))
 [scale]
-scale name: C5 minor scale
-scale intervals: [2, 1, 2, 2, 1, 2, 2]
-scale notes: [C5, D5, D#5, F5, G5, G#5, A#5, C6]
+scale name: C4 minor scale
+scale intervals: [M2, A1, d3, M2, A1, M2, d3]
+scale notes: [C4, D4, D#4, F4, G4, G#4, A#4, C5]
 ```
 
 还有一个参数`sort`，为True的时候，会把和弦a转换为负面和声版本之后，将音符按照音高从低到高排序。默认值为True。
@@ -1328,7 +1333,7 @@ guitar_chord(frets,
              duration=0.25,
              interval=0,
              **detect_args)
-# frets: 你按吉他的6根弦从最低音的弦到最高音的弦的品格数的列表，品格数为一个整数，如果是空弦就写0，如果是不弹的弦就写None
+# frets: 按吉他的6根弦从最低音的弦到最高音的弦的品格数的列表，品格数为一个整数，如果是空弦就写0，如果是不弹的弦就写None
 # return_chord: 是否返回和弦类型，为False的时候会判断你按的品格数弹出来是什么和弦，返回的具体的和弦名称，默认值为True。
 # tuning: 吉他的定弦，默认值为6弦吉他的标准定弦，你也可以自己定制想要的吉他定弦
 # duration: 返回的和弦类型的音符长度的列表
@@ -1340,6 +1345,37 @@ guitar_chord(frets,
 chord(notes=[C3, E3, G3, C4, E4], interval=[0, 0, 0, 0, 0], start_time=0)
 >>> alg.guitar_chord([None, 3, 2, 0, 1, 0], return_chord=False)
 'Cmajor'
+```
+
+
+
+你可以使用算法库的`guitar_pattern`函数，通过吉他品格数获得吉他旋律，通过吉他的6根弦的品格数和吉他定弦标准(可以不设置，默认为6弦吉他标准定弦)来得到和弦类型，以下为语法：
+
+函数的第一个参数为字符串，以`,`分隔，使用`sn`将当前所在弦切换到第`n`弦，对应着吉他的1-6弦（更多的弦也支持，只需要吉他定弦标准支持即可），使用整数表示当前需要奏响的品格数，同样也支持相对音高语法与构建鼓点的语法。需要注意，这里第0品会和构建鼓点的语法中的默认休止符`0`产生冲突，当前的处理逻辑为直接解释为第0品，因此如果需要使用休止符，请使用`i:n`的语法，或者更换鼓点映射字典。
+
+```python
+guitar_pattern(frets,
+               tuning=database.guitar_standard_tuning,
+               default_duration=1 / 8,
+               default_interval=1 / 8,
+               default_volume=100,
+               mapping=database.drum_mapping)
+# frets: 按照吉他的品格数编写的字符串
+# tuning: 吉他的定弦，默认值为6弦吉他的标准定弦，你也可以自己定制想要的吉他定弦
+# default_duration: 返回的和弦类型的默认音符长度
+# default_interval: 返回的和弦类型的默认音符间隔
+# default_volume: 返回的和弦类型的默认音符音量
+# mapping: 鼓点映射的字典，可以自定义，默认值为drum_mapping
+
+# 比如吉他的C大三和弦在前三品的一个标准按法是5弦3品，4弦2品，3弦空弦，2弦1品，1弦空弦，那么就可以写
+>>> alg.guitar_pattern('s3,0,11,s1,12,0,12,s3,11,0,9,s3,0,11,s1,14,0,14,s3,11,0,9', tuning=[N(i)-2 for i in database.guitar_standard_tuning])
+chord(notes=[F3, E4, D5, D4, D5, E4, F3, D4, F3, E4, ...], interval=[1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8, ...], start_time=0)
+
+#可以更换鼓点映射字典以使用休止符语法
+drum_mapping_new = copy(database.drum_mapping)
+drum_mapping_new['x'] = drum_mapping_new.pop('0')
+>>> alg.guitar_pattern('i:1,s3,0,11,s1,12,0,12,s3,11,0,9,x,x,x,x,s3,0,11,s1,14,0,14,s3,11,0,9,-,-,-,-', tuning=[N(i)-2 for i in database.guitar_standard_tuning], mapping=drum_mapping_new)
+chord(notes=[F3, E4, D5, D4, D5, E4, F3, D4, F3, E4, ...], interval=[1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 5/8, 1/8, 1/8, ...], start_time=1)
 ```
 
 
@@ -1728,18 +1764,16 @@ interval_note(self, interval, mode=0)
 # mode: 为0的时候，如果查找不到指定度数的音，返回None，为1的时候，会返回和弦类型的起始音加上指定度数的音符类型
 
 >>> C('Cm11') # C小十一和弦
-chord(notes=[C4, D#4, G4, A#4, D5, F5], interval=[0, 0, 0, 0, 0, 0], start_time=0)
+chord(notes=[C4, Eb4, G4, Bb4, D5, F5], interval=[0, 0, 0, 0, 0, 0], start_time=0)
 
 >>> C('Cm11').interval_note(3) # 查找C小十一和弦的3度音
-D#4 # 返回C小十一和弦的3度音，这里更加乐理上严谨一些的话应该是Eb4，
-# 之所以这里是D#4是因为musicpy默认的音符表示方式是以#号为优先
+Eb4 # 返回C小十一和弦的3度音
 
 >>> C('Cm11').interval_note(9) # 查找C小十一和弦的9度音
 D5 # 返回C小十一和弦的9度音
 
->>> C('Cm11').interval_note(d5, mode=1) # 返回C小十一和弦的起始音的降5度音，
-# 注意这里的度数不能为字符串，因为音符类型加上字符串会解释为组成一个和弦类型
-F#4 # 返回C小十一和弦的起始音的降5度音 (这里严谨来说应该是Gb4，也是和之前同样的原因)
+>>> C('Cm11').interval_note('b5', mode=1) # 返回C小十一和弦的起始音的降5度音
+Gb4
 ```
 
 

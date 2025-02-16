@@ -44,7 +44,7 @@ drum_part = (drum1 * 4 | drum3 * 16)
 synth_pad_part = (synth_pad1 * 4) + 3
 
 result = P(tracks=[bass_part, guitar_part, drum_part, synth_pad_part],
-           instruments=[34, 3, 1, 51],
+           instruments=[34, 3, 26, 51],
            channels=[0, 1, 9, 2],
            daw_channels=[1, 0, 1, 1],
            start_times=[0, 0, 4, 8],
@@ -150,13 +150,13 @@ from musicpy.daw import *
 
 current_daw = daw(3)
 current_daw.load(0, 'Arachno.sf2')
-current_daw.instruments(0) < 'Electric Piano'
 
 part1 = get_chord('bb2', 'm11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]
 part2 = get_chord('g2', 'M9#11')%(1/2,1/8)@[1,3,5,4.1,2.2,6.1,5.1,4.1]
 part3 = get_chord('gb2', '13sus')%(1/2,1/8)@[1,3,4,5,2.1,6,4.1,5.1]
 result = (part1 * 4 | (part1-2) * 2 | part2 | part3) * 2
+result_piece = P([result], instruments=[5], bpm=100)
 
-current_daw.play(result, bpm=100)
+current_daw.play(result_piece)
 ```
 [点击这里试听](https://drive.google.com/file/d/14hp-y_n-GqlI6ZGSPDBRL1Vt9cxLjpuv/view?usp=sharing)
