@@ -1,5 +1,4 @@
-site_name: Musicpy
-site_url: https://github.com/Rainbow-Dreamer/musicpy
+version: 2
 nav:
     - 介绍:
       - 介绍: Introduction.md
