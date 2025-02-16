@@ -36,3 +36,7 @@ nav:
       - 常见的问题: Frequently Asked Questions.md
 theme:
   name: mkdocs
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.7"
