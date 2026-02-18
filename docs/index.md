@@ -105,6 +105,8 @@ play(result)
 * [Musicpy algorithms 模块介绍](https://musicpy.readthedocs.io/zh_CN/latest/Introduction%20of%20musicpy%20algorithms%20module/)
 * [从一首完整的钢琴曲里提取主旋律以及所有和弦的算法](https://musicpy.readthedocs.io/zh_CN/latest/The%20algorithm%20to%20split%20the%20main%20melody%20and%20chords%20from%20a%20piece%20of%20music/)
 * [按照乐理逻辑判断任意一组音组成的和弦类型的算法](https://musicpy.readthedocs.io/zh_CN/latest/The%20algorithm%20to%20determine%20the%20chord%20type%20of%20any%20group%20of%20notes%20according%20to%20the%20logic%20of%20music%20theory/)
+* [用于分析乐曲和弦进行的算法](https://musicpy.readthedocs.io/zh_CN/latest/The%20algorithm%20to%20analyze%20the%20chord%20progressions%20of%20a%20piece%20of%20music/)
+* [用于分析乐曲调性与转调的算法](https://musicpy.readthedocs.io/zh_CN/latest/The%20algorithm%20to%20analyze%20tonality%20and%20modulations%20in%20a%20piece%20of%20music/)
 
 
 

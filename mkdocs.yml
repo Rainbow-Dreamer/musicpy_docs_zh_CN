@@ -32,6 +32,8 @@ nav:
       - Musicpy algorithms 模块介绍: Introduction of musicpy algorithms module.md
       - 从一首完整的钢琴曲里提取主旋律以及所有和弦的算法: The algorithm to split the main melody and chords from a piece of music.md
       - 按照乐理逻辑判断任意一组音组成的和弦类型的算法: The algorithm to determine the chord type of any group of notes according to the logic of music theory.md
+      - 用于分析乐曲和弦进行的算法: The algorithm to analyze the chord progressions of a piece of music.md
+      - 用于分析乐曲调性与转调的算法: The algorithm to analyze tonality and modulations in a piece of music.md
     - 常见的问题:
       - 常见的问题: Frequently Asked Questions.md
 theme:
