@@ -955,11 +955,11 @@ unzip_mdi('drum.mdi', 'drum from mdi')
 
 2. 如果你在播放时或在导出的音频文件中听到一些音符开始或结束时的噼啪声，你可以在和弦类型或乐曲类型中的每个音符上添加一些微小的淡化效果来消除噼啪声，通常20毫秒就可以完全消除噼啪声，而且非常有效，因为淡入和淡出的时间很短，你不会注意到，而噼啪的声音完全被删除了。你可以使用列表解析式或者for循环，以便为和弦类型或乐曲类型中的每个音符添加微小的淡出效果。比如说
 
-   ```python
-   # 为和弦类型中的所有音符添加微小的淡化效果
-   piano.notes = [set_effect(i, fade(20, 20)) for i in piano.notes]
-   
-   # 为所有乐曲类型中的所有音符添加小的渐变效果
-   for each in current_song.tracks:
-       each.notes = [set_effect(i, fade(20, 20)) for i in each.note]
-   ```
+```python
+# 为和弦类型中的所有音符添加微小的淡化效果
+piano.notes = [set_effect(i, fade(20, 20)) for i in piano.notes]
+
+# 为所有乐曲类型中的所有音符添加小的渐变效果
+for each in current_song.tracks:
+    each.notes = [set_effect(i, fade(20, 20)) for i in each.note]
+```
